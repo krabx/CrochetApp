@@ -8,8 +8,7 @@
 import Foundation
 
 struct Element {
-    let name: String
-    let x: CGPoint
-    let y: CGPoint
+    let x: CGFloat
+    let y: CGFloat
     let image: Data
 }

@@ -9,6 +9,7 @@ import UIKit
 
 final class SchemaViewController: UIViewController {
     var newImage = UIImage()
+
     
     @IBOutlet var buttons: [UIButton]!
     
@@ -31,6 +32,8 @@ final class SchemaViewController: UIViewController {
             height: newImage.size.height)
         )
         imageView.image = newImage
+        //var imageData = newImage.pngData() ?? Data()
+        //var element = Element(x: touchPoint.x, y: touchPoint.y, image: imageData)
         view.addSubview(imageView)
     }
 
