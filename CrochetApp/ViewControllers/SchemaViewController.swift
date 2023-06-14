@@ -10,10 +10,10 @@ import UIKit
 final class SchemaViewController: UIViewController {
     var newImage = UIImage()
 
+    @IBOutlet var stackView: UIStackView!
     
     @IBOutlet var buttons: [UIButton]!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(
@@ -25,16 +25,23 @@ final class SchemaViewController: UIViewController {
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
         let touchPoint = touch.location(in: self.view)
-        let imageView = UIImageView(frame: CGRect(
-            x: touchPoint.x,
-            y: touchPoint.y,
-            width: newImage.size.width,
-            height: newImage.size.height)
-        )
-        imageView.image = newImage
+//        let symbol = Symbol(frame: CGRect.init(
+//            x: touchPoint.x,
+//            y: touchPoint.y,
+//            width: 100,
+//            height: 100)
+//        )
+//        let imageView = UIImageView(frame: CGRect(
+//            x: touchPoint.x,
+//            y: touchPoint.y,
+//            width: newImage.size.width,
+//            height: newImage.size.height)
+//        )
+        //imageView.image = newImage
         //var imageData = newImage.pngData() ?? Data()
         //var element = Element(x: touchPoint.x, y: touchPoint.y, image: imageData)
-        view.addSubview(imageView)
+        //view.addSubview(imageView)
+//        view.addSubview(symbol)
     }
 
     
