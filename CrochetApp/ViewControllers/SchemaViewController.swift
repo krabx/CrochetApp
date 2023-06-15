@@ -8,14 +8,23 @@
 import UIKit
 
 final class SchemaViewController: UIViewController {
-    var newImage = UIImage()
-
-    @IBOutlet var stackView: UIStackView!
     
+    let symbol = Symbol(frame: CGRect.init(
+        x: 0,
+        y: 0,
+        width: 100,
+        height: 100)
+    )
+    
+    var newElement = UIView()
+    
+    @IBOutlet var elementList: UITableView!
     @IBOutlet var buttons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        elementList.delegate = self
+        elementList.dataSource = self
         let tap = UITapGestureRecognizer(
             target: self,
             action: #selector(touchedScreen(touch:))
@@ -41,14 +50,31 @@ final class SchemaViewController: UIViewController {
         //var imageData = newImage.pngData() ?? Data()
         //var element = Element(x: touchPoint.x, y: touchPoint.y, image: imageData)
         //view.addSubview(imageView)
-//        view.addSubview(symbol)
+        view.addSubview(newElement)
     }
 
     
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        newImage = sender.imageView?.image ?? UIImage()
+        //newImage = sender.imageView?.image ?? UIImage()
     }
     
 }
 
+extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath)
+        cell.contentView.addSubview(symbol)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        newElement = symbol
+    }
+    
+    
+}
