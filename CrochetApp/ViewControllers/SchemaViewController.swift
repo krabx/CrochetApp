@@ -9,14 +9,11 @@ import UIKit
 
 final class SchemaViewController: UIViewController {
     
-    let symbol = Symbol(frame: CGRect.init(
-        x: 0,
-        y: 0,
-        width: 100,
-        height: 100)
-    )
+    var elementsOnSchema: [Element] = []
     
-    var newElement = UIView()
+    let elements = DataManager.shared.elements
+    
+    var currentElement = UIView()
     
     @IBOutlet var elementList: UITableView!
     @IBOutlet var buttons: [UIButton]!
@@ -34,23 +31,20 @@ final class SchemaViewController: UIViewController {
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
         let touchPoint = touch.location(in: self.view)
-//        let symbol = Symbol(frame: CGRect.init(
-//            x: touchPoint.x,
-//            y: touchPoint.y,
-//            width: 100,
-//            height: 100)
-//        )
-//        let imageView = UIImageView(frame: CGRect(
-//            x: touchPoint.x,
-//            y: touchPoint.y,
-//            width: newImage.size.width,
-//            height: newImage.size.height)
-//        )
-        //imageView.image = newImage
+        guard let newImage = UIImage(data: elementsOnSchema.last?.image ?? Data()) else { return }
+        let imageView = UIImageView(frame: CGRect(
+            x: touchPoint.x,
+            y: touchPoint.y,
+            width: 50,
+            height: 50)
+        )
+        imageView.image = newImage
+        imageView.layoutIfNeeded()
         //var imageData = newImage.pngData() ?? Data()
         //var element = Element(x: touchPoint.x, y: touchPoint.y, image: imageData)
         //view.addSubview(imageView)
-        view.addSubview(newElement)
+//        newElement.frame.origin = CGPoint(x: touchPoint.x, y: touchPoint.y)
+        self.view.addSubview(imageView)
     }
 
     
@@ -63,18 +57,40 @@ final class SchemaViewController: UIViewController {
 
 extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        elements.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath)
-        cell.contentView.addSubview(symbol)
+        elements[indexPath.row].center.x = tableView.frame.width / 2
+        print(view.frame.width)
+        cell.contentView.addSubview(elements[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        newElement = symbol
+        currentElement = DataManager.shared.addingOnScreenElements[indexPath.row]
+        let currentElement = DataManager.shared.addingOnScreenElements[indexPath.row]
+        let renderer = UIGraphicsImageRenderer(size: currentElement.bounds.size)
+        let data = renderer.pngData { ctx in
+            currentElement.drawHierarchy(in: currentElement.bounds, afterScreenUpdates: true)
+        }
+//        let image = renderer.image { ctx in
+//            newElement.drawHierarchy(in: newElement.bounds, afterScreenUpdates: true)
+//        }
+        elementsOnSchema.append(Element(image: data))
+        //newElement = DataManager.shared.addingOnScreenElements[indexPath.row]
     }
-    
-    
 }
+
+//extension UIImage{
+//    convenience init(view: UIView) {
+//
+//    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
+//    view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
+//    let image = UIGraphicsGetImageFromCurrentImageContext()
+//    UIGraphicsEndImageContext()
+//    self.init(cgImage: (image?.cgImage)!)
+//
+//  }
+//}

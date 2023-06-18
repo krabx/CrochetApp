@@ -8,7 +8,5 @@
 import Foundation
 
 struct Element {
-    let x: CGFloat
-    let y: CGFloat
     let image: Data
 }

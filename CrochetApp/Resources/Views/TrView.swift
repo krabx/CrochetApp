@@ -1,13 +1,13 @@
 //
-//  Symbol.swift
+//  TrView.swift
 //  CrochetApp
 //
-//  Created by Богдан Радченко on 11.06.2023.
+//  Created by Богдан Радченко on 18.06.2023.
 //
 
 import UIKit
 
-class Symbol: UIView {
+final class TrView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
@@ -16,11 +16,11 @@ class Symbol: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     override func draw(_ rect: CGRect) {
-        ElementOne.drawElement1(
+        Tr.drawCanvas1(
             frame: rect,
             resizing: .aspectFit,
-            fillColor: UIColor.black)
+            fillColor: UIColor.black
+        )
     }
 }
