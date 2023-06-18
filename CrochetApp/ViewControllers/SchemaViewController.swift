@@ -31,13 +31,22 @@ final class SchemaViewController: UIViewController {
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
         let touchPoint = touch.location(in: self.view)
+//        let renderer = UIGraphicsImageRenderer(size: currentElement.bounds.size)
+//        let data = renderer.pngData { ctx in
+//            currentElement.drawHierarchy(in: currentElement.bounds, afterScreenUpdates: true)
+//        }
+        
+
+        
         guard let newImage = UIImage(data: elementsOnSchema.last?.image ?? Data()) else { return }
+        
         let imageView = UIImageView(frame: CGRect(
             x: touchPoint.x,
             y: touchPoint.y,
             width: 50,
             height: 50)
         )
+        
         imageView.image = newImage
         imageView.layoutIfNeeded()
         //var imageData = newImage.pngData() ?? Data()
@@ -62,35 +71,28 @@ extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath)
-        elements[indexPath.row].center.x = tableView.frame.width / 2
-        print(view.frame.width)
-        cell.contentView.addSubview(elements[indexPath.row])
+        let element = elements[indexPath.row]
+        let renderer = UIGraphicsImageRenderer(size: element.bounds.size)
+        let data = renderer.pngData { ctx in
+            element.drawHierarchy(in: element.bounds, afterScreenUpdates: true)
+        }
+        elementsOnSchema.append(Element(image: data))
+        var content = cell.defaultContentConfiguration()
+        content.image = UIImage(data: data)
+        //elements[indexPath.row].center.x = tableView.frame.width / 2
+        //cell.contentView.addSubview(elements[indexPath.row])
+        cell.contentConfiguration = content
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currentElement = DataManager.shared.addingOnScreenElements[indexPath.row]
-        let currentElement = DataManager.shared.addingOnScreenElements[indexPath.row]
-        let renderer = UIGraphicsImageRenderer(size: currentElement.bounds.size)
-        let data = renderer.pngData { ctx in
-            currentElement.drawHierarchy(in: currentElement.bounds, afterScreenUpdates: true)
-        }
+//        let currentElement = DataManager.shared.addingOnScreenElements[indexPath.row]
+
 //        let image = renderer.image { ctx in
 //            newElement.drawHierarchy(in: newElement.bounds, afterScreenUpdates: true)
 //        }
-        elementsOnSchema.append(Element(image: data))
+
         //newElement = DataManager.shared.addingOnScreenElements[indexPath.row]
     }
 }
-
-//extension UIImage{
-//    convenience init(view: UIView) {
-//
-//    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
-//    view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
-//    let image = UIGraphicsGetImageFromCurrentImageContext()
-//    UIGraphicsEndImageContext()
-//    self.init(cgImage: (image?.cgImage)!)
-//
-//  }
-//}
