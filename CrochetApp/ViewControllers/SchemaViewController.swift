@@ -9,7 +9,13 @@ import UIKit
 
 final class SchemaViewController: UIViewController {
     
+    // TODO: - Lost Data in tableView!!!
+    
     var elementsOnSchema: [Element] = []
+    
+    let dataManager = DataManager.shared
+    
+    var elementsData: [Data] = []
     
     let elements = DataManager.shared.elements
     
@@ -27,6 +33,7 @@ final class SchemaViewController: UIViewController {
             action: #selector(touchedScreen(touch:))
         )
         view.addGestureRecognizer(tap)
+        rendererViewToData()
     }
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
@@ -39,7 +46,7 @@ final class SchemaViewController: UIViewController {
             height: 50)
         )
         imageView.image = newImage
-        imageView.layoutIfNeeded()
+        //imageView.layoutIfNeeded()
         //var imageData = newImage.pngData() ?? Data()
         //var element = Element(x: touchPoint.x, y: touchPoint.y, image: imageData)
         //view.addSubview(imageView)
@@ -61,25 +68,15 @@ extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath)
-        elements[indexPath.row].center.x = tableView.frame.width / 2
-        print(view.frame.width)
-        cell.contentView.addSubview(elements[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? ElementCell else { return UITableViewCell() }
+        cell.elementImageView.image = UIImage(data: elementsData[indexPath.row])
+//        elements[indexPath.row].center.x = tableView.frame.width / 2
+//        cell.contentView.addSubview(elements[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        currentElement = DataManager.shared.addingOnScreenElements[indexPath.row]
-        let currentElement = DataManager.shared.addingOnScreenElements[indexPath.row]
-        let renderer = UIGraphicsImageRenderer(size: currentElement.bounds.size)
-        let data = renderer.pngData { ctx in
-            currentElement.drawHierarchy(in: currentElement.bounds, afterScreenUpdates: true)
-        }
-//        let image = renderer.image { ctx in
-//            newElement.drawHierarchy(in: newElement.bounds, afterScreenUpdates: true)
-//        }
-        elementsOnSchema.append(Element(image: data))
-        //newElement = DataManager.shared.addingOnScreenElements[indexPath.row]
+        elementsOnSchema.append(Element(image: elementsData[indexPath.row]))
     }
 }
 
@@ -94,3 +91,18 @@ extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
 //
 //  }
 //}
+
+extension SchemaViewController {
+    private func rendererViewToData() {
+        let elements = dataManager.elements
+
+        for element in elements {
+            let renderer = UIGraphicsImageRenderer(size: element.bounds.size)
+            let data = renderer.pngData { ctx in
+                element.drawHierarchy(in: element.bounds, afterScreenUpdates: true)
+            }
+            
+            elementsData.append(data)
+        }
+    }
+}

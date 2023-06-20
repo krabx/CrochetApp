@@ -28,6 +28,7 @@
 		6E2525742A3F1FAB00E6C94D /* TrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525732A3F1FAB00E6C94D /* TrViewController.swift */; };
 		6E2525762A3F210900E6C94D /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525752A3F210800E6C94D /* Start.swift */; };
 		6E2525782A3F211C00E6C94D /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525772A3F211C00E6C94D /* StartView.swift */; };
+		6E25257E2A4248F900E6C94D /* ElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25257D2A4248F900E6C94D /* ElementCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		6E2525732A3F1FAB00E6C94D /* TrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrViewController.swift; sourceTree = "<group>"; };
 		6E2525752A3F210800E6C94D /* Start.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
 		6E2525772A3F211C00E6C94D /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		6E25257D2A4248F900E6C94D /* ElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				6E2525362A311A9C00E6C94D /* SchemaViewController.swift */,
+				6E25257D2A4248F900E6C94D /* ElementCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				6E2525622A3F14EB00E6C94D /* Hdc.swift in Sources */,
 				6E25256A2A3F178000E6C94D /* ChView.swift in Sources */,
 				6E2525662A3F156200E6C94D /* DataManager.swift in Sources */,
+				6E25257E2A4248F900E6C94D /* ElementCell.swift in Sources */,
 				6E25256E2A3F18A300E6C94D /* HdcView.swift in Sources */,
 				6E25254B2A311F3C00E6C94D /* Element.swift in Sources */,
 				6E2525722A3F18BC00E6C94D /* TrView.swift in Sources */,
