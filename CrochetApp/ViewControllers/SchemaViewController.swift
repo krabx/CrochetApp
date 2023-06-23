@@ -17,9 +17,9 @@ final class SchemaViewController: UIViewController {
     
     var elementsData: [Data] = []
     
-    let elements = DataManager.shared.elements
+    //let elements = DataManager.shared.elements
     
-    var currentElement = UIView()
+    //var currentElement = UIView()
     
     @IBOutlet var elementList: UITableView!
     @IBOutlet var buttons: [UIButton]!
@@ -33,7 +33,7 @@ final class SchemaViewController: UIViewController {
             action: #selector(touchedScreen(touch:))
         )
         view.addGestureRecognizer(tap)
-        rendererViewToData()
+        print(elementsData.count)
     }
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
@@ -64,14 +64,18 @@ final class SchemaViewController: UIViewController {
 
 extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        elements.count
+        elementsData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? ElementCell else { return UITableViewCell() }
-        cell.elementImageView.image = UIImage(data: elementsData[indexPath.row])
-//        elements[indexPath.row].center.x = tableView.frame.width / 2
-//        cell.contentView.addSubview(elements[indexPath.row])
+        cell.infoLabel.text = "Add favorite element"
+//        if elementsData.count == 0 {
+//            cell.elementImageView.isHidden = true
+//            cell.infoLabel.text = "Add favorite element"
+//        } else {
+//            cell.elementImageView.image = UIImage(data: elementsData[indexPath.row])
+//        }
         return cell
     }
     
@@ -92,17 +96,17 @@ extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
 //  }
 //}
 
-extension SchemaViewController {
-    private func rendererViewToData() {
-        let elements = dataManager.elements
-
-        for element in elements {
-            let renderer = UIGraphicsImageRenderer(size: element.bounds.size)
-            let data = renderer.pngData { ctx in
-                element.drawHierarchy(in: element.bounds, afterScreenUpdates: true)
-            }
-            
-            elementsData.append(data)
-        }
-    }
-}
+//extension SchemaViewController {
+//    private func rendererViewToData() {
+//        let elements = dataManager.elements
+//
+//        for element in elements {
+//            let renderer = UIGraphicsImageRenderer(size: element.bounds.size)
+//            let data = renderer.pngData { ctx in
+//                element.drawHierarchy(in: element.bounds, afterScreenUpdates: true)
+//            }
+//
+//            elementsData.append(data)
+//        }
+//    }
+//}

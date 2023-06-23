@@ -8,6 +8,8 @@
 import UIKit
 
 final class ElementCell: UITableViewCell {
+
+    @IBOutlet var infoLabel: UILabel!
     @IBOutlet var elementImageView: UIImageView!
     
     override func awakeFromNib() {

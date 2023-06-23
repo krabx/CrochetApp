@@ -29,6 +29,8 @@
 		6E2525762A3F210900E6C94D /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525752A3F210800E6C94D /* Start.swift */; };
 		6E2525782A3F211C00E6C94D /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525772A3F211C00E6C94D /* StartView.swift */; };
 		6E25257E2A4248F900E6C94D /* ElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25257D2A4248F900E6C94D /* ElementCell.swift */; };
+		6E2525802A45CF7900E6C94D /* ElementListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25257F2A45CF7900E6C94D /* ElementListViewController.swift */; };
+		6E2525822A45D01E00E6C94D /* ElementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		6E2525752A3F210800E6C94D /* Start.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
 		6E2525772A3F211C00E6C94D /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		6E25257D2A4248F900E6C94D /* ElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCell.swift; sourceTree = "<group>"; };
+		6E25257F2A45CF7900E6C94D /* ElementListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementListViewController.swift; sourceTree = "<group>"; };
+		6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 			children = (
 				6E2525362A311A9C00E6C94D /* SchemaViewController.swift */,
 				6E25257D2A4248F900E6C94D /* ElementCell.swift */,
+				6E25257F2A45CF7900E6C94D /* ElementListViewController.swift */,
+				6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -253,9 +259,11 @@
 				6E2525372A311A9C00E6C94D /* SchemaViewController.swift in Sources */,
 				6E2525602A3F14EB00E6C94D /* Dc.swift in Sources */,
 				6E2525702A3F18B200E6C94D /* Sl_stView.swift in Sources */,
+				6E2525802A45CF7900E6C94D /* ElementListViewController.swift in Sources */,
 				6E2525632A3F14EB00E6C94D /* Tr.swift in Sources */,
 				6E2525612A3F14EB00E6C94D /* Sl_st.swift in Sources */,
 				6E25255B2A3F14C700E6C94D /* Ch.swift in Sources */,
+				6E2525822A45D01E00E6C94D /* ElementCollectionViewCell.swift in Sources */,
 				6E2525742A3F1FAB00E6C94D /* TrViewController.swift in Sources */,
 				6E25256C2A3F184A00E6C94D /* DcView.swift in Sources */,
 				6E2525332A311A9C00E6C94D /* AppDelegate.swift in Sources */,
