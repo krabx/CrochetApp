@@ -10,6 +10,9 @@ import UIKit
 final class ElementListViewController: UIViewController {
     let dataManager = DataManager.shared
     var standarts: [Data] = []
+    var selectedElements: [Data] = []
+    
+    weak var delegate: ElementListViewControllerDelegate?
 
     @IBOutlet var elementListCollectionView: UICollectionView!
     
@@ -18,6 +21,11 @@ final class ElementListViewController: UIViewController {
         elementListCollectionView.dataSource = self
         elementListCollectionView.delegate = self
         rendererViewToData()
+    }
+    
+    deinit {
+        delegate?.getUsageElements(selectedElements)
+        print("selected elements \(selectedElements.count)")
     }
 
 }
@@ -37,7 +45,7 @@ extension ElementListViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
+        selectedElements.append(standarts[indexPath.item])
     }
 }
 

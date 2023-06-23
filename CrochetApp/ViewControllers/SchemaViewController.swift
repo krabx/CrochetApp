@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ElementListViewControllerDelegate: AnyObject {
+    func getUsageElements(_ elements: [Data])
+}
+
 final class SchemaViewController: UIViewController {
     
     // TODO: - Lost Data in tableView!!!
@@ -33,7 +37,14 @@ final class SchemaViewController: UIViewController {
             action: #selector(touchedScreen(touch:))
         )
         view.addGestureRecognizer(tap)
-        print(elementsData.count)
+        let elementListVC = ElementListViewController()
+        elementListVC.delegate = self
+    }
+    
+    
+    @IBAction func addingElementsPressed() {
+        let elementListVC = ElementListViewController()
+        elementListVC.delegate = self
     }
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
@@ -53,34 +64,31 @@ final class SchemaViewController: UIViewController {
 //        newElement.frame.origin = CGPoint(x: touchPoint.x, y: touchPoint.y)
         self.view.addSubview(imageView)
     }
-
-    
-    
-    @IBAction func buttonPressed(_ sender: UIButton) {
-        //newImage = sender.imageView?.image ?? UIImage()
-    }
     
 }
 
 extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        elementsData.count
+        elementsData.count == 0 ? 1 : elementsData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? ElementCell else { return UITableViewCell() }
-        cell.infoLabel.text = "Add favorite element"
-//        if elementsData.count == 0 {
-//            cell.elementImageView.isHidden = true
-//            cell.infoLabel.text = "Add favorite element"
-//        } else {
-//            cell.elementImageView.image = UIImage(data: elementsData[indexPath.row])
-//        }
+        if elementsData.count == 0 {
+            cell.infoLabel.text = "Add favorite element"
+            cell.infoLabel.numberOfLines = 0
+        } else {
+            cell.elementImageView.image = UIImage(data: elementsData[indexPath.row])
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        elementsOnSchema.append(Element(image: elementsData[indexPath.row]))
+        if elementsData.count != 0 {
+            elementsOnSchema.append(Element(image: elementsData[indexPath.row]))
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+        print(elementsData.count)
     }
 }
 
@@ -110,3 +118,12 @@ extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
 //        }
 //    }
 //}
+
+extension SchemaViewController: ElementListViewControllerDelegate {
+    func getUsageElements(_ elements: [Data]) {
+        elementsData = elements
+        print("data in schema \(elementsData.count)")
+        print("elements in delegate \(elements.count)")
+        elementList.reloadData()
+    }
+}
