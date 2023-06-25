@@ -24,7 +24,6 @@ final class SchemaViewController: UIViewController {
     //let elements = DataManager.shared.elements
     
     //var currentElement = UIView()
-    
     @IBOutlet var elementList: UITableView!
     
     override func viewDidLoad() {
@@ -36,8 +35,6 @@ final class SchemaViewController: UIViewController {
             action: #selector(touchedScreen(touch:))
         )
         view.addGestureRecognizer(tap)
-        let elementListVC = ElementListViewController()
-        elementListVC.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,7 +44,7 @@ final class SchemaViewController: UIViewController {
     }
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
-        let touchPoint = touch.location(in: self.view)
+        let touchPoint = touch.location(in: view)
         guard let newImage = UIImage(data: elementsOnSchema.last?.image ?? Data()) else { return }
         let imageView = UIImageView(frame: CGRect(
             x: touchPoint.x,
@@ -60,8 +57,8 @@ final class SchemaViewController: UIViewController {
         //var imageData = newImage.pngData() ?? Data()
         //var element = Element(x: touchPoint.x, y: touchPoint.y, image: imageData)
         //view.addSubview(imageView)
-//        newElement.frame.origin = CGPoint(x: touchPoint.x, y: touchPoint.y)
-        self.view.addSubview(imageView)
+
+        view.addSubview(imageView)
     }
     
 }

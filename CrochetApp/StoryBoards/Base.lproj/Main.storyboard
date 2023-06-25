@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tnI-Ed-wzW">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -81,12 +81,11 @@
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fOq-tz-Mw1">
                                 <rect key="frame" x="16" y="294.33333333333331" width="75" height="399.99999999999994"/>
-                                <color key="backgroundColor" red="0.65490196079999996" green="0.79607843140000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="mc2-iE-cWL"/>
                                     <constraint firstAttribute="width" constant="75" id="uPW-QY-KKW"/>
                                 </constraints>
-                                <color key="sectionIndexBackgroundColor" red="0.65490196079999996" green="0.79607843140000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="elementCell" rowHeight="50" id="FUw-9l-JqF" customClass="ElementCell" customModule="CrochetApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="75" height="50"/>
@@ -116,7 +115,6 @@
                                                 <constraint firstItem="yiJ-zH-KGy" firstAttribute="leading" secondItem="iER-AA-9le" secondAttribute="leading" constant="8" id="mSW-cY-nvS"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.65490196079999996" green="0.79607843140000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="elementImageView" destination="yiJ-zH-KGy" id="Vhr-I7-CRX"/>
                                             <outlet property="infoLabel" destination="9qE-9p-uxg" id="P1x-Pn-HIB"/>
@@ -268,6 +266,9 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
