@@ -12,8 +12,8 @@ final class ElementListViewController: UIViewController {
     var standarts: [Data] = []
     var selectedElements: [Data] = []
     
-    weak var delegate: ElementListViewControllerDelegate?
-
+    unowned var delegate: ElementListViewControllerDelegate?
+    
     @IBOutlet var elementListCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -23,9 +23,13 @@ final class ElementListViewController: UIViewController {
         rendererViewToData()
     }
     
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        delegate?.getUsage(elements: selectedElements)
+        dismiss(animated: true)
+    }
+    
     deinit {
-        delegate?.getUsageElements(selectedElements)
-        print("selected elements \(selectedElements.count)")
+        delegate?.getUsage(elements: selectedElements)
     }
 
 }

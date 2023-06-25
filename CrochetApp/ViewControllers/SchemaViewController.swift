@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ElementListViewControllerDelegate: AnyObject {
-    func getUsageElements(_ elements: [Data])
+    func getUsage(elements: [Data])
 }
 
 final class SchemaViewController: UIViewController {
@@ -26,7 +26,6 @@ final class SchemaViewController: UIViewController {
     //var currentElement = UIView()
     
     @IBOutlet var elementList: UITableView!
-    @IBOutlet var buttons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +40,9 @@ final class SchemaViewController: UIViewController {
         elementListVC.delegate = self
     }
     
-    
-    @IBAction func addingElementsPressed() {
-        let elementListVC = ElementListViewController()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navigationVC = segue.destination as? UINavigationController else { return }
+        guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
         elementListVC.delegate = self
     }
     
@@ -75,10 +74,9 @@ extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? ElementCell else { return UITableViewCell() }
         if elementsData.count == 0 {
-            cell.infoLabel.text = "Add favorite element"
-            cell.infoLabel.numberOfLines = 0
+            cell.plug()
         } else {
-            cell.elementImageView.image = UIImage(data: elementsData[indexPath.row])
+            cell.configure(with: elementsData[indexPath.row])
         }
         return cell
     }
@@ -87,43 +85,20 @@ extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
         if elementsData.count != 0 {
             elementsOnSchema.append(Element(image: elementsData[indexPath.row]))
         }
-        tableView.deselectRow(at: indexPath, animated: true)
-        print(elementsData.count)
     }
 }
 
-//extension UIImage{
-//    convenience init(view: UIView) {
-//
-//    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
-//    view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
-//    let image = UIGraphicsGetImageFromCurrentImageContext()
-//    UIGraphicsEndImageContext()
-//    self.init(cgImage: (image?.cgImage)!)
-//
-//  }
-//}
-
-//extension SchemaViewController {
-//    private func rendererViewToData() {
-//        let elements = dataManager.elements
-//
-//        for element in elements {
-//            let renderer = UIGraphicsImageRenderer(size: element.bounds.size)
-//            let data = renderer.pngData { ctx in
-//                element.drawHierarchy(in: element.bounds, afterScreenUpdates: true)
-//            }
-//
-//            elementsData.append(data)
-//        }
-//    }
-//}
-
 extension SchemaViewController: ElementListViewControllerDelegate {
-    func getUsageElements(_ elements: [Data]) {
-        elementsData = elements
-        print("data in schema \(elementsData.count)")
-        print("elements in delegate \(elements.count)")
+    func getUsage(elements: [Data]) {
+        for element in elements {
+            if elementsData.contains(element) {
+                print("Данный элемент уже есть в избранном")
+                continue
+            } else {
+                elementsData.append(element)
+            }
+        }
+//        elementsData = elements
         elementList.reloadData()
     }
 }
