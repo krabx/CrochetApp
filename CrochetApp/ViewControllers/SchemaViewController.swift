@@ -13,17 +13,12 @@ protocol ElementListViewControllerDelegate: AnyObject {
 
 final class SchemaViewController: UIViewController {
     
-    // TODO: - Lost Data in tableView!!!
-    
     var elementsOnSchema: [Element] = []
     
     let dataManager = DataManager.shared
     
     var elementsData: [Data] = []
     
-    //let elements = DataManager.shared.elements
-    
-    //var currentElement = UIView()
     @IBOutlet var elementList: UITableView!
     
     override func viewDidLoad() {
@@ -53,11 +48,6 @@ final class SchemaViewController: UIViewController {
             height: 50)
         )
         imageView.image = newImage
-        //imageView.layoutIfNeeded()
-        //var imageData = newImage.pngData() ?? Data()
-        //var element = Element(x: touchPoint.x, y: touchPoint.y, image: imageData)
-        //view.addSubview(imageView)
-
         view.addSubview(imageView)
     }
     
@@ -95,7 +85,6 @@ extension SchemaViewController: ElementListViewControllerDelegate {
                 elementsData.append(element)
             }
         }
-//        elementsData = elements
         elementList.reloadData()
     }
 }

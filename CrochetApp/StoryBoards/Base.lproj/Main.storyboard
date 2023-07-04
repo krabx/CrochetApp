@@ -33,6 +33,9 @@
                                         <rect key="frame" x="0.0" y="106.33333333333331" width="125.66666666666667" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Мои схемы"/>
+                                        <connections>
+                                            <segue destination="0Kr-z4-dpb" kind="show" id="VKX-ib-4e4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -146,6 +149,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="980.91603053435108" y="-34.507042253521128"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="62y-6S-d9l">
+            <objects>
+                <viewController id="0Kr-z4-dpb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ccd-HC-2bQ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0q0-4Z-ljW">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1P-Z6-OT8">
+                                        <rect key="frame" x="0.0" y="0.0" width="800" height="800"/>
+                                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="800" id="QiQ-gS-6Ye"/>
+                                            <constraint firstAttribute="height" constant="800" id="UTC-za-M4e"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="D1P-Z6-OT8" secondAttribute="trailing" id="4BS-CU-RNr"/>
+                                    <constraint firstAttribute="bottom" secondItem="D1P-Z6-OT8" secondAttribute="bottom" id="LBE-6w-oTh"/>
+                                    <constraint firstItem="D1P-Z6-OT8" firstAttribute="leading" secondItem="0q0-4Z-ljW" secondAttribute="leading" id="f4c-Wf-B3m"/>
+                                    <constraint firstItem="D1P-Z6-OT8" firstAttribute="top" secondItem="0q0-4Z-ljW" secondAttribute="top" id="sAf-dc-8Rk"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="JtO-Dt-Y6u"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="ozZ-pz-cfN"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FWq-kM-tFy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0q0-4Z-ljW" firstAttribute="top" secondItem="FWq-kM-tFy" secondAttribute="top" id="2Ay-vu-7Z7"/>
+                            <constraint firstItem="0q0-4Z-ljW" firstAttribute="leading" secondItem="FWq-kM-tFy" secondAttribute="leading" id="nfp-Ne-flj"/>
+                            <constraint firstItem="0q0-4Z-ljW" firstAttribute="bottom" secondItem="FWq-kM-tFy" secondAttribute="bottom" id="oES-Tq-nDK"/>
+                            <constraint firstItem="0q0-4Z-ljW" firstAttribute="trailing" secondItem="FWq-kM-tFy" secondAttribute="trailing" id="tIE-wE-eww"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="h45-I0-T33"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIq-vB-Lxq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="980.91603053435108" y="745.77464788732402"/>
         </scene>
         <!--Element List View Controller-->
         <scene sceneID="XEn-Gg-bTu">
@@ -266,6 +314,9 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
