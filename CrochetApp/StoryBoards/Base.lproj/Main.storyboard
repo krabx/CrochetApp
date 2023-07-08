@@ -150,10 +150,10 @@
             </objects>
             <point key="canvasLocation" x="980.91603053435108" y="-34.507042253521128"/>
         </scene>
-        <!--View Controller-->
+        <!--My Schemas View Controller-->
         <scene sceneID="62y-6S-d9l">
             <objects>
-                <viewController id="0Kr-z4-dpb" sceneMemberID="viewController">
+                <viewController id="0Kr-z4-dpb" customClass="MySchemasViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ccd-HC-2bQ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,10 +163,19 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1P-Z6-OT8">
                                         <rect key="frame" x="0.0" y="0.0" width="800" height="800"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9e995fbe5cecc8e75b9cd24c50b0e592" translatesAutoresizingMaskIntoConstraints="NO" id="9Vx-iG-WnS">
+                                                <rect key="frame" x="0.0" y="0.0" width="800" height="800"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemCyanColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="9Vx-iG-WnS" secondAttribute="trailing" id="NPA-Zo-Q1X"/>
                                             <constraint firstAttribute="width" constant="800" id="QiQ-gS-6Ye"/>
                                             <constraint firstAttribute="height" constant="800" id="UTC-za-M4e"/>
+                                            <constraint firstAttribute="bottom" secondItem="9Vx-iG-WnS" secondAttribute="bottom" id="Z48-fC-uZQ"/>
+                                            <constraint firstItem="9Vx-iG-WnS" firstAttribute="leading" secondItem="D1P-Z6-OT8" secondAttribute="leading" id="caY-XH-kjv"/>
+                                            <constraint firstItem="9Vx-iG-WnS" firstAttribute="top" secondItem="D1P-Z6-OT8" secondAttribute="top" id="e5k-3F-Zm5"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -190,6 +199,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="h45-I0-T33"/>
+                    <connections>
+                        <outlet property="scrollView" destination="0q0-4Z-ljW" id="8Ak-5K-uu1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIq-vB-Lxq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -310,6 +322,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="9e995fbe5cecc8e75b9cd24c50b0e592" width="480" height="426"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
