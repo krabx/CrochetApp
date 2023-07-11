@@ -10,10 +10,21 @@ import UIKit
 class MySchemasViewController: UIViewController {
     @IBOutlet var scrollView: UIScrollView!
     
+    @IBOutlet var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //scrollView.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 0.1
+        scrollView.maximumZoomScale = 5
+        scrollView.contentSize = imageView.bounds.size
+        //scrollView.zoomScale = scrollView.minimumZoomScale
     }
 
+}
+
+extension MySchemasViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        imageView
+    }
+    
 }
