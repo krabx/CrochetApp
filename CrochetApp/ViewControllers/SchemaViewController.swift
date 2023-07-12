@@ -13,12 +13,15 @@ protocol ElementListViewControllerDelegate: AnyObject {
 
 final class SchemaViewController: UIViewController {
     
+    var resetSelection = false
+    
     var elementsOnSchema: [Element] = []
     
     let dataManager = DataManager.shared
     
     var elementsData: [Data] = []
     
+    @IBOutlet var viewForAddingElementsUIView: UIView!
     @IBOutlet var elementList: UITableView!
     
     override func viewDidLoad() {
@@ -27,9 +30,13 @@ final class SchemaViewController: UIViewController {
         elementList.dataSource = self
         let tap = UITapGestureRecognizer(
             target: self,
-            action: #selector(touchedScreen(touch:))
+            action: !resetSelection ? #selector(touchedScreen(touch:)) : nil
         )
-        view.addGestureRecognizer(tap)
+        viewForAddingElementsUIView.addGestureRecognizer(tap)
+    }
+    
+    @IBAction func resetSelectionTableViewButton() {
+        resetSelection = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -39,16 +46,18 @@ final class SchemaViewController: UIViewController {
     }
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
-        let touchPoint = touch.location(in: view)
-        guard let newImage = UIImage(data: elementsOnSchema.last?.image ?? Data()) else { return }
-        let imageView = UIImageView(frame: CGRect(
-            x: touchPoint.x,
-            y: touchPoint.y,
-            width: 50,
-            height: 50)
-        )
-        imageView.image = newImage
-        view.addSubview(imageView)
+        if !resetSelection {
+            let touchPoint = touch.location(in: viewForAddingElementsUIView)
+            guard let newImage = UIImage(data: elementsOnSchema.last?.image ?? Data()) else { return }
+            let imageView = UIImageView(frame: CGRect(
+                x: touchPoint.x,
+                y: touchPoint.y,
+                width: 50,
+                height: 50)
+            )
+            imageView.image = newImage
+            viewForAddingElementsUIView.addSubview(imageView)
+        }
     }
     
 }
