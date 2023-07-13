@@ -14,6 +14,8 @@ protocol ElementListViewControllerDelegate: AnyObject {
 final class SchemaViewController: UIViewController {
     
     var resetSelection = false
+    var deleteElement = false
+    var rotateElement = false
     
     var elementsOnSchema: [Element] = []
     
@@ -39,6 +41,16 @@ final class SchemaViewController: UIViewController {
         resetSelection = true
     }
     
+    @IBAction func deleteElementSubView() {
+        deleteElement = true
+        resetSelection = true
+    }
+    
+    @IBAction func rotateElementSubView() {
+        resetSelection = true
+        rotateElement = true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigationVC = segue.destination as? UINavigationController else { return }
         guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
@@ -46,8 +58,9 @@ final class SchemaViewController: UIViewController {
     }
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
+        let touchPoint = touch.location(in: viewForAddingElementsUIView)
+        
         if !resetSelection {
-            let touchPoint = touch.location(in: viewForAddingElementsUIView)
             guard let newImage = UIImage(data: elementsOnSchema.last?.image ?? Data()) else { return }
             let imageView = UIImageView(frame: CGRect(
                 x: touchPoint.x,
@@ -57,6 +70,41 @@ final class SchemaViewController: UIViewController {
             )
             imageView.image = newImage
             viewForAddingElementsUIView.addSubview(imageView)
+        }
+        
+        if deleteElement {
+            for subView in viewForAddingElementsUIView.subviews {
+                if subView.frame.contains(touchPoint) {
+                    subView.removeFromSuperview()
+                }
+            }
+        }
+        
+        if rotateElement {
+            for subView in viewForAddingElementsUIView.subviews {
+                if subView.frame.contains(touchPoint) {
+                    switch subView.transform.a {
+                        case 1:
+                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
+                        case 0.7071067811865476:
+                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
+                        case 6.123233995736766e-17:
+                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*3/4)
+                        case -0.7071067811865475:
+                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                        case -1:
+                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*5/4)
+                        case -0.7071067811865477:
+                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*3/2)
+                        case -1.8369701987210297e-16:
+                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*7/4)
+                        case 0.7071067811865475:
+                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
+                        default:
+                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
+                    }
+                }
+            }
         }
     }
     
