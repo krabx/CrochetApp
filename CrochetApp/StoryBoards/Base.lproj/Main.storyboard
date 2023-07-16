@@ -151,64 +151,38 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7Y-Ue-FGU">
-                                <rect key="frame" x="146.33333333333334" y="118.99999999999999" width="100.66666666666666" height="34.333333333333329"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="lbn-77-Rc0"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Удаление"/>
-                                <connections>
-                                    <action selector="deleteElementSubView" destination="BYZ-38-t0r" eventType="touchUpInside" id="bnk-gQ-Jlg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jln-ri-jhW">
-                                <rect key="frame" x="309.66666666666669" y="118.99999999999999" width="67.333333333333314" height="34.333333333333329"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="t7s-22-jJ6"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Reset"/>
-                                <connections>
-                                    <action selector="resetSelectionTableViewButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="LSY-Gq-pss"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAB-3z-i0K">
-                                <rect key="frame" x="16" y="118.99999999999999" width="92" height="34.333333333333329"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="YY1-df-fod"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Поворот"/>
-                                <connections>
-                                    <action selector="rotateElementSubView" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yz1-x3-N3H"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="lyt-a5-HO7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="8xF-Kz-bnh"/>
-                            <constraint firstItem="T7Y-Ue-FGU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IXT-yF-lCj"/>
                             <constraint firstItem="fOq-tz-Mw1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Ir9-Jq-5Gv"/>
                             <constraint firstItem="fOq-tz-Mw1" firstAttribute="top" secondItem="lyt-a5-HO7" secondAttribute="bottom" constant="8" id="RZb-Vu-tLr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jln-ri-jhW" secondAttribute="trailing" constant="16" id="WiM-Rd-dy1"/>
-                            <constraint firstItem="T7Y-Ue-FGU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="YWO-5H-Qkc"/>
-                            <constraint firstItem="lAB-3z-i0K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Yb1-G9-GkB"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eKd-nn-MJc"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="i7y-Vx-AUQ"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="p2B-aF-KKo"/>
-                            <constraint firstItem="jln-ri-jhW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="sQQ-TN-Awx"/>
                             <constraint firstItem="fOq-tz-Mw1" firstAttribute="top" secondItem="lyt-a5-HO7" secondAttribute="bottom" constant="8" id="sih-XH-WOO"/>
                             <constraint firstItem="lyt-a5-HO7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="149" id="u4C-Ge-lZd"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ugC-AA-46x"/>
-                            <constraint firstItem="lAB-3z-i0K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="w6g-hM-Unf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YjQ-lF-tIb">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="trash" catalog="system" id="xU2-vB-Jqv"/>
-                            <barButtonItem title="Item" image="arrow.clockwise" catalog="system" id="jMe-9H-337"/>
+                            <barButtonItem title="Save schema" image="tray.and.arrow.down" catalog="system" id="VIm-gF-TyH">
+                                <connections>
+                                    <action selector="saveSchemaOnDevice:" destination="BYZ-38-t0r" id="hSP-sL-T8s"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Delete element" image="trash" catalog="system" id="xU2-vB-Jqv">
+                                <connections>
+                                    <action selector="deleteElementFromView:" destination="BYZ-38-t0r" id="ZeH-Ki-Vld"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Rotate element" image="arrow.clockwise" catalog="system" id="jMe-9H-337">
+                                <connections>
+                                    <action selector="rotateElementOnView:" destination="BYZ-38-t0r" id="Hnz-rn-pW4"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -386,6 +360,7 @@
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="117" height="128"/>
+        <image name="tray.and.arrow.down" catalog="system" width="128" height="111"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

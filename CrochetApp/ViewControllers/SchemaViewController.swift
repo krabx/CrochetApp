@@ -37,18 +37,21 @@ final class SchemaViewController: UIViewController {
         viewForAddingElementsUIView.addGestureRecognizer(tap)
     }
     
-    @IBAction func resetSelectionTableViewButton() {
+    @IBAction func deleteElementFromView(_ sender: Any) {
         resetSelection = true
-    }
-    
-    @IBAction func deleteElementSubView() {
+        rotateElement = false
         deleteElement = true
-        resetSelection = true
     }
     
-    @IBAction func rotateElementSubView() {
+    @IBAction func rotateElementOnView(_ sender: Any) {
         resetSelection = true
         rotateElement = true
+        deleteElement = false
+    }
+    @IBAction func saveSchemaOnDevice(_ sender: Any) {
+        // - TODO: Сделать алерт контроллер и последующее сохранение
+        print("Сохраняемся")
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,6 +132,10 @@ extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
         if elementsData.count != 0 {
             elementsOnSchema.append(Element(image: elementsData[indexPath.row]))
         }
+        
+        resetSelection = false
+        deleteElement = false
+        rotateElement = false
     }
 }
 
