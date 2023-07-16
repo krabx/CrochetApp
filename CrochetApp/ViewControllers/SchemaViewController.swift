@@ -12,6 +12,8 @@ protocol ElementListViewControllerDelegate: AnyObject {
 }
 
 final class SchemaViewController: UIViewController {
+
+    //let scrollImageView = UIImageView(image: UIImage(named: "Тестовая схема"))
     
     var resetSelection = false
     var deleteElement = false
@@ -26,15 +28,22 @@ final class SchemaViewController: UIViewController {
     @IBOutlet var viewForAddingElementsUIView: UIView!
     @IBOutlet var elementList: UITableView!
     
+    @IBOutlet var scrollView: UIScrollView!
+    
+    @IBOutlet var schemaImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         elementList.delegate = self
         elementList.dataSource = self
+        scrollView.delegate = self
         let tap = UITapGestureRecognizer(
             target: self,
             action: !resetSelection ? #selector(touchedScreen(touch:)) : nil
         )
-        viewForAddingElementsUIView.addGestureRecognizer(tap)
+        schemaImageView.addGestureRecognizer(tap)
+        //viewForAddingElementsUIView.addGestureRecognizer(tap)
+        setupScrollView()
     }
     
     @IBAction func deleteElementFromView(_ sender: Any) {
@@ -51,7 +60,6 @@ final class SchemaViewController: UIViewController {
     @IBAction func saveSchemaOnDevice(_ sender: Any) {
         // - TODO: Сделать алерт контроллер и последующее сохранение
         print("Сохраняемся")
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -111,6 +119,21 @@ final class SchemaViewController: UIViewController {
         }
     }
     
+    func setupScrollView() {
+        //scrollView.addSubview(scrollImageView)
+        scrollView.contentSize = viewForAddingElementsUIView.bounds.size
+        scrollView.minimumZoomScale = 1
+        scrollView.maximumZoomScale = 5
+        scrollView.zoomScale = 3
+    }
+}
+
+extension SchemaViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        viewForAddingElementsUIView.sendSubviewToBack(schemaImageView)
+        return schemaImageView
+
+    }
 }
 
 extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {

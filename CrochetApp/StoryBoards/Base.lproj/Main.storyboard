@@ -61,12 +61,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-Kk-k7w">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-Kk-k7w">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Тестовая схема" translatesAutoresizingMaskIntoConstraints="NO" id="bTE-cR-bm2">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qj6-tC-4q8">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
-                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="393" id="24K-Z2-XcV"/>
                                             <constraint firstAttribute="height" constant="715" id="xu6-gt-RNA"/>
@@ -76,8 +78,12 @@
                                 <constraints>
                                     <constraint firstItem="qj6-tC-4q8" firstAttribute="top" secondItem="vBI-Kk-k7w" secondAttribute="top" id="3gf-4h-xgs"/>
                                     <constraint firstAttribute="trailing" secondItem="qj6-tC-4q8" secondAttribute="trailing" id="BxE-Su-OXG"/>
+                                    <constraint firstItem="fC4-aD-rOU" firstAttribute="bottom" secondItem="bTE-cR-bm2" secondAttribute="bottom" id="MHb-Xn-oEt"/>
+                                    <constraint firstItem="bTE-cR-bm2" firstAttribute="top" secondItem="fC4-aD-rOU" secondAttribute="top" id="NKb-hx-OPI"/>
                                     <constraint firstItem="qj6-tC-4q8" firstAttribute="leading" secondItem="vBI-Kk-k7w" secondAttribute="leading" id="U0Y-dz-wxb"/>
+                                    <constraint firstItem="fC4-aD-rOU" firstAttribute="trailing" secondItem="bTE-cR-bm2" secondAttribute="trailing" id="aNH-RC-g2H"/>
                                     <constraint firstAttribute="bottom" secondItem="qj6-tC-4q8" secondAttribute="bottom" id="ser-2J-CQE"/>
+                                    <constraint firstItem="bTE-cR-bm2" firstAttribute="leading" secondItem="fC4-aD-rOU" secondAttribute="leading" id="vJh-h5-lCD"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="fC4-aD-rOU"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="VhO-5b-8qj"/>
@@ -187,6 +193,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="elementList" destination="fOq-tz-Mw1" id="b29-BF-5Jb"/>
+                        <outlet property="schemaImageView" destination="bTE-cR-bm2" id="Jx9-mL-hHh"/>
+                        <outlet property="scrollView" destination="vBI-Kk-k7w" id="6q2-dU-QjC"/>
                         <outlet property="viewForAddingElementsUIView" destination="qj6-tC-4q8" id="8Qu-Eg-4p2"/>
                     </connections>
                 </viewController>
@@ -202,10 +210,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0q0-4Z-ljW">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="0q0-4Z-ljW">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9e995fbe5cecc8e75b9cd24c50b0e592" translatesAutoresizingMaskIntoConstraints="NO" id="RDp-QI-H0d">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Тестовая схема" translatesAutoresizingMaskIntoConstraints="NO" id="RDp-QI-H0d">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
                                     </imageView>
                                 </subviews>
@@ -355,17 +363,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="9e995fbe5cecc8e75b9cd24c50b0e592" width="1000" height="888"/>
         <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <image name="tray.and.arrow.down" catalog="system" width="128" height="111"/>
+        <image name="Тестовая схема" width="2000" height="1776"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
