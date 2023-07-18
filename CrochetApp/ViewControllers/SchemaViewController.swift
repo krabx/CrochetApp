@@ -32,10 +32,14 @@ final class SchemaViewController: UIViewController {
     
     @IBOutlet var schemaImageView: UIImageView!
     
+    @IBOutlet var elementsCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         elementList.delegate = self
         elementList.dataSource = self
+        elementsCollectionView.dataSource = self
+        elementsCollectionView.delegate = self
         scrollView.delegate = self
         let tap = UITapGestureRecognizer(
             target: self,
@@ -140,6 +144,22 @@ extension SchemaViewController: UIScrollViewDelegate {
     }
 }
 
+extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        elementsData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "elementImage", for: indexPath) as? ElementCollectionViewCell else { return UICollectionViewCell() }
+        //cell.elementImageView.image = UIImage(systemName: "square.and.arrow.up")
+        cell.elementImageView.image = UIImage(data: elementsData[indexPath.item])
+        
+        return cell
+    }
+    
+    
+}
+
 extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         elementsData.count == 0 ? 1 : elementsData.count
@@ -177,5 +197,6 @@ extension SchemaViewController: ElementListViewControllerDelegate {
             }
         }
         elementList.reloadData()
+        elementsCollectionView.reloadData()
     }
 }

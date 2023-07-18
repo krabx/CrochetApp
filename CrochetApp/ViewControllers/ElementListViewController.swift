@@ -43,7 +43,7 @@ extension ElementListViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "elementCell", for: indexPath) as? ElementCollectionViewCell else { return UICollectionViewCell() }
         //cell.elementImageView.image = UIImage(systemName: "square.and.arrow.up")
-        cell.elementImageView.image = UIImage(data: standarts[indexPath.row])
+        cell.elementImageView.image = UIImage(data: standarts[indexPath.item])
         
         return cell
     }

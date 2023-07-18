@@ -61,7 +61,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-Kk-k7w">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Тестовая схема" translatesAutoresizingMaskIntoConstraints="NO" id="7IM-k2-aoU">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Тестовая схема" translatesAutoresizingMaskIntoConstraints="NO" id="7IM-k2-aoU">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
                                     </imageView>
                                 </subviews>
@@ -76,6 +76,48 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="fC4-aD-rOU"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="VhO-5b-8qj"/>
                             </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nVb-qv-uh8">
+                                <rect key="frame" x="16" y="749" width="361" height="85"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="1zu-cf-mga"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fsa-0W-5N5">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="elementImage" id="6pS-KC-c4h" customClass="ElementCollectionViewCell" customModule="CrochetApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-7.666666666666667" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oyl-C2-UiI">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6eL-u5-d6z">
+                                                    <rect key="frame" x="16" y="16" width="68" height="68"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6eL-u5-d6z" firstAttribute="leading" secondItem="oyl-C2-UiI" secondAttribute="leading" constant="16" id="Gwl-Jz-ueC"/>
+                                                <constraint firstAttribute="trailing" secondItem="6eL-u5-d6z" secondAttribute="trailing" constant="16" id="SH7-Jo-WmI"/>
+                                                <constraint firstAttribute="bottom" secondItem="6eL-u5-d6z" secondAttribute="bottom" constant="16" id="VaU-gb-BbO"/>
+                                                <constraint firstItem="6eL-u5-d6z" firstAttribute="top" secondItem="oyl-C2-UiI" secondAttribute="top" constant="16" id="gjg-4e-d9c"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="elementImageView" destination="6eL-u5-d6z" id="tEB-k0-ri5"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="lyt-a5-HO7">
                                 <rect key="frame" x="16" y="252.00000000000003" width="100" height="34.333333333333343"/>
                                 <subviews>
@@ -152,9 +194,13 @@
                             <constraint firstItem="lyt-a5-HO7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="8xF-Kz-bnh"/>
                             <constraint firstItem="fOq-tz-Mw1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Ir9-Jq-5Gv"/>
                             <constraint firstItem="fOq-tz-Mw1" firstAttribute="top" secondItem="lyt-a5-HO7" secondAttribute="bottom" constant="8" id="RZb-Vu-tLr"/>
+                            <constraint firstItem="nVb-qv-uh8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="b1o-Vx-O3f"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eKd-nn-MJc"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="i7y-Vx-AUQ"/>
+                            <constraint firstItem="nVb-qv-uh8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="lj1-xT-tsr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nVb-qv-uh8" secondAttribute="trailing" constant="16" id="ocf-Tc-FXF"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="p2B-aF-KKo"/>
+                            <constraint firstItem="nVb-qv-uh8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="16" id="r9C-Lg-7nv"/>
                             <constraint firstItem="fOq-tz-Mw1" firstAttribute="top" secondItem="lyt-a5-HO7" secondAttribute="bottom" constant="8" id="sih-XH-WOO"/>
                             <constraint firstItem="lyt-a5-HO7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="149" id="u4C-Ge-lZd"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ugC-AA-46x"/>
@@ -181,6 +227,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="elementList" destination="fOq-tz-Mw1" id="b29-BF-5Jb"/>
+                        <outlet property="elementsCollectionView" destination="nVb-qv-uh8" id="Hlj-kT-oAr"/>
                         <outlet property="schemaImageView" destination="7IM-k2-aoU" id="kd0-7U-gl1"/>
                         <outlet property="scrollView" destination="vBI-Kk-k7w" id="6q2-dU-QjC"/>
                     </connections>
@@ -312,6 +359,9 @@
         <image name="Тестовая схема" width="2000" height="1776"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
