@@ -41,7 +41,8 @@ final class SchemaViewController: UIViewController {
             target: self,
             action: !resetSelection ? #selector(touchedScreen(touch:)) : nil
         )
-        schemaImageView.addGestureRecognizer(tap)
+        scrollView.addGestureRecognizer(tap)
+        //schemaImageView.addGestureRecognizer(tap)
         //viewForAddingElementsUIView.addGestureRecognizer(tap)
         setupScrollView()
     }
@@ -69,7 +70,8 @@ final class SchemaViewController: UIViewController {
     }
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
-        let touchPoint = touch.location(in: viewForAddingElementsUIView)
+        //let touchPoint = touch.location(in: viewForAddingElementsUIView)
+        let touchPoint = touch.location(in: schemaImageView)
         
         if !resetSelection {
             guard let newImage = UIImage(data: elementsOnSchema.last?.image ?? Data()) else { return }
@@ -80,11 +82,13 @@ final class SchemaViewController: UIViewController {
                 height: 50)
             )
             imageView.image = newImage
-            viewForAddingElementsUIView.addSubview(imageView)
+            schemaImageView.addSubview(imageView)
+            //viewForAddingElementsUIView.addSubview(imageView)
         }
         
         if deleteElement {
-            for subView in viewForAddingElementsUIView.subviews {
+            //for subView in viewForAddingElementsUIView.subviews {
+            for subView in schemaImageView.subviews {
                 if subView.frame.contains(touchPoint) {
                     subView.removeFromSuperview()
                 }
@@ -92,7 +96,8 @@ final class SchemaViewController: UIViewController {
         }
         
         if rotateElement {
-            for subView in viewForAddingElementsUIView.subviews {
+            //for subView in viewForAddingElementsUIView.subviews {
+            for subView in schemaImageView.subviews {
                 if subView.frame.contains(touchPoint) {
                     switch subView.transform.a {
                         case 1:
@@ -121,7 +126,7 @@ final class SchemaViewController: UIViewController {
     
     func setupScrollView() {
         //scrollView.addSubview(scrollImageView)
-        scrollView.contentSize = viewForAddingElementsUIView.bounds.size
+        scrollView.contentSize = schemaImageView.bounds.size
         scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 5
         scrollView.zoomScale = 3
@@ -130,7 +135,6 @@ final class SchemaViewController: UIViewController {
 
 extension SchemaViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        viewForAddingElementsUIView.sendSubviewToBack(schemaImageView)
         return schemaImageView
 
     }
