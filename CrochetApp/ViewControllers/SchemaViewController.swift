@@ -63,8 +63,22 @@ final class SchemaViewController: UIViewController {
         deleteElement = false
     }
     @IBAction func saveSchemaOnDevice(_ sender: Any) {
-        // - TODO: Сделать алерт контроллер и последующее сохранение
-        print("Сохраняемся")
+        for subView in schemaImageView.subviews {
+            guard let imageView = subView as? UIImageView else { return }
+            elementsOnSchema.append(Element(
+                x: subView.frame.origin.x,
+                y: subView.frame.origin.y,
+                angle: subView.transform.a,
+                image: imageView.image?.pngData() ?? Data())
+            )
+        }
+    }
+    
+    @IBAction func testButton() {
+        print("1")
+        for elementOnSchema in elementsOnSchema {
+            print("x - \(elementOnSchema.x), y -  \(elementOnSchema.y), angle - \(elementOnSchema.angle), image - \(elementOnSchema.image)")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,7 +92,7 @@ final class SchemaViewController: UIViewController {
         let touchPoint = touch.location(in: schemaImageView)
         
         if !resetSelection {
-            guard let newImage = UIImage(data: elementsOnSchema.last?.image ?? Data()) else { return }
+            guard let newImage = UIImage(data: elementsData.last ?? Data()) else { return }
             let imageView = UIImageView(frame: CGRect(
                 x: touchPoint.x,
                 y: touchPoint.y,
@@ -140,7 +154,6 @@ final class SchemaViewController: UIViewController {
 extension SchemaViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return schemaImageView
-
     }
 }
 
@@ -157,7 +170,12 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        resetSelection = false
+        deleteElement = false
+        rotateElement = false
+    }
+
 }
 
 extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
@@ -176,9 +194,10 @@ extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if elementsData.count != 0 {
-            elementsOnSchema.append(Element(image: elementsData[indexPath.row]))
-        }
+
+//        if elementsData.count != 0 {
+//            elementsOnSchema.append(Element(image: elementsData[indexPath.row]))
+//        }
         
         resetSelection = false
         deleteElement = false

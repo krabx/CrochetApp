@@ -125,6 +125,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="51" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="list.bullet" catalog="system"/>
+                                        <connections>
+                                            <action selector="testButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="acd-OX-RcS"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekL-Pz-gTR">
                                         <rect key="frame" x="53" y="0.0" width="47" height="34.333333333333336"/>

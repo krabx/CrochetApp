@@ -8,5 +8,8 @@
 import Foundation
 
 struct Element {
-    let image: Data
+    var x: Double
+    var y: Double
+    var angle: Double
+    var image: Data
 }
