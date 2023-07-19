@@ -75,7 +75,6 @@ final class SchemaViewController: UIViewController {
     }
     
     @IBAction func testButton() {
-        print("1")
         for elementOnSchema in elementsOnSchema {
             print("x - \(elementOnSchema.x), y -  \(elementOnSchema.y), angle - \(elementOnSchema.angle), image - \(elementOnSchema.image)")
         }
