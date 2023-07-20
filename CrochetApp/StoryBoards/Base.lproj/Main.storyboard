@@ -34,7 +34,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Мои схемы"/>
                                         <connections>
-                                            <segue destination="FGo-xH-4jJ" kind="show" id="B3K-Np-Giu"/>
+                                            <segue destination="FGo-xH-4jJ" kind="show" id="9JF-Mu-Ioi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -242,10 +242,10 @@
             </objects>
             <point key="canvasLocation" x="1111" y="-35"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Мои схемы-->
         <scene sceneID="hD4-kA-5re">
             <objects>
-                <tableViewController id="ED2-Ox-ovX" sceneMemberID="viewController">
+                <tableViewController id="ED2-Ox-ovX" customClass="MySchemasListViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qi9-GC-bRD">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -265,7 +265,7 @@
                             <outlet property="delegate" destination="ED2-Ox-ovX" id="yBh-Xo-M4L"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="ulf-KJ-kti"/>
+                    <navigationItem key="navigationItem" title="Мои схемы" id="ulf-KJ-kti"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tV-Ox-n7c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -281,7 +281,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ED2-Ox-ovX" kind="relationship" relationship="rootViewController" id="m1z-9f-usF"/>
+                        <segue destination="ED2-Ox-ovX" kind="relationship" relationship="rootViewController" id="bbS-tg-jhn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e34-iQ-0hf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -8,21 +8,31 @@
 import UIKit
 
 final class MySchemasListViewController: UITableViewController {
+    private let storageManager = StorageManager.shared
+    
+    private var savedSchemas: [[Element]] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchSchemas()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return savedSchemas.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "savedSchema", for: indexPath)
-        
+
         return cell
     }
 
+}
+
+extension MySchemasListViewController {
+    func fetchSchemas() {
+        savedSchemas = storageManager.fetchSavedSchemas()
+    }
 }

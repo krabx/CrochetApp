@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Element {
+struct Element: Codable {
     var x: Double
     var y: Double
     var angle: Double

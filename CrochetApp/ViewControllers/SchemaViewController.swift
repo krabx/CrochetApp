@@ -12,6 +12,8 @@ protocol ElementListViewControllerDelegate: AnyObject {
 }
 
 final class SchemaViewController: UIViewController {
+    
+    private let storageManager = StorageManager.shared
 
     //let scrollImageView = UIImageView(image: UIImage(named: "Тестовая схема"))
     
@@ -73,6 +75,7 @@ final class SchemaViewController: UIViewController {
                 image: imageView.image?.pngData() ?? Data())
             )
         }
+        storageManager.save(element: elementsOnSchema)
     }
     
     @IBAction func testButton() {
