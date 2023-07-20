@@ -31,7 +31,8 @@
 		6E25257E2A4248F900E6C94D /* ElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25257D2A4248F900E6C94D /* ElementCell.swift */; };
 		6E2525802A45CF7900E6C94D /* ElementListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25257F2A45CF7900E6C94D /* ElementListViewController.swift */; };
 		6E2525822A45D01E00E6C94D /* ElementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */; };
-		6E68B07F2A59927A000CEFC8 /* MySchemasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E68B07E2A59927A000CEFC8 /* MySchemasViewController.swift */; };
+		6EAD3B602A69E3D80017433F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B5F2A69E3D80017433F /* StorageManager.swift */; };
+		6EAD3B622A69E5210017433F /* MySchemasListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B612A69E5210017433F /* MySchemasListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +62,8 @@
 		6E25257D2A4248F900E6C94D /* ElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCell.swift; sourceTree = "<group>"; };
 		6E25257F2A45CF7900E6C94D /* ElementListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementListViewController.swift; sourceTree = "<group>"; };
 		6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollectionViewCell.swift; sourceTree = "<group>"; };
-		6E68B07E2A59927A000CEFC8 /* MySchemasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchemasViewController.swift; sourceTree = "<group>"; };
+		6EAD3B5F2A69E3D80017433F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		6EAD3B612A69E5210017433F /* MySchemasListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchemasListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		6E2525312A311A9C00E6C94D /* CrochetApp */ = {
 			isa = PBXGroup;
 			children = (
+				6EAD3B5E2A69E3BE0017433F /* StorageManager */,
 				6E2525642A3F154A00E6C94D /* DataManager */,
 				6E2525592A3F148C00E6C94D /* Resources */,
 				6E2525462A311B1C00E6C94D /* Model */,
@@ -129,7 +132,7 @@
 				6E25257D2A4248F900E6C94D /* ElementCell.swift */,
 				6E25257F2A45CF7900E6C94D /* ElementListViewController.swift */,
 				6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */,
-				6E68B07E2A59927A000CEFC8 /* MySchemasViewController.swift */,
+				6EAD3B612A69E5210017433F /* MySchemasListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -186,6 +189,14 @@
 				6E25255F2A3F14EB00E6C94D /* Tr.swift */,
 			);
 			path = Originals;
+			sourceTree = "<group>";
+		};
+		6EAD3B5E2A69E3BE0017433F /* StorageManager */ = {
+			isa = PBXGroup;
+			children = (
+				6EAD3B5F2A69E3D80017433F /* StorageManager.swift */,
+			);
+			path = StorageManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +278,7 @@
 				6E2525612A3F14EB00E6C94D /* Sl_st.swift in Sources */,
 				6E25255B2A3F14C700E6C94D /* Ch.swift in Sources */,
 				6E2525822A45D01E00E6C94D /* ElementCollectionViewCell.swift in Sources */,
+				6EAD3B622A69E5210017433F /* MySchemasListViewController.swift in Sources */,
 				6E2525742A3F1FAB00E6C94D /* TrViewController.swift in Sources */,
 				6E25256C2A3F184A00E6C94D /* DcView.swift in Sources */,
 				6E2525332A311A9C00E6C94D /* AppDelegate.swift in Sources */,
@@ -278,9 +290,9 @@
 				6E25256E2A3F18A300E6C94D /* HdcView.swift in Sources */,
 				6E25254B2A311F3C00E6C94D /* Element.swift in Sources */,
 				6E2525722A3F18BC00E6C94D /* TrView.swift in Sources */,
-				6E68B07F2A59927A000CEFC8 /* MySchemasViewController.swift in Sources */,
 				6E2525762A3F210900E6C94D /* Start.swift in Sources */,
 				6E2525352A311A9C00E6C94D /* SceneDelegate.swift in Sources */,
+				6EAD3B602A69E3D80017433F /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

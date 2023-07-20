@@ -63,6 +63,7 @@ final class SchemaViewController: UIViewController {
         deleteElement = false
     }
     @IBAction func saveSchemaOnDevice(_ sender: Any) {
+        elementsOnSchema = []
         for subView in schemaImageView.subviews {
             guard let imageView = subView as? UIImageView else { return }
             elementsOnSchema.append(Element(
