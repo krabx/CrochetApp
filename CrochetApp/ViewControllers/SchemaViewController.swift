@@ -27,6 +27,8 @@ final class SchemaViewController: UIViewController {
     
     var elementsData: [Data] = []
     
+    private var selectedItem = Data()
+    
     @IBOutlet var viewForAddingElementsUIView: UIView!
     @IBOutlet var elementList: UITableView!
     
@@ -95,7 +97,8 @@ final class SchemaViewController: UIViewController {
         let touchPoint = touch.location(in: schemaImageView)
         
         if !resetSelection {
-            guard let newImage = UIImage(data: elementsData.last ?? Data()) else { return }
+            //guard let newImage = UIImage(data: elementsData.last ?? Data()) else { return }
+            guard let newImage = UIImage(data: selectedItem) else { return }
             let imageView = UIImageView(frame: CGRect(
                 x: touchPoint.x,
                 y: touchPoint.y,
@@ -174,6 +177,9 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        selectedItem = elementsData[indexPath.item]
+        
         resetSelection = false
         deleteElement = false
         rotateElement = false
