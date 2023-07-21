@@ -16,7 +16,7 @@ final class StorageManager {
     
     private init() {}
     
-    func save(element: [Element]) {
+    func save(element: [String: [Element]]) {
         var savedSchema = fetchSavedSchemas()
         savedSchema.append(element)
         
@@ -24,9 +24,9 @@ final class StorageManager {
         userDefaults.set(data, forKey: key)
     }
     
-    func fetchSavedSchemas() -> [[Element]] {
+    func fetchSavedSchemas() -> [[String: [Element]]] {
         guard let data = userDefaults.data(forKey: key) else { return [] }
-        guard let savedSchema = try? JSONDecoder().decode([[Element]].self, from: data) else {
+        guard let savedSchema = try? JSONDecoder().decode([[String: [Element]]].self, from: data) else {
             print("error from fetch saved schema")
             return []
         }

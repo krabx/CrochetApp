@@ -8,8 +8,8 @@
 import Foundation
 
 struct Element: Codable {
-    var x: Double
-    var y: Double
-    var angle: Double
-    var image: Data
+    let x: Double
+    let y: Double
+    let angle: Double
+    let image: Data
 }

@@ -29,8 +29,9 @@ final class SchemaViewController: UIViewController {
     
     private var selectedItem = Data()
     
+    private var nameOfSchema: String = ""
+    
     @IBOutlet var viewForAddingElementsUIView: UIView!
-    @IBOutlet var elementList: UITableView!
     
     @IBOutlet var scrollView: UIScrollView!
     
@@ -40,8 +41,6 @@ final class SchemaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        elementList.delegate = self
-        elementList.dataSource = self
         elementsCollectionView.dataSource = self
         elementsCollectionView.delegate = self
         scrollView.delegate = self
@@ -67,17 +66,19 @@ final class SchemaViewController: UIViewController {
         deleteElement = false
     }
     @IBAction func saveSchemaOnDevice(_ sender: Any) {
-        elementsOnSchema = []
-        for subView in schemaImageView.subviews {
-            guard let imageView = subView as? UIImageView else { return }
-            elementsOnSchema.append(Element(
-                x: subView.frame.origin.x,
-                y: subView.frame.origin.y,
-                angle: subView.transform.a,
-                image: imageView.image?.pngData() ?? Data())
-            )
+        showAlert(title: "Сохранение", message: "Введите имя схемы") { [unowned self] in
+            self.elementsOnSchema = []
+                for subView in self.schemaImageView.subviews {
+                    guard let imageView = subView as? UIImageView else { return }
+                    self.elementsOnSchema.append(Element(
+                        x: subView.frame.origin.x,
+                        y: subView.frame.origin.y,
+                        angle: subView.transform.a,
+                        image: imageView.image?.pngData() ?? Data())
+                    )
+                }
+            storageManager.save(element: [nameOfSchema: elementsOnSchema])
         }
-        storageManager.save(element: elementsOnSchema)
     }
     
     @IBAction func testButton() {
@@ -184,35 +185,25 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
         deleteElement = false
         rotateElement = false
     }
-
 }
 
-extension SchemaViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        elementsData.count == 0 ? 1 : elementsData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath) as? ElementCell else { return UITableViewCell() }
-        if elementsData.count == 0 {
-            cell.plug()
-        } else {
-            cell.configure(with: elementsData[indexPath.row])
+extension SchemaViewController {
+    private func showAlert(title: String, message: String, completionHandler: @escaping () -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addTextField()
+        let okButton = UIAlertAction(title: "Ок", style: .default) { _ in
+            if let name = alert.textFields?.first?.text {
+                self.nameOfSchema = name
+                completionHandler()
+            }
         }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-//        if elementsData.count != 0 {
-//            elementsOnSchema.append(Element(image: elementsData[indexPath.row]))
-//        }
-        
-        resetSelection = false
-        deleteElement = false
-        rotateElement = false
+        let cancelButton = UIAlertAction(title: "Отмена", style: .cancel)
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        present(alert, animated: true)
     }
 }
+
 
 extension SchemaViewController: ElementListViewControllerDelegate {
     func getUsage(elements: [Data]) {
@@ -224,7 +215,6 @@ extension SchemaViewController: ElementListViewControllerDelegate {
                 elementsData.append(element)
             }
         }
-        elementList.reloadData()
         elementsCollectionView.reloadData()
     }
 }

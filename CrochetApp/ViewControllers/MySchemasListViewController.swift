@@ -10,7 +10,7 @@ import UIKit
 final class MySchemasListViewController: UITableViewController {
     private let storageManager = StorageManager.shared
     
-    private var savedSchemas: [[Element]] = []
+    private var savedSchemas: [[String: [Element]]] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,10 @@ final class MySchemasListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "savedSchema", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        for savedSchema in savedSchemas[indexPath.row].keys {
+            content.text = savedSchema
+        }
 
         return cell
     }
