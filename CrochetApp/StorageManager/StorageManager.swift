@@ -32,4 +32,8 @@ final class StorageManager {
         }
         return savedSchema
     }
+    
+    func delete() {
+        userDefaults.removeObject(forKey: key)
+    }
 }

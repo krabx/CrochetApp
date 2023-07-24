@@ -27,6 +27,8 @@ final class SchemaViewController: UIViewController {
     
     var elementsData: [Data] = []
     
+    var saveSchema: [Element] = []
+    
     private var selectedItem = Data()
     
     private var nameOfSchema: String = ""
@@ -52,6 +54,8 @@ final class SchemaViewController: UIViewController {
         //schemaImageView.addGestureRecognizer(tap)
         //viewForAddingElementsUIView.addGestureRecognizer(tap)
         setupScrollView()
+        print(saveSchema)
+        addingSaveElementOnSchema()
     }
     
     @IBAction func deleteElementFromView(_ sender: Any) {
@@ -155,6 +159,21 @@ final class SchemaViewController: UIViewController {
         scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 5
         scrollView.zoomScale = 3
+    }
+    
+    private func addingSaveElementOnSchema() {
+        for element in saveSchema {
+            guard let newImage = UIImage(data: element.image) else { return }
+            let imageView = UIImageView(frame: CGRect(
+                x: element.x,
+                y: element.y,
+                width: 50,
+                height: 50)
+            )
+            imageView.image = newImage
+            imageView.transform.a = element.angle
+            schemaImageView.addSubview(imageView)
+        }
     }
 }
 

@@ -8,6 +8,8 @@
 import UIKit
 
 final class MySchemasListViewController: UITableViewController {
+    private let currentName = ""
+    
     private let storageManager = StorageManager.shared
     
     private var savedSchemas: [[String: [Element]]] = []
@@ -15,6 +17,11 @@ final class MySchemasListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchSchemas()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let schemaVC = segue.destination as? SchemaViewController else { return }
+        schemaVC.saveSchema = sender as? [Element] ?? []
     }
 
     // MARK: - Table view data source
@@ -29,8 +36,16 @@ final class MySchemasListViewController: UITableViewController {
         for savedSchema in savedSchemas[indexPath.row].keys {
             content.text = savedSchema
         }
+        cell.contentConfiguration = content
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        for savedSchema in savedSchemas[indexPath.row].values {
+            performSegue(withIdentifier: "savedSchema", sender: savedSchema)
+        }
+
     }
 
 }
