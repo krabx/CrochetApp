@@ -80,7 +80,7 @@ final class SchemaViewController: UIViewController {
                         image: imageView.image?.pngData() ?? Data())
                     )
                 }
-            storageManager.save(element: [nameOfSchema: elementsOnSchema])
+            storageManager.save(element: elementsOnSchema, with: nameOfSchema)
         }
     }
     
@@ -215,12 +215,8 @@ extension SchemaViewController {
         }
         let okButton = UIAlertAction(title: "Ок", style: .default) { _ in
             if let name = alert.textFields?.first?.text {
-                if self.storageManager.check(name: name) == "" {
-                    self.nameOfSchema = name
-                    completionHandler()
-                } else {
-                    self.alertDuplicate()
-                }
+                self.nameOfSchema = name
+                completionHandler()
             }
         }
         let cancelButton = UIAlertAction(title: "Отмена", style: .cancel)

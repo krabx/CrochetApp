@@ -16,10 +16,16 @@ final class StorageManager {
     
     private init() {}
     
-    func save(element: [String: [Element]]) {
+    func save(element: [Element], with name: String) {
         var savedSchema = fetchSavedSchemas()
-        savedSchema.append(element)
+        let checkValue = check(name: name)
+        if checkValue.nameSchema != name {
+            savedSchema.append([name: element])
+        } else {
+            savedSchema[checkValue.index] = [name: element]
+        }
         
+
         guard let data = try? JSONEncoder().encode(savedSchema) else { return }
         userDefaults.set(data, forKey: key)
     }
@@ -37,16 +43,20 @@ final class StorageManager {
         userDefaults.removeObject(forKey: key)
     }
     
-    func check(name: String) -> String {
+    private func check(name: String) -> (nameSchema: String, index: Int, elements: [Element]) {
         let savedSchema = fetchSavedSchemas()
         var duplicateName = ""
-        for schema in savedSchema {
-            for key in schema.keys {
+        var duplicateNumber = 0
+        var editableSchema: [Element] = []
+        for (index, schema) in savedSchema.enumerated() {
+            for (key, value) in schema {
                 if key == name {
-                    duplicateName = name
+                    duplicateName = key
+                    duplicateNumber = index
+                    editableSchema = value
                 }
             }
         }
-        return duplicateName
+        return (duplicateName, duplicateNumber, editableSchema)
     }
 }
