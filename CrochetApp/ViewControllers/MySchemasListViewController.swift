@@ -16,6 +16,7 @@ final class MySchemasListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = editButtonItem
         fetchSchemas()
     }
     
@@ -46,6 +47,24 @@ final class MySchemasListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let saveSchema = savedSchemas.remove(at: sourceIndexPath.row)
+        savedSchemas.insert(saveSchema, at: destinationIndexPath.row)
+        storageManager.save(schemas: savedSchemas)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            storageManager.delete(from: indexPath.row)
+            savedSchemas.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 
 }

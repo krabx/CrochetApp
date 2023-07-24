@@ -80,7 +80,7 @@ final class SchemaViewController: UIViewController {
                         image: imageView.image?.pngData() ?? Data())
                     )
                 }
-            storageManager.save(element: elementsOnSchema, with: nameOfSchema)
+            storageManager.append(element: elementsOnSchema, with: nameOfSchema)
         }
     }
     

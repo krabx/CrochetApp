@@ -16,7 +16,7 @@ final class StorageManager {
     
     private init() {}
     
-    func save(element: [Element], with name: String) {
+    func append(element: [Element], with name: String) {
         var savedSchema = fetchSavedSchemas()
         let checkValue = check(name: name)
         if checkValue.nameSchema != name {
@@ -27,6 +27,22 @@ final class StorageManager {
         
 
         guard let data = try? JSONEncoder().encode(savedSchema) else { return }
+        userDefaults.set(data, forKey: key)
+    }
+    
+    func save(schemas: [[String: [Element]]]) {
+        var savedSchemas = fetchSavedSchemas()
+        savedSchemas.removeAll()
+        
+        guard let data = try? JSONEncoder().encode(schemas) else { return }
+        userDefaults.set(data, forKey: key)
+    }
+    
+    func delete(from index: Int) {
+        var savedSchemas = fetchSavedSchemas()
+        savedSchemas.remove(at: index)
+        
+        guard let data = try? JSONEncoder().encode(savedSchemas) else { return }
         userDefaults.set(data, forKey: key)
     }
     
