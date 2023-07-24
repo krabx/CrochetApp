@@ -14,8 +14,6 @@ protocol ElementListViewControllerDelegate: AnyObject {
 final class SchemaViewController: UIViewController {
     
     private let storageManager = StorageManager.shared
-
-    //let scrollImageView = UIImageView(image: UIImage(named: "Тестовая схема"))
     
     var resetSelection = false
     var deleteElement = false
@@ -27,11 +25,13 @@ final class SchemaViewController: UIViewController {
     
     var elementsData: [Data] = []
     
-    var saveSchema: [Element] = []
+    var nameOfSaveSchema = ""
+    
+    var saveElements: [Element] = []
     
     private var selectedItem = Data()
     
-    private var nameOfSchema: String = ""
+    private var nameOfSchema = ""
     
     @IBOutlet var viewForAddingElementsUIView: UIView!
     
@@ -54,7 +54,6 @@ final class SchemaViewController: UIViewController {
         //schemaImageView.addGestureRecognizer(tap)
         //viewForAddingElementsUIView.addGestureRecognizer(tap)
         setupScrollView()
-        print(saveSchema)
         addingSaveElementOnSchema()
     }
     
@@ -162,7 +161,7 @@ final class SchemaViewController: UIViewController {
     }
     
     private func addingSaveElementOnSchema() {
-        for element in saveSchema {
+        for element in saveElements {
             guard let newImage = UIImage(data: element.image) else { return }
             let imageView = UIImageView(frame: CGRect(
                 x: element.x,
@@ -209,17 +208,33 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension SchemaViewController {
     private func showAlert(title: String, message: String, completionHandler: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addTextField()
+        alert.addTextField {[unowned self] textField in
+            if self.nameOfSaveSchema != "" {
+                textField.text = nameOfSaveSchema
+            }
+        }
         let okButton = UIAlertAction(title: "Ок", style: .default) { _ in
             if let name = alert.textFields?.first?.text {
-                self.nameOfSchema = name
-                completionHandler()
+                if self.storageManager.check(name: name) == "" {
+                    self.nameOfSchema = name
+                    completionHandler()
+                } else {
+                    self.alertDuplicate()
+                }
             }
         }
         let cancelButton = UIAlertAction(title: "Отмена", style: .cancel)
         alert.addAction(cancelButton)
         alert.addAction(okButton)
         present(alert, animated: true)
+    }
+    
+    private func alertDuplicate() {
+        let alert = UIAlertController(title: "Такое имя уже существует", message: "Введите другое название", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ок", style: .default)
+        alert.addAction(okButton)
+        present(alert, animated: true)
+        
     }
 }
 

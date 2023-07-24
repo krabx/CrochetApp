@@ -36,4 +36,17 @@ final class StorageManager {
     func delete() {
         userDefaults.removeObject(forKey: key)
     }
+    
+    func check(name: String) -> String {
+        let savedSchema = fetchSavedSchemas()
+        var duplicateName = ""
+        for schema in savedSchema {
+            for key in schema.keys {
+                if key == name {
+                    duplicateName = name
+                }
+            }
+        }
+        return duplicateName
+    }
 }

@@ -215,6 +215,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="osm-OP-hvW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -223,9 +226,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Мои схемы" id="ulf-KJ-kti"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="savedSchema" id="Qux-Ua-WOb"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tV-Ox-n7c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -346,7 +346,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Qux-Ua-WOb"/>
+        <segue reference="osm-OP-hvW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="113" height="128"/>

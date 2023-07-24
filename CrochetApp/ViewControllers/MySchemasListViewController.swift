@@ -21,7 +21,11 @@ final class MySchemasListViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let schemaVC = segue.destination as? SchemaViewController else { return }
-        schemaVC.saveSchema = sender as? [Element] ?? []
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        for (key, value) in savedSchemas[indexPath.row] {
+            schemaVC.nameOfSaveSchema = key
+            schemaVC.saveElements = value
+        }
     }
 
     // MARK: - Table view data source
@@ -42,10 +46,6 @@ final class MySchemasListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        for savedSchema in savedSchemas[indexPath.row].values {
-            performSegue(withIdentifier: "savedSchema", sender: savedSchema)
-        }
-
     }
 
 }
