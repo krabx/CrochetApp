@@ -9,5 +9,4 @@ import UIKit
 
 final class ElementCollectionViewCell: UICollectionViewCell {
     @IBOutlet var elementImageView: UIImageView!
-    
 }
