@@ -19,7 +19,7 @@ final class SchemaViewController: UIViewController {
     var deleteElement = false
     var rotateElement = false
     
-    var elementsOnSchema: [Element] = []
+    var elementsOnSchema: [HelperElementStructure] = []
     
     let dataManager = DataManager.shared
     
@@ -32,6 +32,8 @@ final class SchemaViewController: UIViewController {
     private var selectedItem = Data()
     
     private var nameOfSchema = ""
+    
+    private var schemas: [Schema] = []
     
     @IBOutlet var viewForAddingElementsUIView: UIView!
     
@@ -54,7 +56,8 @@ final class SchemaViewController: UIViewController {
         //schemaImageView.addGestureRecognizer(tap)
         //viewForAddingElementsUIView.addGestureRecognizer(tap)
         setupScrollView()
-        addingSaveElementOnSchema()
+        //addingSaveElementOnSchema()
+        //schemas = storageManager.fetch()
     }
     
     @IBAction func deleteElementFromView(_ sender: Any) {
@@ -69,25 +72,26 @@ final class SchemaViewController: UIViewController {
         deleteElement = false
     }
     @IBAction func saveSchemaOnDevice(_ sender: Any) {
+        
         showAlert(title: "Сохранение", message: "Введите имя схемы") { [unowned self] in
             self.elementsOnSchema = []
                 for subView in self.schemaImageView.subviews {
                     guard let imageView = subView as? UIImageView else { return }
-                    self.elementsOnSchema.append(Element(
+                    self.elementsOnSchema.append(HelperElementStructure(
                         x: subView.frame.origin.x,
                         y: subView.frame.origin.y,
                         angle: subView.transform.a,
                         image: imageView.image?.pngData() ?? Data())
                     )
                 }
-            storageManager.append(element: elementsOnSchema, with: nameOfSchema)
+            //storageManager.append(element: elementsOnSchema, with: nameOfSchema)
+            let date = Date.now
+            storageManager.appendWith(name: nameOfSchema, date: date, elementsOnSchema: elementsOnSchema)
         }
+        
     }
     
     @IBAction func testButton() {
-        for elementOnSchema in elementsOnSchema {
-            print("x - \(elementOnSchema.x), y -  \(elementOnSchema.y), angle - \(elementOnSchema.angle), image - \(elementOnSchema.image)")
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -160,20 +164,20 @@ final class SchemaViewController: UIViewController {
         scrollView.zoomScale = 3
     }
     
-    private func addingSaveElementOnSchema() {
-        for element in saveElements {
-            guard let newImage = UIImage(data: element.image) else { return }
-            let imageView = UIImageView(frame: CGRect(
-                x: element.x,
-                y: element.y,
-                width: 50,
-                height: 50)
-            )
-            imageView.image = newImage
-            imageView.transform.a = element.angle
-            schemaImageView.addSubview(imageView)
-        }
-    }
+//    private func addingSaveElementOnSchema() {
+//        for element in saveElements {
+//            guard let newImage = UIImage(data: element.image) else { return }
+//            let imageView = UIImageView(frame: CGRect(
+//                x: element.x,
+//                y: element.y,
+//                width: 50,
+//                height: 50)
+//            )
+//            imageView.image = newImage
+//            imageView.transform.a = element.angle
+//            schemaImageView.addSubview(imageView)
+//        }
+//    }
 }
 
 extension SchemaViewController: UIScrollViewDelegate {

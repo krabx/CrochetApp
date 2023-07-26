@@ -32,9 +32,9 @@ final class ElementListViewController: UIViewController {
         delegate?.getUsage(elements: selectedElements)
     }
     
-//    func getData() -> Data {
-//        return UIImage(named: "exampleOfElement")?.pngData() ?? Data()
-//    }
+    func getData() -> Data {
+        return UIImage(named: "exampleOfElement-removebg-preview")?.pngData() ?? Data()
+    }
 
 }
 
@@ -69,6 +69,6 @@ extension ElementListViewController {
             
             standarts.append(data)
         }
-//        standarts.append(getData())
+        standarts.append(getData())
     }
 }

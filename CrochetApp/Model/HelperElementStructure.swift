@@ -7,13 +7,7 @@
 
 import Foundation
 
-struct Schema {
-    let name: String
-    let date: Date
-    let element: [Element]
-}
-
-struct Element: Codable {
+struct HelperElementStructure {
     let x: Double
     let y: Double
     let angle: Double

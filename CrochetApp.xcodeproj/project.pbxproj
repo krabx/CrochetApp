@@ -13,7 +13,7 @@
 		6E25253A2A311A9C00E6C94D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E2525382A311A9C00E6C94D /* Main.storyboard */; };
 		6E25253C2A311A9E00E6C94D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E25253B2A311A9E00E6C94D /* Assets.xcassets */; };
 		6E25253F2A311A9E00E6C94D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E25253D2A311A9E00E6C94D /* LaunchScreen.storyboard */; };
-		6E25254B2A311F3C00E6C94D /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25254A2A311F3C00E6C94D /* Element.swift */; };
+		6E25254B2A311F3C00E6C94D /* HelperElementStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25254A2A311F3C00E6C94D /* HelperElementStructure.swift */; };
 		6E25255B2A3F14C700E6C94D /* Ch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25255A2A3F14C700E6C94D /* Ch.swift */; };
 		6E2525602A3F14EB00E6C94D /* Dc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25255C2A3F14EB00E6C94D /* Dc.swift */; };
 		6E2525612A3F14EB00E6C94D /* Sl_st.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25255D2A3F14EB00E6C94D /* Sl_st.swift */; };
@@ -33,6 +33,11 @@
 		6E2525822A45D01E00E6C94D /* ElementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */; };
 		6EAD3B602A69E3D80017433F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B5F2A69E3D80017433F /* StorageManager.swift */; };
 		6EAD3B622A69E5210017433F /* MySchemasListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B612A69E5210017433F /* MySchemasListViewController.swift */; };
+		6EAD3B652A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B632A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld */; };
+		6EAD3B8E2A704B450017433F /* Element+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B8A2A704B450017433F /* Element+CoreDataClass.swift */; };
+		6EAD3B8F2A704B450017433F /* Element+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B8B2A704B450017433F /* Element+CoreDataProperties.swift */; };
+		6EAD3B902A704B450017433F /* Schema+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B8C2A704B450017433F /* Schema+CoreDataClass.swift */; };
+		6EAD3B912A704B450017433F /* Schema+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B8D2A704B450017433F /* Schema+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +49,7 @@
 		6E25253B2A311A9E00E6C94D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E25253E2A311A9E00E6C94D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E2525402A311A9E00E6C94D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E25254A2A311F3C00E6C94D /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		6E25254A2A311F3C00E6C94D /* HelperElementStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperElementStructure.swift; sourceTree = "<group>"; };
 		6E25255A2A3F14C700E6C94D /* Ch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ch.swift; sourceTree = "<group>"; };
 		6E25255C2A3F14EB00E6C94D /* Dc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dc.swift; sourceTree = "<group>"; };
 		6E25255D2A3F14EB00E6C94D /* Sl_st.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sl_st.swift; sourceTree = "<group>"; };
@@ -64,6 +69,11 @@
 		6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollectionViewCell.swift; sourceTree = "<group>"; };
 		6EAD3B5F2A69E3D80017433F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		6EAD3B612A69E5210017433F /* MySchemasListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchemasListViewController.swift; sourceTree = "<group>"; };
+		6EAD3B642A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchemaCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		6EAD3B8A2A704B450017433F /* Element+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6EAD3B8B2A704B450017433F /* Element+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6EAD3B8C2A704B450017433F /* Schema+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schema+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6EAD3B8D2A704B450017433F /* Schema+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schema+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +114,7 @@
 				6E2525482A311B4600E6C94D /* ViewControllers */,
 				6E2525472A311B3300E6C94D /* StoryBoards */,
 				6E25253B2A311A9E00E6C94D /* Assets.xcassets */,
+				6EAD3B632A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld */,
 			);
 			path = CrochetApp;
 			sourceTree = "<group>";
@@ -111,7 +122,11 @@
 		6E2525462A311B1C00E6C94D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6E25254A2A311F3C00E6C94D /* Element.swift */,
+				6EAD3B8A2A704B450017433F /* Element+CoreDataClass.swift */,
+				6EAD3B8B2A704B450017433F /* Element+CoreDataProperties.swift */,
+				6EAD3B8C2A704B450017433F /* Schema+CoreDataClass.swift */,
+				6EAD3B8D2A704B450017433F /* Schema+CoreDataProperties.swift */,
+				6E25254A2A311F3C00E6C94D /* HelperElementStructure.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,18 +295,23 @@
 				6E2525822A45D01E00E6C94D /* ElementCollectionViewCell.swift in Sources */,
 				6EAD3B622A69E5210017433F /* MySchemasListViewController.swift in Sources */,
 				6E2525742A3F1FAB00E6C94D /* TrViewController.swift in Sources */,
+				6EAD3B8E2A704B450017433F /* Element+CoreDataClass.swift in Sources */,
+				6EAD3B652A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld in Sources */,
 				6E25256C2A3F184A00E6C94D /* DcView.swift in Sources */,
 				6E2525332A311A9C00E6C94D /* AppDelegate.swift in Sources */,
+				6EAD3B8F2A704B450017433F /* Element+CoreDataProperties.swift in Sources */,
 				6E2525782A3F211C00E6C94D /* StartView.swift in Sources */,
 				6E2525622A3F14EB00E6C94D /* Hdc.swift in Sources */,
 				6E25256A2A3F178000E6C94D /* ChView.swift in Sources */,
+				6EAD3B912A704B450017433F /* Schema+CoreDataProperties.swift in Sources */,
 				6E2525662A3F156200E6C94D /* DataManager.swift in Sources */,
 				6E25257E2A4248F900E6C94D /* ElementCell.swift in Sources */,
 				6E25256E2A3F18A300E6C94D /* HdcView.swift in Sources */,
-				6E25254B2A311F3C00E6C94D /* Element.swift in Sources */,
+				6E25254B2A311F3C00E6C94D /* HelperElementStructure.swift in Sources */,
 				6E2525722A3F18BC00E6C94D /* TrView.swift in Sources */,
 				6E2525762A3F210900E6C94D /* Start.swift in Sources */,
 				6E2525352A311A9C00E6C94D /* SceneDelegate.swift in Sources */,
+				6EAD3B902A704B450017433F /* Schema+CoreDataClass.swift in Sources */,
 				6EAD3B602A69E3D80017433F /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,6 +538,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6EAD3B632A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6EAD3B642A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 6EAD3B642A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodel */;
+			path = SchemaCoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6E2525272A311A9C00E6C94D /* Project object */;
 }
