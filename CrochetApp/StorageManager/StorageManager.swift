@@ -31,28 +31,27 @@ final class StorageManager {
     
     private init() {}
     
-    func fetchedResultController(entityName: String, keyForSort: String) -> NSFetchedResultsController<NSFetchRequestResult> {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        var sortDescriptors: [NSSortDescriptor] = []
-        let sortDescription: NSSortDescriptor = NSSortDescriptor(key: keyForSort, ascending: true)
-        sortDescriptors.append(sortDescription)
-        
-        fetchRequest.sortDescriptors = sortDescriptors
-        
-        let fetchResultController = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: viewContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
-        
-        return fetchResultController
-    }
+//    func fetchedResultController(entityName: String) -> NSFetchedResultsController<NSFetchRequestResult> {
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+//        var sortDescriptors: [NSSortDescriptor] = []
+//        let sortDescription: NSSortDescriptor = NSSortDescriptor(key: keyForSort, ascending: true)
+//        sortDescriptors.append(sortDescription)
+//        fetchRequest.sortDescriptors = sortDescriptors
+//        
+//        let fetchResultController = NSFetchedResultsController(
+//            fetchRequest: fetchRequest,
+//            managedObjectContext: viewContext,
+//            sectionNameKeyPath: nil,
+//            cacheName: nil)
+//        
+//        return fetchResultController
+//    }
     
     func appendWith(name: String, date: Date, elementsOnSchema: [HelperElementStructure]) {
+        
         let schema = Schema(context: viewContext)
         schema.name = name
         schema.date = date
-        schema.index = Int16(lastIndex) + 1
         for elementOnSchema in elementsOnSchema {
             let addingElement = Element(context: viewContext)
             addingElement.x = elementOnSchema.x
@@ -61,7 +60,6 @@ final class StorageManager {
             addingElement.image = elementOnSchema.image
             schema.addToElements(addingElement)
         }
-        
         saveContext()
     }
     
@@ -77,8 +75,9 @@ final class StorageManager {
 //    }
     
     func fetchSchemas(completion: (Result<[Schema], Error>) -> Void) {
+        let fetchRequest = Schema.fetchRequest()
         do {
-            let schemas = try viewContext.fetch(Schema.fetchRequest())
+            let schemas = try viewContext.fetch(fetchRequest)
             completion(.success(schemas))
         } catch let error {
             completion(.failure(error))
@@ -89,12 +88,6 @@ final class StorageManager {
         viewContext.delete(schema)
         saveContext()
     }
-    
-    func reorder(oldIndex: Int, newIndex: Int) {
-        saveContext()
-    }
-    
-    
     
     func saveContext() {
         if viewContext.hasChanges {

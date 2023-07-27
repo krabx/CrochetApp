@@ -33,7 +33,7 @@ final class SchemaViewController: UIViewController {
     
     private var nameOfSchema = ""
     
-    private var schemas: [Schema] = []
+    //var schema: Schema = Schema()
     
     @IBOutlet var viewForAddingElementsUIView: UIView!
     
@@ -57,7 +57,6 @@ final class SchemaViewController: UIViewController {
         //viewForAddingElementsUIView.addGestureRecognizer(tap)
         setupScrollView()
         //addingSaveElementOnSchema()
-        //schemas = storageManager.fetch()
     }
     
     @IBAction func deleteElementFromView(_ sender: Any) {
@@ -165,8 +164,22 @@ final class SchemaViewController: UIViewController {
     }
     
 //    private func addingSaveElementOnSchema() {
+//        guard let elements = schema.elements as? Set<Element> else { return }
+//        let elementsArray = Array(elements)
+//        for element in elementsArray {
+//            guard let newImage = UIImage(data: element.image ?? Data()) else { return }
+//            let imageView = UIImageView(frame: CGRect(
+//                x: element.x,
+//                y: element.y,
+//                width: 50,
+//                height: 50)
+//            )
+//            imageView.image = newImage
+//            imageView.transform.a = element.angle
+//            schemaImageView.addSubview(imageView)
+//        }
 //        for element in saveElements {
-//            guard let newImage = UIImage(data: element.image) else { return }
+//            guard let newImage = UIImage(data: element.image ?? Data()) else { return }
 //            let imageView = UIImageView(frame: CGRect(
 //                x: element.x,
 //                y: element.y,
