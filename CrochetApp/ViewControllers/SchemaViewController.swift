@@ -70,6 +70,7 @@ final class SchemaViewController: UIViewController {
         rotateElement = true
         deleteElement = false
     }
+    
     @IBAction func saveSchemaOnDevice(_ sender: Any) {
         
         showAlert(title: "Сохранение", message: "Введите имя схемы") { [unowned self] in
@@ -88,9 +89,6 @@ final class SchemaViewController: UIViewController {
             storageManager.appendWith(name: nameOfSchema, date: date, elementsOnSchema: elementsOnSchema)
         }
         
-    }
-    
-    @IBAction func testButton() {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -155,12 +153,47 @@ final class SchemaViewController: UIViewController {
         }
     }
     
-    func setupScrollView() {
+    private func setupScrollView() {
         //scrollView.addSubview(scrollImageView)
         scrollView.contentSize = schemaImageView.bounds.size
-        scrollView.minimumZoomScale = 1
-        scrollView.maximumZoomScale = 5
-        scrollView.zoomScale = 3
+        calculateZoomScale()
+//        scrollView.minimumZoomScale = 1
+//        scrollView.maximumZoomScale = 5
+        scrollView.zoomScale = scrollView.minimumZoomScale
+    }
+    
+    private func calculateZoomScale() {
+        let boundSize = scrollView.bounds.size
+        let imageSize = schemaImageView.bounds.size
+        
+        let xScale = boundSize.width / imageSize.width
+        let yScale = boundSize.height / imageSize.height
+        
+        let minScale = min(xScale, yScale)
+        
+        let maxScale: CGFloat = 3
+        
+        scrollView.minimumZoomScale = minScale
+        scrollView.maximumZoomScale = maxScale
+    }
+    
+    private func centerImage() {
+        let boundSize = scrollView.bounds.size
+        var frameToCenter = schemaImageView.frame
+        
+        if frameToCenter.size.width < boundSize.width {
+            frameToCenter.origin.x = (boundSize.width - frameToCenter.size.width) / 2
+        } else {
+            frameToCenter.origin.x = 0
+        }
+        
+        if frameToCenter.size.height < boundSize.height {
+            frameToCenter.origin.y = (boundSize.height - frameToCenter.size.height) / 2
+        } else {
+            frameToCenter.origin.y = 0
+        }
+        
+        schemaImageView.frame = frameToCenter
     }
     
     private func addingSaveElementOnSchema() {

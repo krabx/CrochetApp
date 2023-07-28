@@ -80,7 +80,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="VhO-5b-8qj"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nVb-qv-uh8">
-                                <rect key="frame" x="16" y="749" width="361" height="85"/>
+                                <rect key="frame" x="16" y="733" width="361" height="85"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="1zu-cf-mga"/>
@@ -121,43 +121,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="lyt-a5-HO7">
-                                <rect key="frame" x="16" y="252.00000000000003" width="100" height="34.333333333333343"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYj-gE-tcq">
-                                        <rect key="frame" x="0.0" y="0.0" width="51" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="list.bullet" catalog="system"/>
-                                        <connections>
-                                            <action selector="testButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="acd-OX-RcS"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekL-Pz-gTR">
-                                        <rect key="frame" x="53" y="0.0" width="47" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
-                                        <connections>
-                                            <segue destination="Ses-QE-3a5" kind="presentation" id="bL5-8f-3SZ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34.329999999999998" id="5Oy-ZB-mvz"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lyt-a5-HO7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="8xF-Kz-bnh"/>
                             <constraint firstItem="nVb-qv-uh8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="b1o-Vx-O3f"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eKd-nn-MJc"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="i7y-Vx-AUQ"/>
                             <constraint firstItem="nVb-qv-uh8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="lj1-xT-tsr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nVb-qv-uh8" secondAttribute="trailing" constant="16" id="ocf-Tc-FXF"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="p2B-aF-KKo"/>
-                            <constraint firstItem="nVb-qv-uh8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="16" id="r9C-Lg-7nv"/>
-                            <constraint firstItem="lyt-a5-HO7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="149" id="u4C-Ge-lZd"/>
+                            <constraint firstItem="nVb-qv-uh8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="r9C-Lg-7nv"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ugC-AA-46x"/>
                         </constraints>
                     </view>
@@ -178,6 +152,11 @@
                                     <action selector="rotateElementOnView:" destination="BYZ-38-t0r" id="Hnz-rn-pW4"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem title="Adding Favorite Button" image="plus" catalog="system" id="bV9-CF-em6">
+                                <connections>
+                                    <segue destination="Ses-QE-3a5" kind="show" id="HKk-wG-ogG"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -188,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1111" y="-35"/>
+            <point key="canvasLocation" x="1110.6870229007634" y="-35.211267605633807"/>
         </scene>
         <!--Мои схемы-->
         <scene sceneID="hD4-kA-5re">
@@ -236,17 +215,17 @@
             <objects>
                 <viewController id="ySk-DG-M3V" customClass="ElementListViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7OD-TP-p7v">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стандартные" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sd-z4-1gn">
-                                <rect key="frame" x="16" y="146" width="107" height="21"/>
+                                <rect key="frame" x="16" y="193" width="107" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4PK-dG-7Kt">
-                                <rect key="frame" x="16" y="183" width="361" height="100"/>
+                                <rect key="frame" x="16" y="230" width="361" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="6Er-Df-tbg"/>
@@ -331,8 +310,9 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ses-QE-3a5" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="XB2-ad-tVj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w6E-Ga-Wbw">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -350,7 +330,6 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
-        <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <image name="tray.and.arrow.down" catalog="system" width="128" height="111"/>
