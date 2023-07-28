@@ -157,12 +157,18 @@
                                     <segue destination="Ses-QE-3a5" kind="show" id="HKk-wG-ogG"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="DDs-eb-s4q">
+                                <connections>
+                                    <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="ygb-Um-Mgc"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="elementsCollectionView" destination="nVb-qv-uh8" id="Hlj-kT-oAr"/>
                         <outlet property="schemaImageView" destination="7IM-k2-aoU" id="kd0-7U-gl1"/>
                         <outlet property="scrollView" destination="vBI-Kk-k7w" id="6q2-dU-QjC"/>
+                        <segue destination="SVP-yG-tD0" kind="show" identifier="showPDF" id="bGp-0M-ISX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -267,6 +273,7 @@
                         <constraints>
                             <constraint firstItem="0Sd-z4-1gn" firstAttribute="leading" secondItem="Lb4-Kw-kLD" secondAttribute="leading" constant="16" id="24i-ga-3Cy"/>
                             <constraint firstItem="Lb4-Kw-kLD" firstAttribute="trailing" secondItem="4PK-dG-7Kt" secondAttribute="trailing" constant="16" id="3QZ-II-LJq"/>
+                            <constraint firstItem="Lb4-Kw-kLD" firstAttribute="trailing" secondItem="0Sd-z4-1gn" secondAttribute="trailing" constant="270" id="9fe-Uu-b09"/>
                             <constraint firstItem="4PK-dG-7Kt" firstAttribute="top" secondItem="0Sd-z4-1gn" secondAttribute="bottom" constant="16" id="JKL-pX-tUa"/>
                             <constraint firstItem="0Sd-z4-1gn" firstAttribute="top" secondItem="Lb4-Kw-kLD" secondAttribute="top" constant="90" id="JpU-Ma-lqs"/>
                             <constraint firstItem="4PK-dG-7Kt" firstAttribute="leading" secondItem="Lb4-Kw-kLD" secondAttribute="leading" constant="16" id="eQX-zy-x2r"/>
@@ -305,6 +312,41 @@
             </objects>
             <point key="canvasLocation" x="-718.32061068702285" y="-35.211267605633807"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="fiC-Nu-wil">
+            <objects>
+                <viewController id="SVP-yG-tD0" customClass="PDFViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4WO-Jd-USs">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3aF-jP-53A">
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VtZ-pj-sNU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3aF-jP-53A" firstAttribute="leading" secondItem="VtZ-pj-sNU" secondAttribute="leading" id="AaU-Y2-4iO"/>
+                            <constraint firstItem="3aF-jP-53A" firstAttribute="top" secondItem="VtZ-pj-sNU" secondAttribute="top" id="Ag7-pq-KXU"/>
+                            <constraint firstItem="3aF-jP-53A" firstAttribute="trailing" secondItem="VtZ-pj-sNU" secondAttribute="trailing" id="yDu-0y-TEs"/>
+                            <constraint firstAttribute="bottom" secondItem="3aF-jP-53A" secondAttribute="bottom" id="yYB-uR-dKe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="IcX-8c-ehj"/>
+                    <connections>
+                        <outlet property="webView" destination="3aF-jP-53A" id="YrC-aQ-giq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fA1-7z-c1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1875.5725190839694" y="-739.43661971830988"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="dKI-Nz-oDh">
             <objects>
@@ -331,6 +373,7 @@
     <resources>
         <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <image name="tray.and.arrow.down" catalog="system" width="128" height="111"/>
         <image name="Тестовая схема" width="2000" height="1776"/>

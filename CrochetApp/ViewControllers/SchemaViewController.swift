@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PDFKit
 
 protocol ElementListViewControllerDelegate: AnyObject {
     func getUsage(elements: [Data])
@@ -86,10 +87,14 @@ final class SchemaViewController: UIViewController {
                 }
             let date = Date.now
             storageManager.checkSchemasFor(name: nameOfSchema, date: date, elementsOnSchema: elementsOnSchema)
-
         }
-        
     }
+
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        convertToPDF(imageView: schemaImageView)
+        performSegue(withIdentifier: "showPDF", sender: nil)
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigationVC = segue.destination as? UINavigationController else { return }
@@ -191,6 +196,27 @@ final class SchemaViewController: UIViewController {
             schemaImageView.addSubview(imageView)
         }
     }
+    
+    private func convertToPDF(imageView: UIImageView) {
+        let pdfData = NSMutableData()
+        print("1")
+        UIGraphicsBeginPDFContextToData(pdfData, imageView.bounds, nil)
+        UIGraphicsBeginPDFPage()
+        guard let pdfContext = UIGraphicsGetCurrentContext() else {
+            return
+        }
+        print("2")
+        imageView.layer.render(in: pdfContext)
+        for subview in imageView.subviews {
+            subview.layer.render(in: pdfContext)
+        }
+        print("3")
+        UIGraphicsEndPDFContext()
+        
+        guard let path = Bundle.main.path(forResource: "example", ofType: "pdf") else { return }
+        print("4")
+        pdfData.write(toFile: path, atomically: true)
+    }
 }
 
 extension SchemaViewController: UIScrollViewDelegate {
@@ -264,4 +290,5 @@ extension SchemaViewController: ElementListViewControllerDelegate {
         }
         elementsCollectionView.reloadData()
     }
+
 }
