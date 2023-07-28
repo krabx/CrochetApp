@@ -15,11 +15,11 @@ final class SchemaViewController: UIViewController {
     
     private let storageManager = StorageManager.shared
     
-    var resetSelection = false
-    var deleteElement = false
-    var rotateElement = false
+    private var resetSelection = false
+    private var deleteElement = false
+    private var rotateElement = false
     
-    var elementsOnSchema: [HelperElementStructure] = []
+    private var elementsOnSchema: [HelperElementStructure] = []
     
     let dataManager = DataManager.shared
     
@@ -56,7 +56,7 @@ final class SchemaViewController: UIViewController {
         //schemaImageView.addGestureRecognizer(tap)
         //viewForAddingElementsUIView.addGestureRecognizer(tap)
         setupScrollView()
-        //addingSaveElementOnSchema()
+        addingSaveElementOnSchema()
     }
     
     @IBAction func deleteElementFromView(_ sender: Any) {
@@ -163,34 +163,20 @@ final class SchemaViewController: UIViewController {
         scrollView.zoomScale = 3
     }
     
-//    private func addingSaveElementOnSchema() {
-//        guard let elements = schema.elements as? Set<Element> else { return }
-//        let elementsArray = Array(elements)
-//        for element in elementsArray {
-//            guard let newImage = UIImage(data: element.image ?? Data()) else { return }
-//            let imageView = UIImageView(frame: CGRect(
-//                x: element.x,
-//                y: element.y,
-//                width: 50,
-//                height: 50)
-//            )
-//            imageView.image = newImage
-//            imageView.transform.a = element.angle
-//            schemaImageView.addSubview(imageView)
-//        }
-//        for element in saveElements {
-//            guard let newImage = UIImage(data: element.image ?? Data()) else { return }
-//            let imageView = UIImageView(frame: CGRect(
-//                x: element.x,
-//                y: element.y,
-//                width: 50,
-//                height: 50)
-//            )
-//            imageView.image = newImage
-//            imageView.transform.a = element.angle
-//            schemaImageView.addSubview(imageView)
-//        }
-//    }
+    private func addingSaveElementOnSchema() {
+        for element in saveElements {
+            guard let newImage = UIImage(data: element.image ?? Data()) else { return }
+            let imageView = UIImageView(frame: CGRect(
+                x: element.x,
+                y: element.y,
+                width: 50,
+                height: 50)
+            )
+            imageView.image = newImage
+            imageView.transform.a = element.angle
+            schemaImageView.addSubview(imageView)
+        }
+    }
 }
 
 extension SchemaViewController: UIScrollViewDelegate {

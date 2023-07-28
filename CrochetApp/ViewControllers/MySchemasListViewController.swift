@@ -44,11 +44,11 @@ final class MySchemasListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let schemaVC = segue.destination as? SchemaViewController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        //schemaVC.schema = savedSchemas[indexPath.row]
-//        for (key, value) in savedSchemas[indexPath.row] {
-//            schemaVC.nameOfSaveSchema = key
-//            schemaVC.saveElements = value
-//        }
+        guard let setElements = savedSchemas[indexPath.row].elements as? Set<Element> else { return }
+        let elements = Array(setElements)
+        let name = savedSchemas[indexPath.row].name
+        schemaVC.saveElements = elements
+        schemaVC.nameOfSaveSchema = name
     }
 
     // MARK: - Table view data source
@@ -178,7 +178,7 @@ extension MySchemasListViewController {
     private func setupSearch() {
         searchVC.searchResultsUpdater = self
         searchVC.obscuresBackgroundDuringPresentation = false
-        searchVC.searchBar.placeholder = "Введите имя"
+        searchVC.searchBar.placeholder = "Поиск"
         navigationItem.searchController = searchVC
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
