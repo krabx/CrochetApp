@@ -27,6 +27,7 @@ final class MySchemasListViewController: UITableViewController {
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupSearch()
         navigationItem.rightBarButtonItem = editButtonItem
 
@@ -39,6 +40,12 @@ final class MySchemasListViewController: UITableViewController {
 //        }
 
         fetchSchemas()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchSchemas()
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,6 +92,10 @@ final class MySchemasListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 //    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

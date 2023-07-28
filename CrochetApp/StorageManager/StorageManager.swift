@@ -89,6 +89,9 @@ final class StorageManager {
         saveContext()
     }
     
+    func update(schema: Schema, with date: Date, elements: [HelperElementStructure]) { 
+    }
+    
     func saveContext() {
         if viewContext.hasChanges {
             do {
@@ -99,6 +102,53 @@ final class StorageManager {
             }
         }
     }
+    
+    func checkSchemasFor(name: String, date: Date, elementsOnSchema: [HelperElementStructure]) {
+        var savedSchema: [Schema] = []
+        fetchSchemas { result in
+            switch result {
+            case .success(let schemas):
+                savedSchema = schemas
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+        
+        for schema in savedSchema {
+            if schema.name == name {
+                delete(schema: schema)
+            }
+        }
+        
+        appendWith(name: name, date: date, elementsOnSchema: elementsOnSchema)
+        
+        saveContext()
+    }
+    
+//    private func check(name: String) -> (nameSchema: String, index: Int, elements: [Element]) {
+//        var savedSchema: [Schema] = []
+//        fetchSchemas { result in
+//            switch result {
+//            case .success(let schemas):
+//                savedSchema = schemas
+//            case .failure(let failure):
+//                print(failure.localizedDescription)
+//            }
+//        }
+//        
+//        var duplicateName = ""
+//        var duplicateNumber = 0
+//        for (index, schema) in savedSchema.enumerated() {
+//            for (key, value) in schema {
+//                if key == name {
+//                    duplicateName = key
+//                    duplicateNumber = index
+//                    editableSchema = value
+//                }
+//            }
+//        }
+//        return (duplicateName, duplicateNumber, editableSchema)
+//    }
     
 //    func append(element: [Element], with name: String) {
 //        var savedSchema = fetchSavedSchemas()

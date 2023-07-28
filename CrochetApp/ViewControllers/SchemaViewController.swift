@@ -84,9 +84,9 @@ final class SchemaViewController: UIViewController {
                         image: imageView.image?.pngData() ?? Data())
                     )
                 }
-            //storageManager.append(element: elementsOnSchema, with: nameOfSchema)
             let date = Date.now
-            storageManager.appendWith(name: nameOfSchema, date: date, elementsOnSchema: elementsOnSchema)
+            storageManager.checkSchemasFor(name: nameOfSchema, date: date, elementsOnSchema: elementsOnSchema)
+
         }
         
     }
@@ -175,25 +175,6 @@ final class SchemaViewController: UIViewController {
         
         scrollView.minimumZoomScale = minScale
         scrollView.maximumZoomScale = maxScale
-    }
-    
-    private func centerImage() {
-        let boundSize = scrollView.bounds.size
-        var frameToCenter = schemaImageView.frame
-        
-        if frameToCenter.size.width < boundSize.width {
-            frameToCenter.origin.x = (boundSize.width - frameToCenter.size.width) / 2
-        } else {
-            frameToCenter.origin.x = 0
-        }
-        
-        if frameToCenter.size.height < boundSize.height {
-            frameToCenter.origin.y = (boundSize.height - frameToCenter.size.height) / 2
-        } else {
-            frameToCenter.origin.y = 0
-        }
-        
-        schemaImageView.frame = frameToCenter
     }
     
     private func addingSaveElementOnSchema() {
