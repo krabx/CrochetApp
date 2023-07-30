@@ -14,15 +14,16 @@ class PDFViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let fileName = title {
-            loadPDFView(fileName)
-        }
+        loadPDFView("example")
     }
     
     private func loadPDFView(_ fileName: String) {
-        if let path = Bundle.main.url(forResource: fileName, withExtension: "pdf") {
-            let request = URLRequest(url: path)
-            webView.load(request)
-        }
+//        guard let url = Bundle.main.url(forResource: fileName, withExtension: ".pdf") else { return }
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appending(path: ("\(fileName).pdf"))
+        let request = URLRequest(url: fileURL)
+        webView.load(request)
+        
     }
+    
 }

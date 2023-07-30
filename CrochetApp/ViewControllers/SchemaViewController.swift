@@ -91,7 +91,7 @@ final class SchemaViewController: UIViewController {
     }
 
     @IBAction func shareButtonTapped(_ sender: Any) {
-        convertToPDF(imageView: schemaImageView)
+        convertImageViewToPDF(imageView: schemaImageView, fileName: "example")
         performSegue(withIdentifier: "showPDF", sender: nil)
     }
     
@@ -196,27 +196,6 @@ final class SchemaViewController: UIViewController {
             schemaImageView.addSubview(imageView)
         }
     }
-    
-    private func convertToPDF(imageView: UIImageView) {
-        let pdfData = NSMutableData()
-        print("1")
-        UIGraphicsBeginPDFContextToData(pdfData, imageView.bounds, nil)
-        UIGraphicsBeginPDFPage()
-        guard let pdfContext = UIGraphicsGetCurrentContext() else {
-            return
-        }
-        print("2")
-        imageView.layer.render(in: pdfContext)
-        for subview in imageView.subviews {
-            subview.layer.render(in: pdfContext)
-        }
-        print("3")
-        UIGraphicsEndPDFContext()
-        
-        guard let path = Bundle.main.path(forResource: "example", ofType: "pdf") else { return }
-        print("4")
-        pdfData.write(toFile: path, atomically: true)
-    }
 }
 
 extension SchemaViewController: UIScrollViewDelegate {
@@ -246,6 +225,27 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
         deleteElement = false
         rotateElement = false
     }
+}
+
+extension SchemaViewController {
+    func convertImageViewToPDF(imageView: UIImageView, fileName: String) {
+        let pdfRenderer = UIGraphicsPDFRenderer(bounds: imageView.bounds)
+        
+        let pdfData = pdfRenderer.pdfData { context in
+            context.beginPage()
+            imageView.layer.render(in: context.cgContext)
+        }
+        
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent("\(fileName).pdf")
+        
+        do {
+            try pdfData.write(to: fileURL)
+        } catch {
+            print("Error creating PDF file: \(error)")
+        }
+    }
+
 }
 
 extension SchemaViewController {
