@@ -159,29 +159,47 @@ final class SchemaViewController: UIViewController {
     }
     
     private func setupScrollView() {
-        //scrollView.addSubview(scrollImageView)
-        schemaImageView.sizeToFit()
         scrollView.contentSize = schemaImageView.bounds.size
-        //calculateZoomScale()
-        scrollView.minimumZoomScale = 1
-        scrollView.maximumZoomScale = 5
+        calculateZoomScale()
+//        scrollView.minimumZoomScale = 0.1
+//        scrollView.maximumZoomScale = 1
         scrollView.zoomScale = scrollView.minimumZoomScale
     }
     
     private func calculateZoomScale() {
         let boundSize = scrollView.bounds.size
         let imageSize = schemaImageView.bounds.size
-        
+
         let xScale = boundSize.width / imageSize.width
         let yScale = boundSize.height / imageSize.height
-        
+
         let minScale = min(xScale, yScale)
-        
-        let maxScale: CGFloat = 3
-        
+
+        let maxScale: CGFloat = 1
+
         scrollView.minimumZoomScale = minScale
         scrollView.maximumZoomScale = maxScale
+        
     }
+    
+        func centerImage() {
+            let boundsSize = scrollView.bounds.size
+            var frameToCenter = schemaImageView.frame
+
+            if frameToCenter.size.width < boundsSize.width {
+                frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2
+            } else {
+                frameToCenter.origin.x = 0
+            }
+
+            if frameToCenter.size.height < boundsSize.height {
+                frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2
+            } else {
+                frameToCenter.origin.y = 0
+            }
+
+            schemaImageView.frame = frameToCenter
+        }
     
     private func addingSaveElementOnSchema() {
         for element in saveElements {
@@ -202,6 +220,10 @@ final class SchemaViewController: UIViewController {
 extension SchemaViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return schemaImageView
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        centerImage()
     }
 }
 

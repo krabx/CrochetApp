@@ -64,17 +64,15 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-Kk-k7w">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="схема" translatesAutoresizingMaskIntoConstraints="NO" id="7IM-k2-aoU">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="схема" translatesAutoresizingMaskIntoConstraints="NO" id="S1U-C4-Tzz">
+                                        <rect key="frame" x="0.0" y="0.0" width="2000" height="2000"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="7IM-k2-aoU" firstAttribute="leading" secondItem="vBI-Kk-k7w" secondAttribute="leading" id="3ro-xz-YPU"/>
-                                    <constraint firstItem="7IM-k2-aoU" firstAttribute="top" secondItem="vBI-Kk-k7w" secondAttribute="top" id="GIc-sZ-xMW"/>
-                                    <constraint firstAttribute="trailing" secondItem="7IM-k2-aoU" secondAttribute="trailing" id="XVL-yX-Zp2"/>
-                                    <constraint firstItem="7IM-k2-aoU" firstAttribute="centerY" secondItem="vBI-Kk-k7w" secondAttribute="centerY" id="hij-9L-LrH"/>
-                                    <constraint firstItem="7IM-k2-aoU" firstAttribute="centerX" secondItem="vBI-Kk-k7w" secondAttribute="centerX" id="j20-0j-Wat"/>
-                                    <constraint firstAttribute="bottom" secondItem="7IM-k2-aoU" secondAttribute="bottom" id="tnq-Zz-unX"/>
+                                    <constraint firstAttribute="bottom" secondItem="S1U-C4-Tzz" secondAttribute="bottom" id="GZC-yT-cCw"/>
+                                    <constraint firstAttribute="trailing" secondItem="S1U-C4-Tzz" secondAttribute="trailing" id="Zm5-1b-0VH"/>
+                                    <constraint firstItem="S1U-C4-Tzz" firstAttribute="top" secondItem="vBI-Kk-k7w" secondAttribute="top" id="lDq-pz-iDh"/>
+                                    <constraint firstItem="S1U-C4-Tzz" firstAttribute="leading" secondItem="vBI-Kk-k7w" secondAttribute="leading" id="wmt-Tg-Bam"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="fC4-aD-rOU"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="VhO-5b-8qj"/>
@@ -166,7 +164,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="elementsCollectionView" destination="nVb-qv-uh8" id="Hlj-kT-oAr"/>
-                        <outlet property="schemaImageView" destination="7IM-k2-aoU" id="kd0-7U-gl1"/>
+                        <outlet property="schemaImageView" destination="S1U-C4-Tzz" id="m8V-v7-Yv0"/>
                         <outlet property="scrollView" destination="vBI-Kk-k7w" id="6q2-dU-QjC"/>
                         <segue destination="SVP-yG-tD0" kind="show" identifier="showPDF" id="bGp-0M-ISX"/>
                     </connections>
