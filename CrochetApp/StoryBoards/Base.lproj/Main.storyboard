@@ -64,7 +64,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-Kk-k7w">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Тестовая схема" translatesAutoresizingMaskIntoConstraints="NO" id="7IM-k2-aoU">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="схема" translatesAutoresizingMaskIntoConstraints="NO" id="7IM-k2-aoU">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
                                     </imageView>
                                 </subviews>
@@ -376,7 +376,7 @@
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <image name="tray.and.arrow.down" catalog="system" width="128" height="111"/>
-        <image name="Тестовая схема" width="2000" height="1776"/>
+        <image name="схема" width="2000" height="2000"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -160,10 +160,11 @@ final class SchemaViewController: UIViewController {
     
     private func setupScrollView() {
         //scrollView.addSubview(scrollImageView)
+        schemaImageView.sizeToFit()
         scrollView.contentSize = schemaImageView.bounds.size
-        calculateZoomScale()
-//        scrollView.minimumZoomScale = 1
-//        scrollView.maximumZoomScale = 5
+        //calculateZoomScale()
+        scrollView.minimumZoomScale = 1
+        scrollView.maximumZoomScale = 5
         scrollView.zoomScale = scrollView.minimumZoomScale
     }
     
