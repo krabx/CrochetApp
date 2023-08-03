@@ -33,6 +33,7 @@
 		6E2525822A45D01E00E6C94D /* ElementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */; };
 		6E6A7D022A7459A800544EE4 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6A7D012A7459A800544EE4 /* PDFViewController.swift */; };
 		6E6A7D062A7990B800544EE4 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6A7D052A7990B800544EE4 /* ImageScrollView.swift */; };
+		6E6A7D182A7AFC7F00544EE4 /* example.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6E6A7D172A7AFC7F00544EE4 /* example.pdf */; };
 		6EAD3B602A69E3D80017433F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B5F2A69E3D80017433F /* StorageManager.swift */; };
 		6EAD3B622A69E5210017433F /* MySchemasListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B612A69E5210017433F /* MySchemasListViewController.swift */; };
 		6EAD3B652A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B632A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld */; };
@@ -71,6 +72,7 @@
 		6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollectionViewCell.swift; sourceTree = "<group>"; };
 		6E6A7D012A7459A800544EE4 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		6E6A7D052A7990B800544EE4 /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
+		6E6A7D172A7AFC7F00544EE4 /* example.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = example.pdf; sourceTree = "<group>"; };
 		6EAD3B5F2A69E3D80017433F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		6EAD3B612A69E5210017433F /* MySchemasListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchemasListViewController.swift; sourceTree = "<group>"; };
 		6EAD3B642A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchemaCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				6E2525472A311B3300E6C94D /* StoryBoards */,
 				6E25253B2A311A9E00E6C94D /* Assets.xcassets */,
 				6EAD3B632A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld */,
+				6E6A7D172A7AFC7F00544EE4 /* example.pdf */,
 			);
 			path = CrochetApp;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				6E25253F2A311A9E00E6C94D /* LaunchScreen.storyboard in Resources */,
 				6E25253C2A311A9E00E6C94D /* Assets.xcassets in Resources */,
 				6E25253A2A311A9C00E6C94D /* Main.storyboard in Resources */,
+				6E6A7D182A7AFC7F00544EE4 /* example.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -450,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -475,7 +479,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -507,7 +511,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

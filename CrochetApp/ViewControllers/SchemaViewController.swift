@@ -97,9 +97,16 @@ final class SchemaViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showPDF" {
+            guard let pdfVC = segue.destination as? PDFViewController else { return }
+            pdfVC.navigationItem.title = nameOfSaveSchema.isEmpty ? nameOfSchema : nameOfSaveSchema
+        }
+        
         guard let navigationVC = segue.destination as? UINavigationController else { return }
         guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
         elementListVC.delegate = self
+
     }
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
@@ -182,24 +189,24 @@ final class SchemaViewController: UIViewController {
         
     }
     
-        func centerImage() {
-            let boundsSize = scrollView.bounds.size
-            var frameToCenter = schemaImageView.frame
-
-            if frameToCenter.size.width < boundsSize.width {
-                frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2
-            } else {
-                frameToCenter.origin.x = 0
-            }
-
-            if frameToCenter.size.height < boundsSize.height {
-                frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2
-            } else {
-                frameToCenter.origin.y = 0
-            }
-
-            schemaImageView.frame = frameToCenter
-        }
+//    func centerImage() {
+//        let boundsSize = scrollView.bounds.size
+//        var frameToCenter = schemaImageView.frame
+//
+//        if frameToCenter.size.width < boundsSize.width {
+//            frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2
+//        } else {
+//            frameToCenter.origin.x = 0
+//        }
+//
+//        if frameToCenter.size.height < boundsSize.height {
+//            frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2
+//        } else {
+//            frameToCenter.origin.y = 0
+//        }
+//
+//        schemaImageView.frame = frameToCenter
+//    }
     
     private func addingSaveElementOnSchema() {
         for element in saveElements {
@@ -223,7 +230,7 @@ extension SchemaViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        centerImage()
+        //centerImage()
     }
 }
 
@@ -253,15 +260,15 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension SchemaViewController {
     func convertImageViewToPDF(imageView: UIImageView, fileName: String) {
         let pdfRenderer = UIGraphicsPDFRenderer(bounds: imageView.bounds)
-        
+
         let pdfData = pdfRenderer.pdfData { context in
             context.beginPage()
             imageView.layer.render(in: context.cgContext)
         }
-        
+
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent("\(fileName).pdf")
-        
+
         do {
             try pdfData.write(to: fileURL)
         } catch {

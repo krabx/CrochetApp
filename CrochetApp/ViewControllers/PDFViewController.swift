@@ -6,24 +6,33 @@
 //
 
 import UIKit
-import WebKit
+import PDFKit
 
-class PDFViewController: UIViewController {
-    
-    @IBOutlet var webView: WKWebView!
+final class PDFViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if navigationItem.title == "" {
+            navigationItem.title = "example"
+        }
         loadPDFView("example")
     }
-    
+
     private func loadPDFView(_ fileName: String) {
-//        guard let url = Bundle.main.url(forResource: fileName, withExtension: ".pdf") else { return }
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileURL = documentsURL.appending(path: ("\(fileName).pdf"))
-        let request = URLRequest(url: fileURL)
-        webView.load(request)
-        
+        let pdfView = PDFView(frame: view.bounds)
+
+        self.view.addSubview(pdfView)
+
+        pdfView.autoScales = true
+
+        var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString + ("\(navigationItem.title ?? fileName).pdf")
+        guard let url = URL(string: documentsURL) else { return }
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])
+        print(documentsURL)
+        pdfView.document = PDFDocument(url: url)
     }
-    
+
+
 }
+
+
