@@ -151,11 +151,7 @@
                                     <action selector="deleteElementFromView:" destination="BYZ-38-t0r" id="ZeH-Ki-Vld"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="AddFavoriteElement" image="plus" catalog="system" id="bV9-CF-em6">
-                                <connections>
-                                    <segue destination="Ses-QE-3a5" kind="show" id="HKk-wG-ogG"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem title="AddFavoriteElement" image="plus" catalog="system" id="bV9-CF-em6"/>
                             <barButtonItem title="saveSchema" image="square.and.arrow.down" catalog="system" id="VIm-gF-TyH">
                                 <connections>
                                     <action selector="saveSchemaOnDevice:" destination="BYZ-38-t0r" id="hSP-sL-T8s"/>
@@ -218,19 +214,19 @@
         <!--Element List View Controller-->
         <scene sceneID="XEn-Gg-bTu">
             <objects>
-                <viewController id="ySk-DG-M3V" customClass="ElementListViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ElementCollection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ySk-DG-M3V" customClass="ElementListViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7OD-TP-p7v">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стандартные" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sd-z4-1gn">
-                                <rect key="frame" x="16" y="193" width="107" height="21"/>
+                                <rect key="frame" x="16" y="149" width="107" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4PK-dG-7Kt">
-                                <rect key="frame" x="16" y="230" width="361" height="100"/>
+                                <rect key="frame" x="16" y="186" width="361" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="6Er-Df-tbg"/>
@@ -291,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36b-ja-bAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2802.2900763358775" y="-35.211267605633807"/>
+            <point key="canvasLocation" x="1876" y="-35"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iLQ-Gu-Yht">
@@ -332,25 +328,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fA1-7z-c1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1875.5725190839694" y="-739.43661971830988"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dKI-Nz-oDh">
-            <objects>
-                <navigationController storyboardIdentifier="ElementCollection" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ses-QE-3a5" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="XB2-ad-tVj"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w6E-Ga-Wbw">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ySk-DG-M3V" kind="relationship" relationship="rootViewController" id="sPq-XJ-WY9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sO4-pp-KhX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1875.5725190839694" y="-35.211267605633807"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -84,10 +84,12 @@ final class SchemaViewController: UIViewController {
         
         let addFavoriteElement = UIAction(title: "Добавить элемент в избранное", image: UIImage(systemName: "plus")) { [unowned self] _ in
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            guard let navigationVC = storyBoard.instantiateViewController(identifier: "ElementCollection") as? UINavigationController else { return }
-            guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
+//            guard let navigationVC = storyBoard.instantiateViewController(identifier: "ElementCollection") as? UINavigationController else { return }
+//            guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
+            guard let elementListVC = storyBoard.instantiateViewController(identifier: "ElementCollection") as? ElementListViewController else { return }
             elementListVC.delegate = self
-            show(navigationVC, sender: nil)
+            //show(navigationVC, sender: nil)
+            present(elementListVC, animated: true)
         }
         
         let menu = UIMenu(title: "Меню", children: [rotateAction, deleteAction, saveSchemaAction, addFavoriteElement])
