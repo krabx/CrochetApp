@@ -46,6 +46,56 @@ final class SchemaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let rotateAction = UIAction(title: "Режим поворота", image: UIImage(systemName: "rotate.right")) { [unowned self] _ in
+            self.resetSelection = true
+            self.rotateElement = true
+            self.deleteElement = false
+            for subview in schemaImageView.subviews {
+                subview.layer.borderWidth = 1
+            }
+        }
+        
+        let deleteAction = UIAction(title: "Режим удаления", image: UIImage(systemName: "trash")) { [unowned self] _ in
+            self.resetSelection = true
+            self.rotateElement = false
+            self.deleteElement = true
+            for subview in schemaImageView.subviews {
+                subview.layer.borderWidth = 1
+            }
+        }
+        
+        let saveSchemaAction = UIAction(title: "Сохранить схему", image: UIImage(systemName: "square.and.arrow.down")) { [unowned self] _ in
+            showAlert(title: "Сохранение", message: "Введите имя схемы") {
+                self.elementsOnSchema = []
+                    for subView in self.schemaImageView.subviews {
+                        guard let imageView = subView as? UIImageView else { return }
+                        self.elementsOnSchema.append(HelperElementStructure(
+                            x: subView.frame.origin.x,
+                            y: subView.frame.origin.y,
+                            angle: subView.transform.a,
+                            image: imageView.image?.pngData() ?? Data())
+                        )
+                    }
+                let date = Date.now
+                self.storageManager.checkSchemasFor(name: self.nameOfSchema, date: date, elementsOnSchema: self.elementsOnSchema)
+            }
+        }
+        
+        let addFavoriteElement = UIAction(title: "Добавить элемент в избранное", image: UIImage(systemName: "plus")) { [unowned self] _ in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            guard let navigationVC = storyBoard.instantiateViewController(identifier: "ElementCollection") as? UINavigationController else { return }
+            guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
+            elementListVC.delegate = self
+            show(navigationVC, sender: nil)
+        }
+        
+        let menu = UIMenu(title: "Меню", children: [rotateAction, deleteAction, saveSchemaAction, addFavoriteElement])
+        
+        let barMenuButton = UIBarButtonItem(title: "Меню", image: UIImage(systemName: "list.bullet"), menu: menu)
+        
+        navigationItem.rightBarButtonItem = barMenuButton
+
         elementsCollectionView.dataSource = self
         elementsCollectionView.delegate = self
         scrollView.delegate = self
@@ -119,8 +169,8 @@ final class SchemaViewController: UIViewController {
             let imageView = UIImageView(frame: CGRect(
                 x: touchPoint.x,
                 y: touchPoint.y,
-                width: 50,
-                height: 50)
+                width: 40,
+                height: 40)
             )
             imageView.image = newImage
             schemaImageView.addSubview(imageView)
@@ -182,7 +232,7 @@ final class SchemaViewController: UIViewController {
 
         let minScale = min(xScale, yScale)
 
-        let maxScale: CGFloat = 1
+        let maxScale: CGFloat = 2
 
         scrollView.minimumZoomScale = minScale
         scrollView.maximumZoomScale = maxScale

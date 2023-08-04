@@ -9,6 +9,8 @@ import UIKit
 import PDFKit
 
 final class PDFViewController: UIViewController {
+    
+    private var pdf: PDFDocument = PDFDocument()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,11 @@ final class PDFViewController: UIViewController {
         loadPDFView("example")
     }
 
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        let activityVC = UIActivityViewController(activityItems: [pdf], applicationActivities: nil)
+        present(activityVC, animated: true)
+    }
+    
     private func loadPDFView(_ fileName: String) {
         let pdfView = PDFView(frame: view.bounds)
 
@@ -27,9 +34,9 @@ final class PDFViewController: UIViewController {
 
         var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString + ("\(navigationItem.title ?? fileName).pdf")
         guard let url = URL(string: documentsURL) else { return }
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])
-        print(documentsURL)
+
         pdfView.document = PDFDocument(url: url)
+        let pdf = pdfView.document
     }
 
 

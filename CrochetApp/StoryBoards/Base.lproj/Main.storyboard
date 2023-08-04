@@ -64,8 +64,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-Kk-k7w">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="схема" translatesAutoresizingMaskIntoConstraints="NO" id="S1U-C4-Tzz">
-                                        <rect key="frame" x="0.0" y="0.0" width="2000" height="2000"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="сетка точка 20 круг" translatesAutoresizingMaskIntoConstraints="NO" id="S1U-C4-Tzz">
+                                        <rect key="frame" x="0.0" y="0.0" width="2000" height="1997"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -134,30 +134,31 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YjQ-lF-tIb">
+                        <nil key="title"/>
                         <rightBarButtonItems>
-                            <barButtonItem title="Save schema" image="tray.and.arrow.down" catalog="system" id="VIm-gF-TyH">
+                            <barButtonItem title="createPDF" image="doc" catalog="system" id="DDs-eb-s4q">
                                 <connections>
-                                    <action selector="saveSchemaOnDevice:" destination="BYZ-38-t0r" id="hSP-sL-T8s"/>
+                                    <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="ygb-Um-Mgc"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Delete element" image="trash" catalog="system" id="xU2-vB-Jqv">
-                                <connections>
-                                    <action selector="deleteElementFromView:" destination="BYZ-38-t0r" id="ZeH-Ki-Vld"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Rotate element" image="arrow.clockwise" catalog="system" id="jMe-9H-337">
+                            <barButtonItem title="rotateElement" image="rotate.right" catalog="system" id="jMe-9H-337">
                                 <connections>
                                     <action selector="rotateElementOnView:" destination="BYZ-38-t0r" id="Hnz-rn-pW4"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Adding Favorite Button" image="plus" catalog="system" id="bV9-CF-em6">
+                            <barButtonItem title="deleteElement" image="trash" catalog="system" id="xU2-vB-Jqv">
+                                <connections>
+                                    <action selector="deleteElementFromView:" destination="BYZ-38-t0r" id="ZeH-Ki-Vld"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="AddFavoriteElement" image="plus" catalog="system" id="bV9-CF-em6">
                                 <connections>
                                     <segue destination="Ses-QE-3a5" kind="show" id="HKk-wG-ogG"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="DDs-eb-s4q">
+                            <barButtonItem title="saveSchema" image="square.and.arrow.down" catalog="system" id="VIm-gF-TyH">
                                 <connections>
-                                    <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="ygb-Um-Mgc"/>
+                                    <action selector="saveSchemaOnDevice:" destination="BYZ-38-t0r" id="hSP-sL-T8s"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -321,7 +322,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="IcX-8c-ehj">
-                        <barButtonItem key="rightBarButtonItem" title="Share" image="square.and.arrow.up" catalog="system" id="qe9-zA-viE"/>
+                        <barButtonItem key="rightBarButtonItem" title="Share" image="square.and.arrow.up" catalog="system" id="qe9-zA-viE">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="SVP-yG-tD0" id="0YY-0X-eAb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fA1-7z-c1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -331,7 +336,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dKI-Nz-oDh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ses-QE-3a5" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ElementCollection" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ses-QE-3a5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="XB2-ad-tVj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w6E-Ga-Wbw">
@@ -352,12 +357,13 @@
         <segue reference="osm-OP-hvW"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
+        <image name="doc" catalog="system" width="115" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="rotate.right" catalog="system" width="115" height="128"/>
+        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="trash" catalog="system" width="117" height="128"/>
-        <image name="tray.and.arrow.down" catalog="system" width="128" height="111"/>
-        <image name="схема" width="2000" height="2000"/>
+        <image name="сетка точка 20 круг" width="2000" height="1997"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
