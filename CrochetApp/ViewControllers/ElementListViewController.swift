@@ -18,14 +18,10 @@ final class ElementListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem?.title = "Назад"
         elementListCollectionView.dataSource = self
         elementListCollectionView.delegate = self
         rendererViewToData()
-    }
-    
-    @IBAction func cancelButtonPressed(_ sender: Any) {
-        delegate?.getUsage(elements: selectedElements)
-        dismiss(animated: true)
     }
     
     deinit {

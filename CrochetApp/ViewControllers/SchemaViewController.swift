@@ -88,11 +88,17 @@ final class SchemaViewController: UIViewController {
 //            guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
             guard let elementListVC = storyBoard.instantiateViewController(identifier: "ElementCollection") as? ElementListViewController else { return }
             elementListVC.delegate = self
-            //show(navigationVC, sender: nil)
-            present(elementListVC, animated: true)
+            show(elementListVC, sender: nil)
+            //present(elementListVC, animated: true)
         }
         
-        let menu = UIMenu(title: "Меню", children: [rotateAction, deleteAction, saveSchemaAction, addFavoriteElement])
+        let showPDF = UIAction(title: "Показать PDF", image:UIImage(systemName: "doc")) { [unowned self] _ in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            guard let showPDFVC = storyBoard.instantiateViewController(identifier: "showPDF") as? PDFViewController else { return }
+            show(showPDFVC, sender: nil)
+        }
+        
+        let menu = UIMenu(title: "Меню", children: [rotateAction, deleteAction, saveSchemaAction, addFavoriteElement, showPDF])
         
         let barMenuButton = UIBarButtonItem(title: "Меню", image: UIImage(systemName: "list.bullet"), menu: menu)
         
@@ -112,40 +118,40 @@ final class SchemaViewController: UIViewController {
         addingSaveElementOnSchema()
     }
     
-    @IBAction func deleteElementFromView(_ sender: Any) {
-        resetSelection = true
-        rotateElement = false
-        deleteElement = true
-    }
+//    @IBAction func deleteElementFromView(_ sender: Any) {
+//        resetSelection = true
+//        rotateElement = false
+//        deleteElement = true
+//    }
     
-    @IBAction func rotateElementOnView(_ sender: Any) {
-        resetSelection = true
-        rotateElement = true
-        deleteElement = false
-    }
+//    @IBAction func rotateElementOnView(_ sender: Any) {
+//        resetSelection = true
+//        rotateElement = true
+//        deleteElement = false
+//    }
     
-    @IBAction func saveSchemaOnDevice(_ sender: Any) {
-        
-        showAlert(title: "Сохранение", message: "Введите имя схемы") { [unowned self] in
-            self.elementsOnSchema = []
-                for subView in self.schemaImageView.subviews {
-                    guard let imageView = subView as? UIImageView else { return }
-                    self.elementsOnSchema.append(HelperElementStructure(
-                        x: subView.frame.origin.x,
-                        y: subView.frame.origin.y,
-                        angle: subView.transform.a,
-                        image: imageView.image?.pngData() ?? Data())
-                    )
-                }
-            let date = Date.now
-            storageManager.checkSchemasFor(name: nameOfSchema, date: date, elementsOnSchema: elementsOnSchema)
-        }
-    }
+//    @IBAction func saveSchemaOnDevice(_ sender: Any) {
+//
+//        showAlert(title: "Сохранение", message: "Введите имя схемы") { [unowned self] in
+//            self.elementsOnSchema = []
+//                for subView in self.schemaImageView.subviews {
+//                    guard let imageView = subView as? UIImageView else { return }
+//                    self.elementsOnSchema.append(HelperElementStructure(
+//                        x: subView.frame.origin.x,
+//                        y: subView.frame.origin.y,
+//                        angle: subView.transform.a,
+//                        image: imageView.image?.pngData() ?? Data())
+//                    )
+//                }
+//            let date = Date.now
+//            storageManager.checkSchemasFor(name: nameOfSchema, date: date, elementsOnSchema: elementsOnSchema)
+//        }
+//    }
 
-    @IBAction func shareButtonTapped(_ sender: Any) {
-        convertImageViewToPDF(imageView: schemaImageView, fileName: "example")
-        performSegue(withIdentifier: "showPDF", sender: nil)
-    }
+//    @IBAction func shareButtonTapped(_ sender: Any) {
+//        convertImageViewToPDF(imageView: schemaImageView, fileName: "example")
+//        performSegue(withIdentifier: "showPDF", sender: nil)
+//    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -133,37 +133,11 @@
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ugC-AA-46x"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YjQ-lF-tIb">
-                        <nil key="title"/>
-                        <rightBarButtonItems>
-                            <barButtonItem title="createPDF" image="doc" catalog="system" id="DDs-eb-s4q">
-                                <connections>
-                                    <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="ygb-Um-Mgc"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="rotateElement" image="rotate.right" catalog="system" id="jMe-9H-337">
-                                <connections>
-                                    <action selector="rotateElementOnView:" destination="BYZ-38-t0r" id="Hnz-rn-pW4"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="deleteElement" image="trash" catalog="system" id="xU2-vB-Jqv">
-                                <connections>
-                                    <action selector="deleteElementFromView:" destination="BYZ-38-t0r" id="ZeH-Ki-Vld"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="AddFavoriteElement" image="plus" catalog="system" id="bV9-CF-em6"/>
-                            <barButtonItem title="saveSchema" image="square.and.arrow.down" catalog="system" id="VIm-gF-TyH">
-                                <connections>
-                                    <action selector="saveSchemaOnDevice:" destination="BYZ-38-t0r" id="hSP-sL-T8s"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="YjQ-lF-tIb"/>
                     <connections>
                         <outlet property="elementsCollectionView" destination="nVb-qv-uh8" id="Hlj-kT-oAr"/>
                         <outlet property="schemaImageView" destination="S1U-C4-Tzz" id="m8V-v7-Yv0"/>
                         <outlet property="scrollView" destination="vBI-Kk-k7w" id="6q2-dU-QjC"/>
-                        <segue destination="SVP-yG-tD0" kind="show" identifier="showPDF" id="bGp-0M-ISX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -274,13 +248,7 @@
                             <constraint firstItem="4PK-dG-7Kt" firstAttribute="leading" secondItem="Lb4-Kw-kLD" secondAttribute="leading" constant="16" id="eQX-zy-x2r"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="EJl-SY-iZu">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9ew-Nb-QnK">
-                            <connections>
-                                <action selector="cancelButtonPressed:" destination="ySk-DG-M3V" id="4iU-yc-mfe"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="EJl-SY-iZu"/>
                     <connections>
                         <outlet property="elementListCollectionView" destination="4PK-dG-7Kt" id="edn-cI-MGq"/>
                     </connections>
@@ -310,7 +278,7 @@
         <!--View Controller-->
         <scene sceneID="fiC-Nu-wil">
             <objects>
-                <viewController id="SVP-yG-tD0" customClass="PDFViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showPDF" id="SVP-yG-tD0" customClass="PDFViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4WO-Jd-USs">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,15 +299,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="osm-OP-hvW"/>
+        <segue reference="NlK-1m-YqL"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="doc" catalog="system" width="115" height="128"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="rotate.right" catalog="system" width="115" height="128"/>
-        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <image name="trash" catalog="system" width="117" height="128"/>
         <image name="сетка точка 20 круг" width="2000" height="1997"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
