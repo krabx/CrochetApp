@@ -89,6 +89,7 @@ final class SchemaViewController: UIViewController {
             guard let elementListVC = storyBoard.instantiateViewController(identifier: "ElementCollection") as? ElementListViewController else { return }
             elementListVC.delegate = self
             show(elementListVC, sender: nil)
+            
             //present(elementListVC, animated: true)
         }
         
