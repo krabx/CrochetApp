@@ -47,6 +47,12 @@ final class SchemaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backButton = UIBarButtonItem()
+        
+        backButton.title = "Назад"
+        
+        navigationItem.backBarButtonItem = backButton
+        
         let rotateAction = UIAction(title: "Режим поворота", image: UIImage(systemName: "rotate.right")) { [unowned self] _ in
             self.resetSelection = true
             self.rotateElement = true
@@ -88,6 +94,7 @@ final class SchemaViewController: UIViewController {
 //            guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
             guard let elementListVC = storyBoard.instantiateViewController(identifier: "ElementCollection") as? ElementListViewController else { return }
             elementListVC.delegate = self
+            
             show(elementListVC, sender: nil)
             
             //present(elementListVC, animated: true)
