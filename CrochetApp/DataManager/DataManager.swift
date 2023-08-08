@@ -85,6 +85,63 @@ final class DataManager {
     
     let other: [String] = []
     
+    func getCount(for category: String) -> Int {
+        switch category {
+        case "Oсновные":
+             return main.count
+        case "Столбик без накида (СБН)":
+            return singleCrochet.count
+        case "Полустолбик с накидом (ПСН)":
+            return halfDoubleCrochet.count
+        case "Столбик с накидом (ССН)":
+            return doubleCrochet.count
+        case "Столбик с 2 накидами (СС2Н)":
+            return columnWithTwoCrochets.count
+        case "Столбик с 3 накидами (СС2Н)":
+            return columnWithThreeCrochets.count
+        case "Столбик с 4 накидами (СС2Н)":
+            return columnWithFourCrochets.count
+        case "Столбик с 5 накидами (СС2Н)":
+            return columnWithFiveCrochets.count
+        case "Рельеф":
+            return relief.count
+        default:
+            return other.count
+        }
+    }
+    
+    func getCountCollection(from number: Int) -> Int {
+        let counts = [
+            main.count,
+            singleCrochet.count,
+            halfDoubleCrochet.count,
+            doubleCrochet.count,
+            columnWithTwoCrochets.count,
+            columnWithThreeCrochets.count,
+            columnWithFourCrochets.count,
+            columnWithFiveCrochets.count,
+            relief.count,
+            other.count
+        ]
+        return counts[number]
+    }
+    
+    func getCollection(from number: Int) -> [String] {
+        let allSets = [
+            main,
+            singleCrochet,
+            halfDoubleCrochet,
+            doubleCrochet,
+            columnWithTwoCrochets,
+            columnWithThreeCrochets,
+            columnWithFourCrochets,
+            columnWithFiveCrochets,
+            relief,
+            other
+        ]
+        return allSets[number]
+    }
+    
 
     let elements = [
         ChView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
