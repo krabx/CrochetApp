@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ElementCollectionReusableView: UICollectionReusableView {
+final class ElementCollectionReusableView: UICollectionReusableView {
         
     @IBOutlet var categoryLabel: UILabel!
 }

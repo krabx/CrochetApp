@@ -8,8 +8,8 @@
 import UIKit
 import PDFKit
 
-protocol ElementListViewControllerDelegate: AnyObject {
-    func getUsage(elements: [Data])
+protocol ElementCollectionViewControllerDelegate: AnyObject {
+    func getUsage(elements: [String])
 }
 
 final class SchemaViewController: UIViewController {
@@ -24,13 +24,13 @@ final class SchemaViewController: UIViewController {
     
     let dataManager = DataManager.shared
     
-    var elementsData: [Data] = []
+    var elementsData: [String] = []
     
     var nameOfSaveSchema = ""
     
     var saveElements: [Element] = []
     
-    private var selectedItem = Data()
+    private var selectedItem: String = ""
     
     private var nameOfSchema = ""
     
@@ -95,9 +95,9 @@ final class SchemaViewController: UIViewController {
 //
 //            show(elementListVC, sender: nil)
             
-            guard let elementListVC = storyBoard.instantiateViewController(identifier: "ElementCollectionVC") as? ElementCollectionViewController else { return }
-            
-            show(elementListVC, sender: nil)
+            guard let elementCollectionVC = storyBoard.instantiateViewController(identifier: "ElementCollectionVC") as? ElementCollectionViewController else { return }
+            elementCollectionVC.delegate = self
+            show(elementCollectionVC, sender: nil)
             
             //present(elementListVC, animated: true)
         }
@@ -173,7 +173,7 @@ final class SchemaViewController: UIViewController {
         
         guard let navigationVC = segue.destination as? UINavigationController else { return }
         guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
-        elementListVC.delegate = self
+        //elementListVC.delegate = self
 
     }
     
@@ -183,13 +183,14 @@ final class SchemaViewController: UIViewController {
         
         if !resetSelection {
             //guard let newImage = UIImage(data: elementsData.last ?? Data()) else { return }
-            guard let newImage = UIImage(data: selectedItem) else { return }
+            guard let newImage = UIImage(named: selectedItem) else { return }
             let imageView = UIImageView(frame: CGRect(
                 x: touchPoint.x,
                 y: touchPoint.y,
-                width: 40,
-                height: 40)
+                width: 50,
+                height: 50)
             )
+            imageView.contentMode = .scaleAspectFit
             imageView.image = newImage
             schemaImageView.addSubview(imageView)
             //viewForAddingElementsUIView.addSubview(imageView)
@@ -285,6 +286,7 @@ final class SchemaViewController: UIViewController {
                 width: 50,
                 height: 50)
             )
+            imageView.contentMode = .scaleAspectFit
             imageView.image = newImage
             imageView.transform.a = element.angle
             schemaImageView.addSubview(imageView)
@@ -302,15 +304,17 @@ extension SchemaViewController: UIScrollViewDelegate {
     }
 }
 
-extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        elementsData.count
+        print(elementsData.count)
+        return elementsData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "elementImage", for: indexPath) as? ElementCollectionViewCell else { return UICollectionViewCell() }
         //cell.elementImageView.image = UIImage(systemName: "square.and.arrow.up")
-        cell.elementImageView.image = UIImage(data: elementsData[indexPath.item])
+        cell.elementImageView.image = UIImage(named: elementsData[indexPath.item])
+//        cell.elementImageView.image = UIImage(data: elementsData[indexPath.item])
         
         return cell
     }
@@ -323,6 +327,16 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
         deleteElement = false
         rotateElement = false
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 65, height: 65)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    
 }
 
 extension SchemaViewController {
@@ -376,14 +390,15 @@ extension SchemaViewController {
 }
 
 
-extension SchemaViewController: ElementListViewControllerDelegate {
-    func getUsage(elements: [Data]) {
+extension SchemaViewController: ElementCollectionViewControllerDelegate {
+    func getUsage(elements: [String]) {
         for element in elements {
             if elementsData.contains(element) {
                 print("Данный элемент уже есть в избранном")
                 continue
             } else {
                 elementsData.append(element)
+                print("elementsData \(elementsData.count)")
             }
         }
         elementsCollectionView.reloadData()

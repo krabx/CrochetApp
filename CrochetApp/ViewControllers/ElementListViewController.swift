@@ -12,7 +12,7 @@ final class ElementListViewController: UIViewController {
     var standarts: [Data] = []
     var selectedElements: [Data] = []
     
-    unowned var delegate: ElementListViewControllerDelegate?
+    //unowned var delegate: ElementListViewControllerDelegate?
     
     @IBOutlet var elementListCollectionView: UICollectionView!
     
@@ -24,7 +24,7 @@ final class ElementListViewController: UIViewController {
     }
     
     deinit {
-        delegate?.getUsage(elements: selectedElements)
+        //delegate?.getUsage(elements: selectedElements)
     }
     
     func getData() -> Data {

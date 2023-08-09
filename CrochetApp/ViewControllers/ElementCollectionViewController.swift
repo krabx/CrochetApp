@@ -7,12 +7,24 @@
 
 import UIKit
 
-class ElementCollectionViewController: UICollectionViewController {
+final class ElementCollectionViewController: UICollectionViewController {
     
     private let dataManager = DataManager.shared
+    
+    private let itemsForRow: CGFloat = 5
+    
+    private let sectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    
+    private var selectedElements: [String] = []
+    
+    unowned var delegate: ElementCollectionViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    deinit {
+        delegate?.getUsage(elements: selectedElements)
     }
 
     // MARK: - Navigation
@@ -48,9 +60,34 @@ class ElementCollectionViewController: UICollectionViewController {
     
         return cell
     }
-    
-
 
     // MARK: UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let element = dataManager.getCollection(from: indexPath.section)[indexPath.item]
+        selectedElements.append(element)
+    }
 
+}
+
+extension ElementCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingWidth = sectionInsets.top * (itemsForRow + 1)
+        let availableWidth = collectionView.frame.width - paddingWidth
+        let widthForItem = availableWidth / itemsForRow
+        return CGSize(width: widthForItem, height: widthForItem)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        sectionInsets.top
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        sectionInsets.top
+    }
+    
 }
