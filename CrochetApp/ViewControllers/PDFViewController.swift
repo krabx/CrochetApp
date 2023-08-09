@@ -10,10 +10,13 @@ import PDFKit
 
 final class PDFViewController: UIViewController {
     
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     private var pdf: PDFDocument = PDFDocument()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
         if navigationItem.title == "" {
             navigationItem.title = "example"
         }
@@ -37,6 +40,7 @@ final class PDFViewController: UIViewController {
 
         pdfView.document = PDFDocument(url: url)
         let pdf = pdfView.document
+        activityIndicator.stopAnimating()
     }
 
 

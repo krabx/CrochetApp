@@ -49,6 +49,10 @@ final class SchemaViewController: UIViewController {
         
         let backButton = UIBarButtonItem()
         
+        let segment: UISegmentedControl = UISegmentedControl(items: ["1", "2"])
+        
+        navigationItem.titleView = segment
+        
         backButton.title = "Назад"
         
         navigationItem.backBarButtonItem = backButton
@@ -164,18 +168,18 @@ final class SchemaViewController: UIViewController {
 //    }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "showPDF" {
-            guard let pdfVC = segue.destination as? PDFViewController else { return }
-            pdfVC.navigationItem.title = nameOfSaveSchema.isEmpty ? nameOfSchema : nameOfSaveSchema
-        }
-        
-        guard let navigationVC = segue.destination as? UINavigationController else { return }
-        guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
-        //elementListVC.delegate = self
-
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "showPDF" {
+//            guard let pdfVC = segue.destination as? PDFViewController else { return }
+//            pdfVC.navigationItem.title = nameOfSaveSchema.isEmpty ? nameOfSchema : nameOfSaveSchema
+//        }
+//
+//        guard let navigationVC = segue.destination as? UINavigationController else { return }
+//        guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
+//        //elementListVC.delegate = self
+//
+//    }
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
         //let touchPoint = touch.location(in: viewForAddingElementsUIView)
