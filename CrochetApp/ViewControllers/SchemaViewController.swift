@@ -47,11 +47,13 @@ final class SchemaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let backButton = UIBarButtonItem()
+        let segment: UISegmentedControl = UISegmentedControl(items: ["1","2"])
         
-        let segment: UISegmentedControl = UISegmentedControl(items: ["1", "2"])
-        
+        setupFor(segment)
+
         navigationItem.titleView = segment
+        
+        let backButton = UIBarButtonItem()
         
         backButton.title = "Назад"
         
@@ -310,8 +312,7 @@ extension SchemaViewController: UIScrollViewDelegate {
 
 extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(elementsData.count)
-        return elementsData.count
+        elementsData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -384,13 +385,31 @@ extension SchemaViewController {
         present(alert, animated: true)
     }
     
-    private func alertDuplicate() {
-        let alert = UIAlertController(title: "Такое имя уже существует", message: "Введите другое название", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "Ок", style: .default)
-        alert.addAction(okButton)
-        present(alert, animated: true)
+    private func setupFor(_ segment: UISegmentedControl) {
+        let squareBackground = UIAction { [unowned self] _ in
+            self.schemaImageView.image = UIImage(named: "сетка квадрат точка ")
+        }
         
+        let circleBackground = UIAction { [unowned self] _ in
+            self.schemaImageView.image = UIImage(named: "сетка точка 20 круг")
+        }
+        
+        segment.selectedSegmentIndex = 1
+        
+        segment.setAction(squareBackground, forSegmentAt: 0)
+        segment.setAction(circleBackground, forSegmentAt: 1)
+        
+        segment.setImage(UIImage(systemName: "grid"), forSegmentAt: 0)
+        segment.setImage(UIImage(systemName: "circle.circle"), forSegmentAt: 1)
     }
+    
+//    private func alertDuplicate() {
+//        let alert = UIAlertController(title: "Такое имя уже существует", message: "Введите другое название", preferredStyle: .alert)
+//        let okButton = UIAlertAction(title: "Ок", style: .default)
+//        alert.addAction(okButton)
+//        present(alert, animated: true)
+//
+//    }
 }
 
 
