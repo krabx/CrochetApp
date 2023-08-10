@@ -30,10 +30,9 @@ final class PDFViewController: UIViewController {
     private func loadPDFView() {
         let pdfView = PDFView(frame: view.bounds)
 
-        self.view.addSubview(pdfView)
+        view.addSubview(pdfView)
 
         pdfView.autoScales = true
-
 //        var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString + ("\(navigationItem.title ?? fileName).pdf")
 //        guard let url = URL(string: documentsURL) else { return }
 
@@ -53,8 +52,6 @@ final class PDFViewController: UIViewController {
         
         return pdfData
     }
-
-
 }
 
 

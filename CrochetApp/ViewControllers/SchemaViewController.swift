@@ -190,16 +190,18 @@ final class SchemaViewController: UIViewController {
         
         if !resetSelection {
             //guard let newImage = UIImage(data: elementsData.last ?? Data()) else { return }
-            guard let newImage = UIImage(named: selectedItem) else { return }
-            let imageView = UIImageView(frame: CGRect(
-                x: touchPoint.x,
-                y: touchPoint.y,
-                width: 50,
-                height: 50)
-            )
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = newImage
-            schemaImageView.addSubview(imageView)
+            if selectedItem != "" {
+                guard let newImage = UIImage(named: selectedItem) else { return }
+                let imageView = UIImageView(frame: CGRect(
+                    x: touchPoint.x,
+                    y: touchPoint.y,
+                    width: 50,
+                    height: 50)
+                )
+                imageView.contentMode = .scaleAspectFit
+                imageView.image = newImage
+                schemaImageView.addSubview(imageView)
+            }
             //viewForAddingElementsUIView.addSubview(imageView)
         }
         
@@ -387,11 +389,11 @@ extension SchemaViewController {
     }
     
     private func setupFor(_ segment: UISegmentedControl) {
-        let squareBackground = UIAction { [unowned self] _ in
+        let squareBackground = UIAction(image: UIImage(systemName: "grid")) { [unowned self] _ in
             self.schemaImageView.image = UIImage(named: "сетка квадрат точка ")
         }
         
-        let circleBackground = UIAction { [unowned self] _ in
+        let circleBackground = UIAction(image: UIImage(systemName: "circle.circle")) { [unowned self] _ in
             self.schemaImageView.image = UIImage(named: "сетка точка 20 круг")
         }
         
@@ -400,8 +402,8 @@ extension SchemaViewController {
         segment.setAction(squareBackground, forSegmentAt: 0)
         segment.setAction(circleBackground, forSegmentAt: 1)
         
-        segment.setImage(UIImage(systemName: "grid"), forSegmentAt: 0)
-        segment.setImage(UIImage(systemName: "circle.circle"), forSegmentAt: 1)
+//        segment.setImage(UIImage(systemName: "grid"), forSegmentAt: 0)
+//        segment.setImage(UIImage(systemName: "circle.circle"), forSegmentAt: 1)
     }
     
 //    private func alertDuplicate() {
@@ -422,7 +424,6 @@ extension SchemaViewController: ElementCollectionViewControllerDelegate {
                 continue
             } else {
                 elementsData.append(element)
-                print("elementsData \(elementsData.count)")
             }
         }
         elementsCollectionView.reloadData()
