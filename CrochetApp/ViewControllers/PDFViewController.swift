@@ -12,15 +12,14 @@ final class PDFViewController: UIViewController {
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     private var pdf: PDFDocument = PDFDocument()
+    
+    var imageViewForPDF = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
-        if navigationItem.title == "" {
-            navigationItem.title = "example"
-        }
-        loadPDFView("example")
+        loadPDFView()
     }
 
     @IBAction func shareButtonTapped(_ sender: Any) {
@@ -28,19 +27,31 @@ final class PDFViewController: UIViewController {
         present(activityVC, animated: true)
     }
     
-    private func loadPDFView(_ fileName: String) {
+    private func loadPDFView() {
         let pdfView = PDFView(frame: view.bounds)
 
         self.view.addSubview(pdfView)
 
         pdfView.autoScales = true
 
-        var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString + ("\(navigationItem.title ?? fileName).pdf")
-        guard let url = URL(string: documentsURL) else { return }
+//        var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString + ("\(navigationItem.title ?? fileName).pdf")
+//        guard let url = URL(string: documentsURL) else { return }
 
-        pdfView.document = PDFDocument(url: url)
-        let pdf = pdfView.document
+        //pdfView.document = PDFDocument(url: url)
+        pdfView.document = PDFDocument(data: convertImageViewToPDF(imageView: imageViewForPDF))
+        pdf = pdfView.document ?? PDFDocument()
         activityIndicator.stopAnimating()
+    }
+    
+    func convertImageViewToPDF(imageView: UIImageView) -> Data {
+        let pdfRenderer = UIGraphicsPDFRenderer(bounds: imageView.bounds)
+
+        let pdfData = pdfRenderer.pdfData { context in
+            context.beginPage()
+            imageView.layer.render(in: context.cgContext)
+        }
+        
+        return pdfData
     }
 
 

@@ -111,6 +111,7 @@ final class SchemaViewController: UIViewController {
         let showPDF = UIAction(title: "Показать PDF", image:UIImage(systemName: "doc")) { [unowned self] _ in
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             guard let showPDFVC = storyBoard.instantiateViewController(identifier: "showPDF") as? PDFViewController else { return }
+            showPDFVC.imageViewForPDF = schemaImageView
             show(showPDFVC, sender: nil)
         }
         
@@ -345,23 +346,23 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 extension SchemaViewController {
-    func convertImageViewToPDF(imageView: UIImageView, fileName: String) {
-        let pdfRenderer = UIGraphicsPDFRenderer(bounds: imageView.bounds)
-
-        let pdfData = pdfRenderer.pdfData { context in
-            context.beginPage()
-            imageView.layer.render(in: context.cgContext)
-        }
-
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileURL = documentsURL.appendingPathComponent("\(fileName).pdf")
-
-        do {
-            try pdfData.write(to: fileURL)
-        } catch {
-            print("Error creating PDF file: \(error)")
-        }
-    }
+//    func convertImageViewToPDF(imageView: UIImageView, fileName: String) {
+//        let pdfRenderer = UIGraphicsPDFRenderer(bounds: imageView.bounds)
+//
+//        let pdfData = pdfRenderer.pdfData { context in
+//            context.beginPage()
+//            imageView.layer.render(in: context.cgContext)
+//        }
+//
+//        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//        let fileURL = documentsURL.appendingPathComponent("\(fileName).pdf")
+//
+//        do {
+//            try pdfData.write(to: fileURL)
+//        } catch {
+//            print("Error creating PDF file: \(error)")
+//        }
+//    }
 
 }
 
