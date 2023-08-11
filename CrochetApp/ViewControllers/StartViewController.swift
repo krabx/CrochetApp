@@ -12,7 +12,7 @@ final class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let backButton = UIBarButtonItem()
-        backButton.title = "Главное меню"
+        backButton.title = "Меню"
         navigationItem.backBarButtonItem = backButton
     }
 

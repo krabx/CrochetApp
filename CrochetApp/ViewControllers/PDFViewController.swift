@@ -31,12 +31,8 @@ final class PDFViewController: UIViewController {
         let pdfView = PDFView(frame: view.bounds)
 
         view.addSubview(pdfView)
-
         pdfView.autoScales = true
-//        var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString + ("\(navigationItem.title ?? fileName).pdf")
-//        guard let url = URL(string: documentsURL) else { return }
-
-        //pdfView.document = PDFDocument(url: url)
+        
         pdfView.document = PDFDocument(data: convertImageViewToPDF(imageView: imageViewForPDF))
         pdf = pdfView.document ?? PDFDocument()
         activityIndicator.stopAnimating()
