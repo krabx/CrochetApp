@@ -24,7 +24,7 @@ final class PDFViewController: UIViewController {
 
     @IBAction func shareButtonTapped(_ sender: Any) {
         let activityVC = UIActivityViewController(activityItems: [pdf], applicationActivities: nil)
-        present(activityVC, animated: true)
+        present(activityVC, animated: true, completion: nil)
     }
     
     private func loadPDFView() {

@@ -34,10 +34,6 @@ final class SchemaViewController: UIViewController {
     
     private var nameOfSchema = ""
     
-    //var schema: Schema = Schema()
-    
-    @IBOutlet var viewForAddingElementsUIView: UIView!
-    
     @IBOutlet var scrollView: UIScrollView!
     
     @IBOutlet var schemaImageView: UIImageView!
@@ -96,10 +92,6 @@ final class SchemaViewController: UIViewController {
         
         let addFavoriteElement = UIAction(title: "Добавить элемент в избранное", image: UIImage(systemName: "plus")) { [unowned self] _ in
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//            guard let elementListVC = storyBoard.instantiateViewController(identifier: "ElementCollection") as? ElementListViewController else { return }
-//            elementListVC.delegate = self
-//
-//            show(elementListVC, sender: nil)
             
             guard let elementCollectionVC = storyBoard.instantiateViewController(identifier: "ElementCollectionVC") as? ElementCollectionViewController else { return }
             elementCollectionVC.delegate = self
@@ -129,67 +121,14 @@ final class SchemaViewController: UIViewController {
             action: !resetSelection ? #selector(touchedScreen(touch:)) : nil
         )
         scrollView.addGestureRecognizer(tap)
-        //schemaImageView.addGestureRecognizer(tap)
-        //viewForAddingElementsUIView.addGestureRecognizer(tap)
         setupScrollView()
         addingSaveElementOnSchema()
     }
     
-//    @IBAction func deleteElementFromView(_ sender: Any) {
-//        resetSelection = true
-//        rotateElement = false
-//        deleteElement = true
-//    }
-    
-//    @IBAction func rotateElementOnView(_ sender: Any) {
-//        resetSelection = true
-//        rotateElement = true
-//        deleteElement = false
-//    }
-    
-//    @IBAction func saveSchemaOnDevice(_ sender: Any) {
-//
-//        showAlert(title: "Сохранение", message: "Введите имя схемы") { [unowned self] in
-//            self.elementsOnSchema = []
-//                for subView in self.schemaImageView.subviews {
-//                    guard let imageView = subView as? UIImageView else { return }
-//                    self.elementsOnSchema.append(HelperElementStructure(
-//                        x: subView.frame.origin.x,
-//                        y: subView.frame.origin.y,
-//                        angle: subView.transform.a,
-//                        image: imageView.image?.pngData() ?? Data())
-//                    )
-//                }
-//            let date = Date.now
-//            storageManager.checkSchemasFor(name: nameOfSchema, date: date, elementsOnSchema: elementsOnSchema)
-//        }
-//    }
-
-//    @IBAction func shareButtonTapped(_ sender: Any) {
-//        convertImageViewToPDF(imageView: schemaImageView, fileName: "example")
-//        performSegue(withIdentifier: "showPDF", sender: nil)
-//    }
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "showPDF" {
-//            guard let pdfVC = segue.destination as? PDFViewController else { return }
-//            pdfVC.navigationItem.title = nameOfSaveSchema.isEmpty ? nameOfSchema : nameOfSaveSchema
-//        }
-//
-//        guard let navigationVC = segue.destination as? UINavigationController else { return }
-//        guard let elementListVC = navigationVC.topViewController as? ElementListViewController else { return }
-//        //elementListVC.delegate = self
-//
-//    }
-    
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
-        //let touchPoint = touch.location(in: viewForAddingElementsUIView)
         let touchPoint = touch.location(in: schemaImageView)
         
         if !resetSelection {
-            //guard let newImage = UIImage(data: elementsData.last ?? Data()) else { return }
             if selectedItem != "" {
                 guard let newImage = UIImage(named: selectedItem) else { return }
                 let imageView = UIImageView(frame: CGRect(
@@ -202,11 +141,9 @@ final class SchemaViewController: UIViewController {
                 imageView.image = newImage
                 schemaImageView.addSubview(imageView)
             }
-            //viewForAddingElementsUIView.addSubview(imageView)
         }
         
         if deleteElement {
-            //for subView in viewForAddingElementsUIView.subviews {
             for subView in schemaImageView.subviews {
                 if subView.frame.contains(touchPoint) {
                     subView.removeFromSuperview()
@@ -215,7 +152,6 @@ final class SchemaViewController: UIViewController {
         }
         
         if rotateElement {
-            //for subView in viewForAddingElementsUIView.subviews {
             for subView in schemaImageView.subviews {
                 if subView.frame.contains(touchPoint) {
                     switch subView.transform.a {
@@ -246,8 +182,6 @@ final class SchemaViewController: UIViewController {
     private func setupScrollView() {
         scrollView.contentSize = schemaImageView.bounds.size
         calculateZoomScale()
-//        scrollView.minimumZoomScale = 0.1
-//        scrollView.maximumZoomScale = 1
         scrollView.zoomScale = scrollView.minimumZoomScale
     }
     
@@ -320,9 +254,8 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "elementImage", for: indexPath) as? ElementCollectionViewCell else { return UICollectionViewCell() }
-        //cell.elementImageView.image = UIImage(systemName: "square.and.arrow.up")
+        
         cell.elementImageView.image = UIImage(named: elementsData[indexPath.item])
-//        cell.elementImageView.image = UIImage(data: elementsData[indexPath.item])
         
         return cell
     }
@@ -343,29 +276,6 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
-    
-    
-}
-
-extension SchemaViewController {
-//    func convertImageViewToPDF(imageView: UIImageView, fileName: String) {
-//        let pdfRenderer = UIGraphicsPDFRenderer(bounds: imageView.bounds)
-//
-//        let pdfData = pdfRenderer.pdfData { context in
-//            context.beginPage()
-//            imageView.layer.render(in: context.cgContext)
-//        }
-//
-//        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//        let fileURL = documentsURL.appendingPathComponent("\(fileName).pdf")
-//
-//        do {
-//            try pdfData.write(to: fileURL)
-//        } catch {
-//            print("Error creating PDF file: \(error)")
-//        }
-//    }
-
 }
 
 extension SchemaViewController {
@@ -401,18 +311,7 @@ extension SchemaViewController {
         
         segment.setAction(squareBackground, forSegmentAt: 0)
         segment.setAction(circleBackground, forSegmentAt: 1)
-        
-//        segment.setImage(UIImage(systemName: "grid"), forSegmentAt: 0)
-//        segment.setImage(UIImage(systemName: "circle.circle"), forSegmentAt: 1)
     }
-    
-//    private func alertDuplicate() {
-//        let alert = UIAlertController(title: "Такое имя уже существует", message: "Введите другое название", preferredStyle: .alert)
-//        let okButton = UIAlertAction(title: "Ок", style: .default)
-//        alert.addAction(okButton)
-//        present(alert, animated: true)
-//
-//    }
 }
 
 
