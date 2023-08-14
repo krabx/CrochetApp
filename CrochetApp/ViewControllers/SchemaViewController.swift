@@ -175,8 +175,8 @@ final class SchemaViewController: UIViewController {
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
         let touchPoint = touch.location(in: schemaImageView)
-
         if !resetSelection {
+            // -TODO: think about it
             for subview in schemaImageView.subviews {
                 subview.layer.borderWidth = 0
             }
