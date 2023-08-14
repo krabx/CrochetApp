@@ -72,14 +72,16 @@ final class MySchemasListViewController: UITableViewController {
 //        guard let schema = getSchema(at: indexPath) else { return UITableViewCell() }
 //
 //        cell.contentConfiguration = cell.configure(with: schema)
-        
+        let formatter = DateFormatter()
+        formatter.locale = Locale.autoupdatingCurrent
+        formatter.dateFormat = "dd MMMM YYYY, HH:mm"
         var content = cell.defaultContentConfiguration()
         if !isFiltering {
             content.text = savedSchemas[indexPath.row].name
-            content.secondaryText = savedSchemas[indexPath.row].date.formatted()
+            content.secondaryText = formatter.string(from: savedSchemas[indexPath.row].date)
         } else {
             content.text = filteringSchemas[indexPath.row].name
-            content.secondaryText = filteringSchemas[indexPath.row].date.formatted()
+            content.secondaryText = filteringSchemas[indexPath.row].date.formatted(.iso8601)
         }
         cell.contentConfiguration = content
 

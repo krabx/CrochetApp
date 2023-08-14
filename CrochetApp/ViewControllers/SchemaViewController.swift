@@ -125,10 +125,61 @@ final class SchemaViewController: UIViewController {
         addingSaveElementOnSchema()
     }
     
+//    private func getAngle(_ subView: UIView) {
+//        switch subView.transform.a {
+//        case 1:
+//            subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
+//        case 0.7071067811865476:
+//            subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
+//        case 6.123233995736766e-17:
+//            subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*3/4)
+//        case -0.7071067811865475:
+//            subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+//        case -1:
+//            subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*5/4)
+//        case -0.7071067811865477:
+//            subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*3/2)
+//        case -1.8369701987210297e-16:
+//            subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*7/4)
+//        case 0.7071067811865475:
+//            subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
+//        default:
+//            subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
+//        }
+//    }
+    
+    private func getAngle(_ subView: UIView) -> CGFloat {
+        var rotationAngle: CGFloat = 0
+        switch subView.transform.a {
+        case 1:
+            rotationAngle = CGFloat.pi/4
+        case 0.7071067811865476:
+            rotationAngle = CGFloat.pi/2
+        case 6.123233995736766e-17:
+            rotationAngle = CGFloat.pi*3/4
+        case -0.7071067811865475:
+            rotationAngle = CGFloat.pi
+        case -1:
+            rotationAngle = CGFloat.pi*5/4
+        case -0.7071067811865477:
+            rotationAngle = CGFloat.pi*3/2
+        case -1.8369701987210297e-16:
+            rotationAngle = CGFloat.pi*7/4
+        case 0.7071067811865475:
+            rotationAngle = CGFloat.pi*2
+        default:
+            rotationAngle = CGFloat.pi*2
+        }
+        return rotationAngle
+    }
+    
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
         let touchPoint = touch.location(in: schemaImageView)
-        
+
         if !resetSelection {
+            for subview in schemaImageView.subviews {
+                subview.layer.borderWidth = 0
+            }
             if selectedItem != "" {
                 guard let newImage = UIImage(named: selectedItem) else { return }
                 let imageView = UIImageView(frame: CGRect(
@@ -154,26 +205,7 @@ final class SchemaViewController: UIViewController {
         if rotateElement {
             for subView in schemaImageView.subviews {
                 if subView.frame.contains(touchPoint) {
-                    switch subView.transform.a {
-                        case 1:
-                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
-                        case 0.7071067811865476:
-                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
-                        case 6.123233995736766e-17:
-                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*3/4)
-                        case -0.7071067811865475:
-                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
-                        case -1:
-                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*5/4)
-                        case -0.7071067811865477:
-                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*3/2)
-                        case -1.8369701987210297e-16:
-                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*7/4)
-                        case 0.7071067811865475:
-                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
-                        default:
-                        subView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
-                    }
+                    subView.transform = CGAffineTransform(rotationAngle: getAngle(subView))
                 }
             }
         }
@@ -232,6 +264,8 @@ final class SchemaViewController: UIViewController {
             imageView.contentMode = .scaleAspectFit
             imageView.image = newImage
             imageView.transform.a = element.angle
+            imageView.transform = CGAffineTransform(rotationAngle: getAngle(imageView) - CGFloat.pi/4)
+            //getAngle(imageView)
             schemaImageView.addSubview(imageView)
         }
     }
@@ -314,7 +348,6 @@ extension SchemaViewController {
     }
 }
 
-
 extension SchemaViewController: ElementCollectionViewControllerDelegate {
     func getUsage(elements: [String]) {
         for element in elements {
@@ -327,5 +360,4 @@ extension SchemaViewController: ElementCollectionViewControllerDelegate {
         }
         elementsCollectionView.reloadData()
     }
-
 }
