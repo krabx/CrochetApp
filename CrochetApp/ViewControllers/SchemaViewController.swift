@@ -86,7 +86,7 @@ final class SchemaViewController: UIViewController {
                         )
                     }
                 let date = Date.now
-                self.storageManager.checkSchemasFor(name: self.nameOfSchema, date: date, elementsOnSchema: self.elementsOnSchema)
+                self.storageManager.checkSchemasFor(name: self.nameOfSchema, date: date, elementsOnSchema: self.elementsOnSchema, image: self.convertImageViewToPDF(imageView: self.schemaImageView))
             }
         }
         
@@ -123,6 +123,17 @@ final class SchemaViewController: UIViewController {
         scrollView.addGestureRecognizer(tap)
         setupScrollView()
         addingSaveElementOnSchema()
+    }
+    
+    func convertImageViewToPDF(imageView: UIImageView) -> Data {
+        let pdfRenderer = UIGraphicsPDFRenderer(bounds: imageView.bounds)
+
+        let pdfData = pdfRenderer.pdfData { context in
+            context.beginPage()
+            imageView.layer.render(in: context.cgContext)
+        }
+        
+        return pdfData
     }
     
 //    private func getAngle(_ subView: UIView) {

@@ -47,11 +47,12 @@ final class StorageManager {
 //        return fetchResultController
 //    }
     
-    func appendWith(name: String, date: Date, elementsOnSchema: [HelperElementStructure]) {
+    func appendWith(name: String, date: Date, elementsOnSchema: [HelperElementStructure], image: Data) {
         
         let schema = Schema(context: viewContext)
         schema.name = name
         schema.date = date
+        schema.image = image
         for elementOnSchema in elementsOnSchema {
             let addingElement = Element(context: viewContext)
             addingElement.x = elementOnSchema.x
@@ -103,7 +104,7 @@ final class StorageManager {
         }
     }
     
-    func checkSchemasFor(name: String, date: Date, elementsOnSchema: [HelperElementStructure]) {
+    func checkSchemasFor(name: String, date: Date, elementsOnSchema: [HelperElementStructure], image: Data) {
         var savedSchema: [Schema] = []
         fetchSchemas { result in
             switch result {
@@ -120,7 +121,7 @@ final class StorageManager {
             }
         }
         
-        appendWith(name: name, date: date, elementsOnSchema: elementsOnSchema)
+        appendWith(name: name, date: date, elementsOnSchema: elementsOnSchema, image: image)
         
         saveContext()
     }

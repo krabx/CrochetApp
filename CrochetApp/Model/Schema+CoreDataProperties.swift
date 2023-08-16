@@ -17,6 +17,7 @@ extension Schema {
     }
 
     @NSManaged public var date: Date
+    @NSManaged public var image: Data?
     @NSManaged public var name: String
     @NSManaged public var elements: NSSet?
 
