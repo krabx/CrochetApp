@@ -18,6 +18,20 @@ final class MySchemaCollectionViewCell: UICollectionViewCell {
     private var pdf: PDFDocument = PDFDocument()
     
     func configure(for schema: Schema) {
+        
+        contentView.layer.cornerRadius = 20
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.clear.cgColor
+        contentView.backgroundColor = UIColor.white
+        contentView.layer.masksToBounds = true
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        layer.shadowRadius = 6
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
+        
         nameOfMySchema.text = schema.name
         dateOfMySchema.text = schema.date.formatted()
         loadPDFView(from: schema.image ?? Data())

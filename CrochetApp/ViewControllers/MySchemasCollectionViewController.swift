@@ -9,7 +9,7 @@ import UIKit
 
 class MySchemasCollectionViewController: UICollectionViewController {
     
-    private let itemsForRow: CGFloat = 2
+    private let itemsForRow: CGFloat = 1
     
     private let sectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     
@@ -52,6 +52,7 @@ class MySchemasCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mySchema", for: indexPath) as? MySchemaCollectionViewCell else { return UICollectionViewCell() }
     
         // Configure the cell
