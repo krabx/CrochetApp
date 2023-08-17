@@ -27,22 +27,22 @@ class MySchemasCollectionViewController: UICollectionViewController {
     private var isFiltering: Bool {
         searchVC.isActive && !searchBarIsEmpty
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearch()
         fetchSchemas()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        guard let schemaVC = segue.destination as? SchemaViewController else { return }
+        guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
+        guard let setElements = savedSchemas[indexPath.item].elements as? Set<Element> else { return }
+        let elements = Array(setElements)
+        let name = savedSchemas[indexPath.item].name
+        schemaVC.saveElements = elements
+        schemaVC.nameOfSaveSchema = name
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -61,6 +61,21 @@ class MySchemasCollectionViewController: UICollectionViewController {
         } else {
             cell.configure(for: filteringSchemas[indexPath.item])
         }
+        
+        let deleteCell = UIAction { [unowned self] _ in
+            self.storageManager.delete(schema: savedSchemas[indexPath.item])
+            
+            if !isFiltering {
+                savedSchemas.remove(at: indexPath.item)
+            } else {
+                filteringSchemas.remove(at: indexPath.item)
+            }
+            
+            collectionView.deleteItems(at: [indexPath])
+            collectionView.reloadData()
+        }
+        
+        cell.deleteButton.addAction(deleteCell, for: .touchUpInside)
         
         return cell
     }
@@ -95,7 +110,6 @@ class MySchemasCollectionViewController: UICollectionViewController {
     
     }
     */
-
 }
 
 extension MySchemasCollectionViewController: UICollectionViewDelegateFlowLayout {
