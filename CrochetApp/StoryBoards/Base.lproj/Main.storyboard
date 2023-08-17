@@ -210,11 +210,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="So8-bU-8Dk">
-                                            <rect key="frame" x="0.0" y="92" width="128" height="36"/>
+                                            <rect key="frame" x="0.0" y="84" width="128" height="44"/>
                                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rvD-0c-g2z">
-                                            <rect key="frame" x="16" y="92" width="112" height="36"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rvD-0c-g2z">
+                                            <rect key="frame" x="16" y="84" width="112" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCJ-kI-HmX">
                                                     <rect key="frame" x="0.0" y="0.0" width="112" height="18"/>
@@ -223,7 +223,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1z-dp-o3Y">
-                                                    <rect key="frame" x="0.0" y="18" width="112" height="18"/>
+                                                    <rect key="frame" x="0.0" y="26" width="112" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -231,7 +231,7 @@
                                             </subviews>
                                         </stackView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XHY-gQ-cAA">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="92"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="84"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -388,7 +388,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NlK-1m-YqL"/>
+        <segue reference="cNN-5D-6eo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
