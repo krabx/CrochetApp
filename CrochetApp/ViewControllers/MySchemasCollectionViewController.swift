@@ -35,11 +35,20 @@ class MySchemasCollectionViewController: UICollectionViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var name = ""
+        var elements: [Element] = []
         guard let schemaVC = segue.destination as? SchemaViewController else { return }
         guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
-        guard let setElements = savedSchemas[indexPath.item].elements as? Set<Element> else { return }
-        let elements = Array(setElements)
-        let name = savedSchemas[indexPath.item].name
+        if !isFiltering {
+            guard let setElements = savedSchemas[indexPath.item].elements as? Set<Element> else { return }
+            elements = Array(setElements)
+            name = savedSchemas[indexPath.item].name
+        } else {
+            guard let setElements = filteringSchemas[indexPath.item].elements as? Set<Element> else { return }
+            elements = Array(setElements)
+            name = filteringSchemas[indexPath.item].name
+        }
+
         schemaVC.saveElements = elements
         schemaVC.nameOfSaveSchema = name
     }

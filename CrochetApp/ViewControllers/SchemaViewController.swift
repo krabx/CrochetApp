@@ -19,6 +19,7 @@ final class SchemaViewController: UIViewController {
     private var resetSelection = false
     private var deleteElement = false
     private var rotateElement = false
+    var isPanGesture = false
     
     private var elementsOnSchema: [HelperElementStructure] = []
     
@@ -59,8 +60,10 @@ final class SchemaViewController: UIViewController {
             self.resetSelection = true
             self.rotateElement = true
             self.deleteElement = false
-            for subview in schemaImageView.subviews {
-                subview.layer.borderWidth = 1
+            self.isPanGesture = false
+            for subView in schemaImageView.subviews {
+                subView.layer.borderWidth = 1
+                subView.isUserInteractionEnabled = false
             }
         }
         
@@ -68,9 +71,27 @@ final class SchemaViewController: UIViewController {
             self.resetSelection = true
             self.rotateElement = false
             self.deleteElement = true
-            for subview in schemaImageView.subviews {
-                subview.layer.borderWidth = 1
+            self.isPanGesture = false
+            for subView in schemaImageView.subviews {
+                subView.layer.borderWidth = 1
+                subView.isUserInteractionEnabled = false
             }
+        }
+        
+        let panAction = UIAction(title: "Режим перемещения", image: UIImage(systemName: "hand.draw")) { [unowned self] _ in
+            for subView in schemaImageView.subviews {
+                subView.isUserInteractionEnabled = true
+                let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
+                subView.addGestureRecognizer(panGesture)
+            }
+
+//            self.resetSelection = true
+//            self.rotateElement = false
+//            self.deleteElement = false
+//            self.isPanGesture = true
+//            for subView in schemaImageView.subviews {
+//                subView.layer.borderWidth = 1
+//            }
         }
         
         let saveSchemaAction = UIAction(title: "Сохранить схему", image: UIImage(systemName: "square.and.arrow.down")) { [unowned self] _ in
@@ -98,6 +119,9 @@ final class SchemaViewController: UIViewController {
             show(elementCollectionVC, sender: nil)
             
             //present(elementListVC, animated: true)
+            for subView in schemaImageView.subviews {
+                subView.isUserInteractionEnabled = false
+            }
         }
         
         let showPDF = UIAction(title: "Показать PDF", image:UIImage(systemName: "doc")) { [unowned self] _ in
@@ -107,7 +131,7 @@ final class SchemaViewController: UIViewController {
             show(showPDFVC, sender: nil)
         }
         
-        let menu = UIMenu(title: "Меню", children: [rotateAction, deleteAction, saveSchemaAction, addFavoriteElement, showPDF])
+        let menu = UIMenu(title: "Меню", children: [rotateAction, deleteAction, panAction, saveSchemaAction, addFavoriteElement, showPDF])
         
         let barMenuButton = UIBarButtonItem(title: "Меню", image: UIImage(systemName: "list.bullet"), menu: menu)
         
@@ -120,9 +144,19 @@ final class SchemaViewController: UIViewController {
             target: self,
             action: !resetSelection ? #selector(touchedScreen(touch:)) : nil
         )
-        scrollView.addGestureRecognizer(tap)
+        schemaImageView.addGestureRecognizer(tap)
+        //scrollView.addGestureRecognizer(tap)
+
         setupScrollView()
         addingSaveElementOnSchema()
+    }
+    
+    @objc func handlePan(recognizer: UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: schemaImageView)
+        if let view = recognizer.view {
+            view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
+        }
+        recognizer.setTranslation(CGPoint.zero, in: schemaImageView)
     }
     
     func convertImageViewToPDF(imageView: UIImageView) -> Data {
@@ -188,8 +222,9 @@ final class SchemaViewController: UIViewController {
         let touchPoint = touch.location(in: schemaImageView)
         if !resetSelection {
             // -TODO: think about it
-            for subview in schemaImageView.subviews {
-                subview.layer.borderWidth = 0
+            for subView in schemaImageView.subviews {
+                subView.layer.borderWidth = 0
+                subView.isUserInteractionEnabled = false
             }
             if selectedItem != "" {
                 guard let newImage = UIImage(named: selectedItem) else { return }
@@ -201,6 +236,8 @@ final class SchemaViewController: UIViewController {
                 )
                 imageView.contentMode = .scaleAspectFit
                 imageView.image = newImage
+
+//                imageView.addGestureRecognizer(pan)
                 schemaImageView.addSubview(imageView)
             }
         }
@@ -219,6 +256,9 @@ final class SchemaViewController: UIViewController {
                     subView.transform = CGAffineTransform(rotationAngle: getAngle(subView))
                 }
             }
+        }
+        
+        if isPanGesture {
         }
     }
     
@@ -312,6 +352,7 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
         resetSelection = false
         deleteElement = false
         rotateElement = false
+        isPanGesture = false
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

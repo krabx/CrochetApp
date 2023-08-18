@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="72" translatesAutoresizingMaskIntoConstraints="NO" id="Ljx-Tt-IAO">
-                                <rect key="frame" x="133.66666666666666" y="355.66666666666669" width="125.66666666666666" height="140.66666666666669"/>
+                                <rect key="frame" x="133.66666666666666" y="302.66666666666669" width="125.66666666666666" height="247.00000000000006"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Tj-4a-h69">
                                         <rect key="frame" x="0.0" y="0.0" width="125.66666666666667" height="34.333333333333336"/>
@@ -35,6 +35,14 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Мои схемы"/>
                                         <connections>
                                             <segue destination="web-yA-cj1" kind="show" id="Uti-TU-unJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FD4-eF-bvl">
+                                        <rect key="frame" x="0.0" y="212.66666666666669" width="125.66666666666669" height="34.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <segue destination="4kY-92-eaO" kind="show" id="50F-pO-inK"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -58,13 +66,13 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SchemaViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-Kk-k7w">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="сетка точка 20 круг" translatesAutoresizingMaskIntoConstraints="NO" id="S1U-C4-Tzz">
+                                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="сетка точка 20 круг" translatesAutoresizingMaskIntoConstraints="NO" id="S1U-C4-Tzz">
                                         <rect key="frame" x="0.0" y="0.0" width="2000" height="1997"/>
                                     </imageView>
                                 </subviews>
@@ -78,7 +86,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="VhO-5b-8qj"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nVb-qv-uh8">
-                                <rect key="frame" x="16" y="733" width="361" height="85"/>
+                                <rect key="frame" x="16" y="757" width="361" height="85"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="2iT-n1-I6s"/>
@@ -145,6 +153,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1110.6870229007634" y="-35.211267605633807"/>
+        </scene>
+        <!--Test Pan View Controller-->
+        <scene sceneID="IoH-Bb-ZaR">
+            <objects>
+                <viewController id="4kY-92-eaO" customClass="TestPanViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x7K-BF-bMB">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt7-gH-8Sn">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="сетка квадрат линии" translatesAutoresizingMaskIntoConstraints="NO" id="M8M-Y8-Q4z">
+                                        <rect key="frame" x="76" y="293" width="2000" height="2000"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="M8M-Y8-Q4z" firstAttribute="leading" secondItem="zt7-gH-8Sn" secondAttribute="leading" constant="76" id="1V7-nf-dCE"/>
+                                    <constraint firstItem="M8M-Y8-Q4z" firstAttribute="top" secondItem="zt7-gH-8Sn" secondAttribute="top" constant="293" id="8c2-Tv-Blo"/>
+                                    <constraint firstAttribute="bottom" secondItem="M8M-Y8-Q4z" secondAttribute="bottom" constant="294" id="h7K-7r-W2t"/>
+                                    <constraint firstAttribute="trailing" secondItem="M8M-Y8-Q4z" secondAttribute="trailing" constant="77" id="x1k-co-Iju"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="ZBq-Gr-G8E"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="W8S-oJ-sSe"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0sa-xU-UHD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zt7-gH-8Sn" firstAttribute="leading" secondItem="0sa-xU-UHD" secondAttribute="leading" id="7mT-88-Cbf"/>
+                            <constraint firstItem="zt7-gH-8Sn" firstAttribute="trailing" secondItem="0sa-xU-UHD" secondAttribute="trailing" id="Vdq-0K-lQE"/>
+                            <constraint firstItem="zt7-gH-8Sn" firstAttribute="top" secondItem="0sa-xU-UHD" secondAttribute="top" id="uLE-KO-GIb"/>
+                            <constraint firstItem="zt7-gH-8Sn" firstAttribute="bottom" secondItem="0sa-xU-UHD" secondAttribute="bottom" id="vDy-wO-Ooa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6Ab-XK-OUq"/>
+                    <connections>
+                        <outlet property="imageView" destination="M8M-Y8-Q4z" id="f6e-YB-91o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8qY-cN-8b3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-718.32061068702285" y="704.92957746478874"/>
         </scene>
         <!--Мои схемы-->
         <scene sceneID="hD4-kA-5re">
@@ -388,10 +440,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cNN-5D-6eo"/>
+        <segue reference="osm-OP-hvW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <image name="сетка квадрат линии" width="2000" height="2000"/>
         <image name="сетка точка 20 круг" width="2000" height="1997"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
