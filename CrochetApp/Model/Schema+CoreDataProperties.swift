@@ -15,7 +15,8 @@ extension Schema {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Schema> {
         return NSFetchRequest<Schema>(entityName: "Schema")
     }
-
+    
+    @NSManaged public var backgroundImageIndex: Double
     @NSManaged public var date: Date
     @NSManaged public var image: Data?
     @NSManaged public var name: String

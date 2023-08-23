@@ -8,7 +8,15 @@
 import UIKit
 import PDFKit
 
+protocol MySchemaCollectionViewCellDelegate: AnyObject {
+    func delete(item: MySchemaCollectionViewCell)
+}
+
 final class MySchemaCollectionViewCell: UICollectionViewCell {
+    
+    private let storageManager = StorageManager.shared
+    
+    weak var delegate: MySchemaCollectionViewCellDelegate?
     
 //    @IBOutlet var schemaView: UIView!
     @IBOutlet var mySchemaImageView: UIImageView!
@@ -19,7 +27,7 @@ final class MySchemaCollectionViewCell: UICollectionViewCell {
     
     let deleteButton = UIButton()
     
-    func configure(for schema: Schema) {
+    func configure(for schema: Schema, with indexPath: IndexPath) {
         let formatter = DateFormatter()
         formatter.locale = Locale.autoupdatingCurrent
         formatter.dateFormat = "dd MMMM YYYY, HH:mm"
@@ -29,9 +37,12 @@ final class MySchemaCollectionViewCell: UICollectionViewCell {
         
         setShadowAndCornerRadius()
         loadPDFView(from: schema.image ?? Data())
-        setDeleteButton()
+//        setDeleteButton(schema, indexPath)
     }
     
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        delegate?.delete(item: self)
+    }
     private func loadPDFView(from data: Data) {
 //        schemaView.autoScales = true
 //        schemaView.document = PDFDocument(data: data)
@@ -41,15 +52,21 @@ final class MySchemaCollectionViewCell: UICollectionViewCell {
         mySchemaImageView.image = pdfImage
     }
     
-    private func setDeleteButton() {
-        deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
-        deleteButton.tintColor = .red
-        self.addSubview(deleteButton)
-        deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        deleteButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        deleteButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
-
-    }
+//    private func setDeleteButton(_ schema: Schema, _ indexPath: IndexPath) {
+//        deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
+//        deleteButton.tintColor = .red
+//        self.addSubview(deleteButton)
+//        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+//        deleteButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+//        deleteButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
+//
+//
+//        let deleteAction = UIAction { [unowned self] _ in
+//            delegate?.updateCollection(with: indexPath)
+//        }
+//
+//        deleteButton.addAction(deleteAction, for: .touchUpInside)
+//    }
     
     private func setShadowAndCornerRadius() {
         contentView.layer.cornerRadius = 20

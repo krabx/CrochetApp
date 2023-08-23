@@ -35,6 +35,8 @@ final class SchemaViewController: UIViewController {
     
     private var nameOfSchema = ""
     
+    var backgroundImageIndex = 1
+    
     @IBOutlet var scrollView: UIScrollView!
     
     @IBOutlet var schemaImageView: UIImageView!
@@ -44,9 +46,11 @@ final class SchemaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setup(imageView: schemaImageView)
+        
         let segment: UISegmentedControl = UISegmentedControl(items: ["1","2"])
         
-        setupFor(segment)
+        setupFor(segment, with: backgroundImageIndex)
 
         navigationItem.titleView = segment
         
@@ -107,7 +111,7 @@ final class SchemaViewController: UIViewController {
                         )
                     }
                 let date = Date.now
-                self.storageManager.checkSchemasFor(name: self.nameOfSchema, date: date, elementsOnSchema: self.elementsOnSchema, image: self.convertImageViewToPDF(imageView: self.schemaImageView))
+                self.storageManager.checkSchemasFor(name: self.nameOfSchema, date: date, elementsOnSchema: self.elementsOnSchema, image: self.convertImageViewToPDF(imageView: self.schemaImageView), backgroundImageIndex: self.backgroundImageIndex)
             }
         }
         
@@ -316,8 +320,23 @@ final class SchemaViewController: UIViewController {
             imageView.image = newImage
             imageView.transform.a = element.angle
             imageView.transform = CGAffineTransform(rotationAngle: getAngle(imageView) - CGFloat.pi/4)
-            //getAngle(imageView)
             schemaImageView.addSubview(imageView)
+            
+            elementsOnSchema.append(HelperElementStructure(
+                x: imageView.frame.origin.x,
+                y: imageView.frame.origin.y,
+                angle: imageView.transform.a,
+                image: imageView.image?.pngData() ?? Data())
+            )
+            
+        }
+    }
+    
+    private func setup(imageView: UIImageView) {
+        if backgroundImageIndex == 0 {
+            schemaImageView.image = UIImage(named: "сетка квадрат точка ")
+        } else {
+            schemaImageView.image = UIImage(named: "сетка точка 20 круг")
         }
     }
 }
@@ -384,16 +403,18 @@ extension SchemaViewController {
         present(alert, animated: true)
     }
     
-    private func setupFor(_ segment: UISegmentedControl) {
+    private func setupFor(_ segment: UISegmentedControl, with backgroundImageIndex: Int) {
         let squareBackground = UIAction(image: UIImage(systemName: "grid")) { [unowned self] _ in
-            self.schemaImageView.image = UIImage(named: "сетка квадрат точка ")
+            self.backgroundImageIndex = 0
+            setup(imageView: schemaImageView)
         }
         
         let circleBackground = UIAction(image: UIImage(systemName: "circle.circle")) { [unowned self] _ in
-            self.schemaImageView.image = UIImage(named: "сетка точка 20 круг")
+            self.backgroundImageIndex = 1
+            setup(imageView: schemaImageView)
         }
         
-        segment.selectedSegmentIndex = 1
+        segment.selectedSegmentIndex = backgroundImageIndex
         
         segment.setAction(squareBackground, forSegmentAt: 0)
         segment.setAction(circleBackground, forSegmentAt: 1)

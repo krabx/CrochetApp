@@ -7,7 +7,11 @@
 
 import UIKit
 
-class MySchemasCollectionViewController: UICollectionViewController {
+//protocol MySchemasCollectionViewCellDelegate: AnyObject {
+//    func updateCollection(with indexPath: IndexPath)
+//}
+
+final class MySchemasCollectionViewController: UICollectionViewController {
     
     private let itemsForRow: CGFloat = 1
     
@@ -33,24 +37,34 @@ class MySchemasCollectionViewController: UICollectionViewController {
         setupSearch()
         fetchSchemas()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchSchemas()
+        collectionView.reloadData()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var name = ""
         var elements: [Element] = []
+        var backgroundImageIndex = 0
         guard let schemaVC = segue.destination as? SchemaViewController else { return }
         guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
         if !isFiltering {
             guard let setElements = savedSchemas[indexPath.item].elements as? Set<Element> else { return }
             elements = Array(setElements)
             name = savedSchemas[indexPath.item].name
+            backgroundImageIndex = Int(savedSchemas[indexPath.item].backgroundImageIndex)
         } else {
             guard let setElements = filteringSchemas[indexPath.item].elements as? Set<Element> else { return }
             elements = Array(setElements)
             name = filteringSchemas[indexPath.item].name
+            backgroundImageIndex = Int(filteringSchemas[indexPath.item].backgroundImageIndex)
         }
 
         schemaVC.saveElements = elements
         schemaVC.nameOfSaveSchema = name
+        schemaVC.backgroundImageIndex = backgroundImageIndex
     }
 
     // MARK: UICollectionViewDataSource
@@ -63,62 +77,24 @@ class MySchemasCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mySchema", for: indexPath) as? MySchemaCollectionViewCell else { return UICollectionViewCell() }
-    
+
+
         // Configure the cell
         if !isFiltering {
-            cell.configure(for: savedSchemas[indexPath.item])
+            cell.configure(for: savedSchemas[indexPath.item], with: indexPath)
         } else {
-            cell.configure(for: filteringSchemas[indexPath.item])
+            cell.configure(for: filteringSchemas[indexPath.item], with: indexPath)
         }
         
-        let deleteCell = UIAction { [unowned self] _ in
-            self.storageManager.delete(schema: savedSchemas[indexPath.item])
-            
-            if !isFiltering {
-                savedSchemas.remove(at: indexPath.item)
-            } else {
-                filteringSchemas.remove(at: indexPath.item)
-            }
-            
-            collectionView.deleteItems(at: [indexPath])
-            collectionView.reloadData()
-        }
-        
-        cell.deleteButton.addAction(deleteCell, for: .touchUpInside)
+        cell.delegate = self
         
         return cell
     }
 
     // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
-    */
 }
 
 extension MySchemasCollectionViewController: UICollectionViewDelegateFlowLayout {
@@ -153,6 +129,7 @@ extension MySchemasCollectionViewController {
                 print(error)
             }
         }
+
     }
     
     private func setupSearch() {
@@ -163,6 +140,21 @@ extension MySchemasCollectionViewController {
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
     }
+    
+//    private func deleteSchema(for indexPath: IndexPath) {
+//        print(savedSchemas)
+//        print(indexPath.row)
+//        if !isFiltering {
+//            storageManager.delete(schema: savedSchemas[indexPath.item])
+//        } else {
+//            storageManager.delete(schema: filteringSchemas[indexPath.item])
+//        }
+//        fetchSchemas()
+//        print(savedSchemas)
+//        print(indexPath.row)
+//        collectionView.deleteItems(at: [indexPath])
+//        collectionView.reloadData()
+//    }
 
 }
 
@@ -178,3 +170,23 @@ extension MySchemasCollectionViewController: UISearchResultsUpdating {
         collectionView.reloadData()
     }
 }
+
+extension MySchemasCollectionViewController: MySchemaCollectionViewCellDelegate {
+    func delete(item: MySchemaCollectionViewCell) {
+        guard let indexPath = collectionView.indexPath(for: item) else { return }
+        storageManager.delete(schema: savedSchemas[indexPath.item])
+        savedSchemas.remove(at: indexPath.item)
+        collectionView.deleteItems(at: [indexPath])
+    }
+    
+    
+}
+
+//extension MySchemasCollectionViewController: MySchemasCollectionViewCellDelegate {
+//    func updateCollection(with indexPath: IndexPath) {
+//        storageManager.delete(schema: savedSchemas[indexPath.row])
+//        savedSchemas.remove(at: indexPath.item)
+//        fetchSchemas()
+//        collectionView.deleteItems(at: [indexPath])
+//    }
+//}
