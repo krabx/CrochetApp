@@ -133,6 +133,7 @@ extension MySchemasCollectionViewController {
     }
     
     private func setupSearch() {
+        searchVC.searchBar.setValue("Отмена", forKey: "cancelButtonText")
         searchVC.searchResultsUpdater = self
         searchVC.obscuresBackgroundDuringPresentation = false
         searchVC.searchBar.placeholder = "Поиск"

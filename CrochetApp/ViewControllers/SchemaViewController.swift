@@ -8,6 +8,11 @@
 import UIKit
 import PDFKit
 
+enum operatingMode {
+    case insert
+    case edit
+}
+
 protocol ElementCollectionViewControllerDelegate: AnyObject {
     func getUsage(elements: [String])
 }
@@ -22,6 +27,8 @@ final class SchemaViewController: UIViewController {
     var isPanGesture = false
     
     private var elementsOnSchema: [HelperElementStructure] = []
+    
+    private var currentMode: operatingMode = .insert
     
     let dataManager = DataManager.shared
     
