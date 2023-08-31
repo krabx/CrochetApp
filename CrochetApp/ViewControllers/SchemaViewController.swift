@@ -11,6 +11,7 @@ import PDFKit
 enum operatingMode {
     case insert
     case edit
+    case delete
 }
 
 protocol ElementCollectionViewControllerDelegate: AnyObject {
@@ -68,33 +69,47 @@ final class SchemaViewController: UIViewController {
         navigationItem.backBarButtonItem = backButton
         
         let rotateAction = UIAction(title: "Режим поворота", image: UIImage(systemName: "rotate.right")) { [unowned self] _ in
-            self.resetSelection = true
-            self.rotateElement = true
-            self.deleteElement = false
-            self.isPanGesture = false
-            for subView in schemaImageView.subviews {
-                subView.layer.borderWidth = 1
-                subView.isUserInteractionEnabled = false
-            }
+//            self.resetSelection = true
+//            self.rotateElement = true
+//            self.deleteElement = false
+//            self.isPanGesture = false
+//            for subView in schemaImageView.subviews {
+//                subView.layer.borderWidth = 1
+//                subView.isUserInteractionEnabled = false
+//            }
         }
         
         let deleteAction = UIAction(title: "Режим удаления", image: UIImage(systemName: "trash")) { [unowned self] _ in
-            self.resetSelection = true
-            self.rotateElement = false
-            self.deleteElement = true
-            self.isPanGesture = false
-            for subView in schemaImageView.subviews {
-                subView.layer.borderWidth = 1
-                subView.isUserInteractionEnabled = false
-            }
+            currentMode = .delete
+//            self.resetSelection = true
+//            self.rotateElement = false
+//            self.deleteElement = true
+//            self.isPanGesture = false
+//            for subView in schemaImageView.subviews {
+//                subView.layer.borderWidth = 1
+//                subView.isUserInteractionEnabled = false
+//            }
         }
         
         let panAction = UIAction(title: "Режим перемещения", image: UIImage(systemName: "hand.draw")) { [unowned self] _ in
-            for subView in schemaImageView.subviews {
-                subView.isUserInteractionEnabled = true
-                let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
-                subView.addGestureRecognizer(panGesture)
-            }
+            currentMode = .edit
+            checkOperatingMode(with: nil)
+//            for subView in schemaImageView.subviews {
+//                subView.isUserInteractionEnabled = true
+//                let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
+//                subView.addGestureRecognizer(panGesture)
+////                subView.layer.borderWidth = 1.5
+////                subView.layer.borderColor = UIColor.red.cgColor
+//                let dashedBorder = CAShapeLayer()
+//                dashedBorder.strokeColor = UIColor.red.cgColor
+//                dashedBorder.lineDashPattern = [5, 5] // Здесь задаются значения штриха и промежутка между ними
+//                dashedBorder.frame = subView.bounds
+//                dashedBorder.fillColor = nil
+//                dashedBorder.path = UIBezierPath(rect: subView.bounds.inset(by: UIEdgeInsets(top: -5, left: 0, bottom: -5, right: 0))).cgPath
+//                dashedBorder.lineWidth = 2.0
+//                dashedBorder.cornerRadius = 10.0 // Отображение штриховой границы на закругленных углах
+//                subView.layer.addSublayer(dashedBorder)
+//            }
 
 //            self.resetSelection = true
 //            self.rotateElement = false
@@ -231,46 +246,77 @@ final class SchemaViewController: UIViewController {
     
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
         let touchPoint = touch.location(in: schemaImageView)
-        if !resetSelection {
-            // -TODO: think about it
-            for subView in schemaImageView.subviews {
-                subView.layer.borderWidth = 0
-                subView.isUserInteractionEnabled = false
-            }
-            if selectedItem != "" {
-                guard let newImage = UIImage(named: selectedItem) else { return }
-                let imageView = UIImageView(frame: CGRect(
-                    x: touchPoint.x,
-                    y: touchPoint.y,
-                    width: 50,
-                    height: 50)
-                )
-                imageView.contentMode = .scaleAspectFit
-                imageView.image = newImage
-
-//                imageView.addGestureRecognizer(pan)
-                schemaImageView.addSubview(imageView)
-            }
-        }
-        
-        if deleteElement {
-            for subView in schemaImageView.subviews {
-                if subView.frame.contains(touchPoint) {
-                    subView.removeFromSuperview()
-                }
-            }
-        }
-        
-        if rotateElement {
-            for subView in schemaImageView.subviews {
-                if subView.frame.contains(touchPoint) {
-                    subView.transform = CGAffineTransform(rotationAngle: getAngle(subView))
-                }
-            }
-        }
-        
-        if isPanGesture {
-        }
+        checkOperatingMode(with: touchPoint)
+//        switch currentMode {
+//        case .insert:
+//            for subView in schemaImageView.subviews {
+//                subView.isUserInteractionEnabled = false
+//                subView.layer.borderWidth = 0
+//            }
+//            if selectedItem != "" {
+//                guard let newImage = UIImage(named: selectedItem) else { return }
+//                let imageView = UIImageView(frame: CGRect(
+//                    x: touchPoint.x,
+//                    y: touchPoint.y,
+//                    width: 50,
+//                    height: 50)
+//                )
+//                imageView.contentMode = .scaleAspectFit
+//                imageView.image = newImage
+//
+////                imageView.addGestureRecognizer(pan)
+//                schemaImageView.addSubview(imageView)
+//            }
+//        case .edit:
+//            for subView in schemaImageView.subviews {
+//                if subView.frame.contains(touchPoint) {
+//                    subView.transform = CGAffineTransform(rotationAngle: getAngle(subView))
+//                }
+//            }
+//        case .delete:
+//            for subView in schemaImageView.subviews {
+//                if subView.frame.contains(touchPoint) {
+//                    subView.removeFromSuperview()
+//                }
+//            }
+//        }
+//        if !resetSelection {
+//            // -TODO: think about it
+//            for subView in schemaImageView.subviews {
+//                subView.layer.borderWidth = 0
+//                subView.isUserInteractionEnabled = false
+//            }
+//            if selectedItem != "" {
+//                guard let newImage = UIImage(named: selectedItem) else { return }
+//                let imageView = UIImageView(frame: CGRect(
+//                    x: touchPoint.x,
+//                    y: touchPoint.y,
+//                    width: 50,
+//                    height: 50)
+//                )
+//                imageView.contentMode = .scaleAspectFit
+//                imageView.image = newImage
+//
+////                imageView.addGestureRecognizer(pan)
+//                schemaImageView.addSubview(imageView)
+//            }
+//        }
+//
+//        if deleteElement {
+//            for subView in schemaImageView.subviews {
+//                if subView.frame.contains(touchPoint) {
+//                    subView.removeFromSuperview()
+//                }
+//            }
+//        }
+//
+//        if rotateElement {
+//            for subView in schemaImageView.subviews {
+//                if subView.frame.contains(touchPoint) {
+//                    subView.transform = CGAffineTransform(rotationAngle: getAngle(subView))
+//                }
+//            }
+//        }
     }
     
     private func setupScrollView() {
@@ -293,6 +339,57 @@ final class SchemaViewController: UIViewController {
         scrollView.minimumZoomScale = minScale
         scrollView.maximumZoomScale = maxScale
         
+    }
+    
+    private func checkOperatingMode(with coordinate: CGPoint?) {
+        switch currentMode {
+        case .insert:
+            for subView in schemaImageView.subviews {
+                subView.isUserInteractionEnabled = false
+                subView.layer.borderWidth = 0
+            }
+            if selectedItem != "" {
+                guard let newImage = UIImage(named: selectedItem) else { return }
+                let imageView = UIImageView(frame: CGRect(
+                    x: coordinate?.x ?? 0,
+                    y: coordinate?.y ?? 0,
+                    width: 50,
+                    height: 50)
+                )
+                imageView.contentMode = .scaleAspectFit
+                imageView.image = newImage
+
+//                imageView.addGestureRecognizer(pan)
+                schemaImageView.addSubview(imageView)
+            }
+        case .edit:
+            for subView in schemaImageView.subviews {
+                subView.isUserInteractionEnabled = true
+                let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
+                subView.addGestureRecognizer(panGesture)
+//                subView.layer.borderWidth = 1.5
+//                subView.layer.borderColor = UIColor.red.cgColor
+                let dashedBorder = CAShapeLayer()
+                dashedBorder.strokeColor = UIColor.red.cgColor
+                dashedBorder.lineDashPattern = [5, 5] // Здесь задаются значения штриха и промежутка между ними
+                dashedBorder.frame = subView.bounds
+                dashedBorder.fillColor = nil
+                dashedBorder.path = UIBezierPath(rect: subView.bounds.inset(by: UIEdgeInsets(top: -5, left: 0, bottom: -5, right: 0))).cgPath
+                dashedBorder.lineWidth = 2.0
+                dashedBorder.cornerRadius = 10.0 // Отображение штриховой границы на закругленных углах
+                subView.layer.addSublayer(dashedBorder)
+                
+                if subView.frame.contains(coordinate ?? CGPoint()) {
+                    subView.transform = CGAffineTransform(rotationAngle: getAngle(subView))
+                }
+            }
+        case .delete:
+            for subView in schemaImageView.subviews {
+                if subView.frame.contains(coordinate ?? CGPoint()) {
+                    subView.removeFromSuperview()
+                }
+            }
+        }
     }
     
 //    func centerImage() {
@@ -372,13 +469,13 @@ extension SchemaViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        currentMode = .insert
         selectedItem = elementsData[indexPath.item]
         
-        resetSelection = false
-        deleteElement = false
-        rotateElement = false
-        isPanGesture = false
+//        resetSelection = false
+//        deleteElement = false
+//        rotateElement = false
+//        isPanGesture = false
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
