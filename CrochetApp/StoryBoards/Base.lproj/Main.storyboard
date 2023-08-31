@@ -22,19 +22,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="Ljx-Tt-IAO">
-                                <rect key="frame" x="133.66666666666666" y="346.66666666666669" width="125.66666666666666" height="158.66666666666669"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Ljx-Tt-IAO">
+                                <rect key="frame" x="16" y="582" width="361" height="156"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Tj-4a-h69">
-                                        <rect key="frame" x="0.0" y="0.0" width="125.66666666666667" height="34.333333333333336"/>
-                                        <color key="backgroundColor" red="0.90039074419999998" green="0.63067064530000005" blue="0.177181848" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Новая схема">
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="53"/>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.73725497719999999" blue="0.43921568989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Новая схема">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -42,15 +46,19 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCw-dD-3Ua">
-                                        <rect key="frame" x="0.0" y="124.3333333333333" width="125.66666666666667" height="34.333333333333329"/>
-                                        <color key="backgroundColor" red="0.90039074419999998" green="0.63067064530000005" blue="0.177181848" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Мои схемы">
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
+                                        <rect key="frame" x="0.0" y="103" width="361" height="53"/>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.73725497719999999" blue="0.43921568989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Мои схемы">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -62,8 +70,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GOo-lW-1yc"/>
                         <constraints>
-                            <constraint firstItem="Ljx-Tt-IAO" firstAttribute="centerY" secondItem="Fl5-xm-438" secondAttribute="centerY" id="K2R-T4-ijI"/>
-                            <constraint firstItem="Ljx-Tt-IAO" firstAttribute="centerX" secondItem="Fl5-xm-438" secondAttribute="centerX" id="sel-PZ-Alq"/>
+                            <constraint firstItem="Ljx-Tt-IAO" firstAttribute="leading" secondItem="GOo-lW-1yc" secondAttribute="leading" constant="16" id="HIG-9P-sFe"/>
+                            <constraint firstItem="GOo-lW-1yc" firstAttribute="trailing" secondItem="Ljx-Tt-IAO" secondAttribute="trailing" constant="16" id="avp-1p-MhR"/>
+                            <constraint firstItem="GOo-lW-1yc" firstAttribute="bottom" secondItem="Ljx-Tt-IAO" secondAttribute="bottom" constant="80" id="x6z-IF-zDw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sMa-bi-Mqc"/>
@@ -98,7 +107,7 @@
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nVb-qv-uh8">
                                 <rect key="frame" x="16" y="733" width="361" height="85"/>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <color key="backgroundColor" red="0.55294120309999995" green="0.68235301969999995" blue="0.73725497719999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="2iT-n1-I6s"/>
                                 </constraints>
@@ -136,11 +145,14 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.73725497719999999" blue="0.43921568989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="nVb-qv-uh8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="b1o-Vx-O3f"/>
                             <constraint firstItem="vBI-Kk-k7w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eKd-nn-MJc"/>
@@ -164,50 +176,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1110.6870229007634" y="-35.211267605633807"/>
-        </scene>
-        <!--Test Pan View Controller-->
-        <scene sceneID="IoH-Bb-ZaR">
-            <objects>
-                <viewController id="4kY-92-eaO" customClass="TestPanViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="x7K-BF-bMB">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt7-gH-8Sn">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="сетка квадрат линии" translatesAutoresizingMaskIntoConstraints="NO" id="M8M-Y8-Q4z">
-                                        <rect key="frame" x="76" y="293" width="2000" height="2000"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="M8M-Y8-Q4z" firstAttribute="leading" secondItem="zt7-gH-8Sn" secondAttribute="leading" constant="76" id="1V7-nf-dCE"/>
-                                    <constraint firstItem="M8M-Y8-Q4z" firstAttribute="top" secondItem="zt7-gH-8Sn" secondAttribute="top" constant="293" id="8c2-Tv-Blo"/>
-                                    <constraint firstAttribute="bottom" secondItem="M8M-Y8-Q4z" secondAttribute="bottom" constant="294" id="h7K-7r-W2t"/>
-                                    <constraint firstAttribute="trailing" secondItem="M8M-Y8-Q4z" secondAttribute="trailing" constant="77" id="x1k-co-Iju"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="ZBq-Gr-G8E"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="W8S-oJ-sSe"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="0sa-xU-UHD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="zt7-gH-8Sn" firstAttribute="leading" secondItem="0sa-xU-UHD" secondAttribute="leading" id="7mT-88-Cbf"/>
-                            <constraint firstItem="zt7-gH-8Sn" firstAttribute="trailing" secondItem="0sa-xU-UHD" secondAttribute="trailing" id="Vdq-0K-lQE"/>
-                            <constraint firstItem="zt7-gH-8Sn" firstAttribute="top" secondItem="0sa-xU-UHD" secondAttribute="top" id="uLE-KO-GIb"/>
-                            <constraint firstItem="zt7-gH-8Sn" firstAttribute="bottom" secondItem="0sa-xU-UHD" secondAttribute="bottom" id="vDy-wO-Ooa"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="6Ab-XK-OUq"/>
-                    <connections>
-                        <outlet property="imageView" destination="M8M-Y8-Q4z" id="f6e-YB-91o"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8qY-cN-8b3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-718.32061068702285" y="704.92957746478874"/>
         </scene>
         <!--Мои схемы-->
         <scene sceneID="hD4-kA-5re">
@@ -257,7 +225,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="RSk-Bd-fbW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.73725497719999999" blue="0.43921568989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tWf-NZ-BDK">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -361,7 +329,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="872-2F-hit">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.73725497719999999" blue="0.43921568989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IyD-bv-zVZ">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
@@ -481,16 +449,12 @@
         <image name="backgroundImage" width="768" height="768"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="trash" catalog="system" width="117" height="128"/>
-        <image name="сетка квадрат линии" width="2000" height="2000"/>
         <image name="сетка точка 20 круг" width="2000" height="1997"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
