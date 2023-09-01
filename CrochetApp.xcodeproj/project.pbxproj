@@ -90,7 +90,6 @@
 			children = (
 				6EAD3B5E2A69E3BE0017433F /* StorageManager */,
 				6E2525642A3F154A00E6C94D /* DataManager */,
-				6E2525592A3F148C00E6C94D /* Extensions */,
 				6E2525462A311B1C00E6C94D /* Model */,
 				6E2525492A311B5800E6C94D /* App */,
 				6E2525482A311B4600E6C94D /* ViewControllers */,
@@ -146,13 +145,6 @@
 				6E2525402A311A9E00E6C94D /* Info.plist */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		6E2525592A3F148C00E6C94D /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		6E2525642A3F154A00E6C94D /* DataManager */ = {
