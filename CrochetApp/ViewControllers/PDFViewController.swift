@@ -11,9 +11,10 @@ import PDFKit
 final class PDFViewController: UIViewController {
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    private var pdf: PDFDocument = PDFDocument()
     
-    var imageViewForPDF = UIImageView()
+    var imageViewForPDF: UIImageView!
+    
+    private var pdf: PDFDocument = PDFDocument()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +39,8 @@ final class PDFViewController: UIViewController {
         activityIndicator.stopAnimating()
     }
     
-    func convertImageViewToPDF(imageView: UIImageView) -> Data {
+    private func convertImageViewToPDF(imageView: UIImageView) -> Data {
         let pdfRenderer = UIGraphicsPDFRenderer(bounds: imageView.bounds)
-
         let pdfData = pdfRenderer.pdfData { context in
             context.beginPage()
             imageView.layer.render(in: context.cgContext)
