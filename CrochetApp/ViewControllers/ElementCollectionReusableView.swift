@@ -8,6 +8,5 @@
 import UIKit
 
 final class ElementCollectionReusableView: UICollectionReusableView {
-        
     @IBOutlet var categoryLabel: UILabel!
 }

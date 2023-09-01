@@ -7,10 +7,6 @@
 
 import UIKit
 
-//protocol MySchemasCollectionViewCellDelegate: AnyObject {
-//    func updateCollection(with indexPath: IndexPath)
-//}
-
 final class MySchemasCollectionViewController: UICollectionViewController {
     
     private let itemsForRow: CGFloat = 1
@@ -50,6 +46,7 @@ final class MySchemasCollectionViewController: UICollectionViewController {
         var backgroundImageIndex = 0
         guard let schemaVC = segue.destination as? SchemaViewController else { return }
         guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
+        
         if !isFiltering {
             guard let setElements = savedSchemas[indexPath.item].elements as? Set<Element> else { return }
             elements = Array(setElements)
@@ -70,16 +67,12 @@ final class MySchemasCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         isFiltering ? filteringSchemas.count : savedSchemas.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mySchema", for: indexPath) as? MySchemaCollectionViewCell else { return UICollectionViewCell() }
-
-
-        // Configure the cell
+        
         if !isFiltering {
             cell.configure(for: savedSchemas[indexPath.item], with: indexPath)
         } else {
@@ -90,13 +83,9 @@ final class MySchemasCollectionViewController: UICollectionViewController {
         
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
 }
 
+// MARK: - Extension for UICollectionViewDelegateFlowLayout
 extension MySchemasCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingWidth = sectionInsets.top * (itemsForRow + 1)
@@ -116,9 +105,9 @@ extension MySchemasCollectionViewController: UICollectionViewDelegateFlowLayout 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         sectionInsets.top
     }
-
 }
 
+// MARK: - Extension for private methods
 extension MySchemasCollectionViewController {
     private func fetchSchemas() {
         storageManager.fetchSchemas { result in
@@ -129,7 +118,6 @@ extension MySchemasCollectionViewController {
                 print(error)
             }
         }
-
     }
     
     private func setupSearch() {
@@ -141,24 +129,9 @@ extension MySchemasCollectionViewController {
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
     }
-    
-//    private func deleteSchema(for indexPath: IndexPath) {
-//        print(savedSchemas)
-//        print(indexPath.row)
-//        if !isFiltering {
-//            storageManager.delete(schema: savedSchemas[indexPath.item])
-//        } else {
-//            storageManager.delete(schema: filteringSchemas[indexPath.item])
-//        }
-//        fetchSchemas()
-//        print(savedSchemas)
-//        print(indexPath.row)
-//        collectionView.deleteItems(at: [indexPath])
-//        collectionView.reloadData()
-//    }
-
 }
 
+// MARK: - Extension for search
 extension MySchemasCollectionViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filteringBySearch(searchController.searchBar.text ?? "")
@@ -172,6 +145,7 @@ extension MySchemasCollectionViewController: UISearchResultsUpdating {
     }
 }
 
+// MARK: - Extension for MySchemaCollectionViewCellDelegate
 extension MySchemasCollectionViewController: MySchemaCollectionViewCellDelegate {
     func delete(item: MySchemaCollectionViewCell) {
         guard let indexPath = collectionView.indexPath(for: item) else { return }
@@ -179,15 +153,4 @@ extension MySchemasCollectionViewController: MySchemaCollectionViewCellDelegate 
         savedSchemas.remove(at: indexPath.item)
         collectionView.deleteItems(at: [indexPath])
     }
-    
-    
 }
-
-//extension MySchemasCollectionViewController: MySchemasCollectionViewCellDelegate {
-//    func updateCollection(with indexPath: IndexPath) {
-//        storageManager.delete(schema: savedSchemas[indexPath.row])
-//        savedSchemas.remove(at: indexPath.item)
-//        fetchSchemas()
-//        collectionView.deleteItems(at: [indexPath])
-//    }
-//}

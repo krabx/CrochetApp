@@ -123,6 +123,7 @@ final class DataManager {
             relief.count,
             other.count
         ]
+        
         return counts[number]
     }
     
@@ -139,25 +140,7 @@ final class DataManager {
             relief,
             other
         ]
+        
         return allSets[number]
     }
-    
-
-    let elements = [
-        ChView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
-        DcView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
-        HdcView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
-        Sl_stView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
-        TrView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
-        StartView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-    ]
-    
-    let standard = [
-        Sl_stView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
-        TrView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
-        StartView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
-        ChView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
-        DcView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)),
-        HdcView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-    ]
 }

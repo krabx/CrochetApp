@@ -14,31 +14,16 @@
 		6E25253C2A311A9E00E6C94D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E25253B2A311A9E00E6C94D /* Assets.xcassets */; };
 		6E25253F2A311A9E00E6C94D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E25253D2A311A9E00E6C94D /* LaunchScreen.storyboard */; };
 		6E25254B2A311F3C00E6C94D /* HelperElementStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25254A2A311F3C00E6C94D /* HelperElementStructure.swift */; };
-		6E25255B2A3F14C700E6C94D /* Ch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25255A2A3F14C700E6C94D /* Ch.swift */; };
-		6E2525602A3F14EB00E6C94D /* Dc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25255C2A3F14EB00E6C94D /* Dc.swift */; };
-		6E2525612A3F14EB00E6C94D /* Sl_st.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25255D2A3F14EB00E6C94D /* Sl_st.swift */; };
-		6E2525622A3F14EB00E6C94D /* Hdc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25255E2A3F14EB00E6C94D /* Hdc.swift */; };
-		6E2525632A3F14EB00E6C94D /* Tr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25255F2A3F14EB00E6C94D /* Tr.swift */; };
 		6E2525662A3F156200E6C94D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525652A3F156200E6C94D /* DataManager.swift */; };
-		6E25256A2A3F178000E6C94D /* ChView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525692A3F178000E6C94D /* ChView.swift */; };
-		6E25256C2A3F184A00E6C94D /* DcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25256B2A3F184A00E6C94D /* DcView.swift */; };
-		6E25256E2A3F18A300E6C94D /* HdcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25256D2A3F18A300E6C94D /* HdcView.swift */; };
-		6E2525702A3F18B200E6C94D /* Sl_stView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25256F2A3F18B200E6C94D /* Sl_stView.swift */; };
-		6E2525722A3F18BC00E6C94D /* TrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525712A3F18BC00E6C94D /* TrView.swift */; };
-		6E2525742A3F1FAB00E6C94D /* TrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525732A3F1FAB00E6C94D /* TrViewController.swift */; };
-		6E2525762A3F210900E6C94D /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525752A3F210800E6C94D /* Start.swift */; };
-		6E2525782A3F211C00E6C94D /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525772A3F211C00E6C94D /* StartView.swift */; };
 		6E25257E2A4248F900E6C94D /* ElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25257D2A4248F900E6C94D /* ElementCell.swift */; };
 		6E2525802A45CF7900E6C94D /* ElementListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25257F2A45CF7900E6C94D /* ElementListViewController.swift */; };
 		6E2525822A45D01E00E6C94D /* ElementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */; };
-		6E37D26B2A8FBCA200E3CF25 /* TestPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E37D26A2A8FBCA200E3CF25 /* TestPanViewController.swift */; };
 		6E39B8232A8169BB0069B2B5 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E39B8222A8169BB0069B2B5 /* StartViewController.swift */; };
 		6E39B8252A82D26D0069B2B5 /* ElementCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E39B8242A82D26D0069B2B5 /* ElementCollectionViewController.swift */; };
 		6E39B8272A82D33D0069B2B5 /* ElementCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E39B8262A82D33D0069B2B5 /* ElementCollectionReusableView.swift */; };
 		6E5303C12A8C05A200764B21 /* MySchemasCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5303C02A8C05A200764B21 /* MySchemasCollectionViewController.swift */; };
 		6E5303C32A8C063600764B21 /* MySchemaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5303C22A8C063600764B21 /* MySchemaCollectionViewCell.swift */; };
 		6E6A7D022A7459A800544EE4 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6A7D012A7459A800544EE4 /* PDFViewController.swift */; };
-		6E6A7D062A7990B800544EE4 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6A7D052A7990B800544EE4 /* ImageScrollView.swift */; };
 		6E6A7D182A7AFC7F00544EE4 /* example.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6E6A7D172A7AFC7F00544EE4 /* example.pdf */; };
 		6EAD3B602A69E3D80017433F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B5F2A69E3D80017433F /* StorageManager.swift */; };
 		6EAD3B622A69E5210017433F /* MySchemasListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B612A69E5210017433F /* MySchemasListViewController.swift */; };
@@ -59,31 +44,16 @@
 		6E25253E2A311A9E00E6C94D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E2525402A311A9E00E6C94D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E25254A2A311F3C00E6C94D /* HelperElementStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperElementStructure.swift; sourceTree = "<group>"; };
-		6E25255A2A3F14C700E6C94D /* Ch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ch.swift; sourceTree = "<group>"; };
-		6E25255C2A3F14EB00E6C94D /* Dc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dc.swift; sourceTree = "<group>"; };
-		6E25255D2A3F14EB00E6C94D /* Sl_st.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sl_st.swift; sourceTree = "<group>"; };
-		6E25255E2A3F14EB00E6C94D /* Hdc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hdc.swift; sourceTree = "<group>"; };
-		6E25255F2A3F14EB00E6C94D /* Tr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tr.swift; sourceTree = "<group>"; };
 		6E2525652A3F156200E6C94D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		6E2525692A3F178000E6C94D /* ChView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChView.swift; sourceTree = "<group>"; };
-		6E25256B2A3F184A00E6C94D /* DcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DcView.swift; sourceTree = "<group>"; };
-		6E25256D2A3F18A300E6C94D /* HdcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HdcView.swift; sourceTree = "<group>"; };
-		6E25256F2A3F18B200E6C94D /* Sl_stView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sl_stView.swift; sourceTree = "<group>"; };
-		6E2525712A3F18BC00E6C94D /* TrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrView.swift; sourceTree = "<group>"; };
-		6E2525732A3F1FAB00E6C94D /* TrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrViewController.swift; sourceTree = "<group>"; };
-		6E2525752A3F210800E6C94D /* Start.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
-		6E2525772A3F211C00E6C94D /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		6E25257D2A4248F900E6C94D /* ElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCell.swift; sourceTree = "<group>"; };
 		6E25257F2A45CF7900E6C94D /* ElementListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementListViewController.swift; sourceTree = "<group>"; };
 		6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollectionViewCell.swift; sourceTree = "<group>"; };
-		6E37D26A2A8FBCA200E3CF25 /* TestPanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPanViewController.swift; sourceTree = "<group>"; };
 		6E39B8222A8169BB0069B2B5 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		6E39B8242A82D26D0069B2B5 /* ElementCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollectionViewController.swift; sourceTree = "<group>"; };
 		6E39B8262A82D33D0069B2B5 /* ElementCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollectionReusableView.swift; sourceTree = "<group>"; };
 		6E5303C02A8C05A200764B21 /* MySchemasCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchemasCollectionViewController.swift; sourceTree = "<group>"; };
 		6E5303C22A8C063600764B21 /* MySchemaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchemaCollectionViewCell.swift; sourceTree = "<group>"; };
 		6E6A7D012A7459A800544EE4 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
-		6E6A7D052A7990B800544EE4 /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		6E6A7D172A7AFC7F00544EE4 /* example.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = example.pdf; sourceTree = "<group>"; };
 		6EAD3B5F2A69E3D80017433F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		6EAD3B612A69E5210017433F /* MySchemasListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchemasListViewController.swift; sourceTree = "<group>"; };
@@ -126,7 +96,7 @@
 			children = (
 				6EAD3B5E2A69E3BE0017433F /* StorageManager */,
 				6E2525642A3F154A00E6C94D /* DataManager */,
-				6E2525592A3F148C00E6C94D /* Resources */,
+				6E2525592A3F148C00E6C94D /* Extensions */,
 				6E2525462A311B1C00E6C94D /* Model */,
 				6E2525492A311B5800E6C94D /* App */,
 				6E2525482A311B4600E6C94D /* ViewControllers */,
@@ -173,7 +143,6 @@
 				6E39B8262A82D33D0069B2B5 /* ElementCollectionReusableView.swift */,
 				6E5303C02A8C05A200764B21 /* MySchemasCollectionViewController.swift */,
 				6E5303C22A8C063600764B21 /* MySchemaCollectionViewCell.swift */,
-				6E37D26A2A8FBCA200E3CF25 /* TestPanViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -188,13 +157,11 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		6E2525592A3F148C00E6C94D /* Resources */ = {
+		6E2525592A3F148C00E6C94D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				6E2525682A3F175200E6C94D /* Originals */,
-				6E2525672A3F171F00E6C94D /* Views */,
 			);
-			path = Resources;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		6E2525642A3F154A00E6C94D /* DataManager */ = {
@@ -203,34 +170,6 @@
 				6E2525652A3F156200E6C94D /* DataManager.swift */,
 			);
 			path = DataManager;
-			sourceTree = "<group>";
-		};
-		6E2525672A3F171F00E6C94D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				6E2525692A3F178000E6C94D /* ChView.swift */,
-				6E25256B2A3F184A00E6C94D /* DcView.swift */,
-				6E25256D2A3F18A300E6C94D /* HdcView.swift */,
-				6E25256F2A3F18B200E6C94D /* Sl_stView.swift */,
-				6E2525712A3F18BC00E6C94D /* TrView.swift */,
-				6E2525732A3F1FAB00E6C94D /* TrViewController.swift */,
-				6E2525772A3F211C00E6C94D /* StartView.swift */,
-				6E6A7D052A7990B800544EE4 /* ImageScrollView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		6E2525682A3F175200E6C94D /* Originals */ = {
-			isa = PBXGroup;
-			children = (
-				6E2525752A3F210800E6C94D /* Start.swift */,
-				6E25255A2A3F14C700E6C94D /* Ch.swift */,
-				6E25255C2A3F14EB00E6C94D /* Dc.swift */,
-				6E25255E2A3F14EB00E6C94D /* Hdc.swift */,
-				6E25255D2A3F14EB00E6C94D /* Sl_st.swift */,
-				6E25255F2A3F14EB00E6C94D /* Tr.swift */,
-			);
-			path = Originals;
 			sourceTree = "<group>";
 		};
 		6EAD3B5E2A69E3BE0017433F /* StorageManager */ = {
@@ -315,37 +254,22 @@
 			files = (
 				6E39B8232A8169BB0069B2B5 /* StartViewController.swift in Sources */,
 				6E2525372A311A9C00E6C94D /* SchemaViewController.swift in Sources */,
-				6E2525602A3F14EB00E6C94D /* Dc.swift in Sources */,
-				6E2525702A3F18B200E6C94D /* Sl_stView.swift in Sources */,
 				6E2525802A45CF7900E6C94D /* ElementListViewController.swift in Sources */,
-				6E2525632A3F14EB00E6C94D /* Tr.swift in Sources */,
-				6E2525612A3F14EB00E6C94D /* Sl_st.swift in Sources */,
-				6E25255B2A3F14C700E6C94D /* Ch.swift in Sources */,
 				6E2525822A45D01E00E6C94D /* ElementCollectionViewCell.swift in Sources */,
 				6EAD3B622A69E5210017433F /* MySchemasListViewController.swift in Sources */,
-				6E2525742A3F1FAB00E6C94D /* TrViewController.swift in Sources */,
 				6EAD3B8E2A704B450017433F /* Element+CoreDataClass.swift in Sources */,
 				6EAD3B652A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld in Sources */,
-				6E25256C2A3F184A00E6C94D /* DcView.swift in Sources */,
 				6E2525332A311A9C00E6C94D /* AppDelegate.swift in Sources */,
 				6EAD3B8F2A704B450017433F /* Element+CoreDataProperties.swift in Sources */,
-				6E37D26B2A8FBCA200E3CF25 /* TestPanViewController.swift in Sources */,
-				6E2525782A3F211C00E6C94D /* StartView.swift in Sources */,
-				6E2525622A3F14EB00E6C94D /* Hdc.swift in Sources */,
-				6E25256A2A3F178000E6C94D /* ChView.swift in Sources */,
 				6E6A7D022A7459A800544EE4 /* PDFViewController.swift in Sources */,
 				6EAD3B912A704B450017433F /* Schema+CoreDataProperties.swift in Sources */,
 				6E39B8252A82D26D0069B2B5 /* ElementCollectionViewController.swift in Sources */,
 				6E2525662A3F156200E6C94D /* DataManager.swift in Sources */,
 				6E25257E2A4248F900E6C94D /* ElementCell.swift in Sources */,
-				6E25256E2A3F18A300E6C94D /* HdcView.swift in Sources */,
 				6E39B8272A82D33D0069B2B5 /* ElementCollectionReusableView.swift in Sources */,
 				6E25254B2A311F3C00E6C94D /* HelperElementStructure.swift in Sources */,
-				6E2525722A3F18BC00E6C94D /* TrView.swift in Sources */,
-				6E2525762A3F210900E6C94D /* Start.swift in Sources */,
 				6E5303C32A8C063600764B21 /* MySchemaCollectionViewCell.swift in Sources */,
 				6E2525352A311A9C00E6C94D /* SceneDelegate.swift in Sources */,
-				6E6A7D062A7990B800544EE4 /* ImageScrollView.swift in Sources */,
 				6EAD3B902A704B450017433F /* Schema+CoreDataClass.swift in Sources */,
 				6EAD3B602A69E3D80017433F /* StorageManager.swift in Sources */,
 				6E5303C12A8C05A200764B21 /* MySchemasCollectionViewController.swift in Sources */,

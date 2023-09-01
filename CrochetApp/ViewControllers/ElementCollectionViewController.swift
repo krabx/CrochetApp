@@ -8,6 +8,7 @@
 import UIKit
 
 final class ElementCollectionViewController: UICollectionViewController {
+    unowned var delegate: ElementCollectionViewControllerDelegate?
     
     private let dataManager = DataManager.shared
     
@@ -17,22 +18,13 @@ final class ElementCollectionViewController: UICollectionViewController {
     
     private var selectedElements: [String] = []
     
-    unowned var delegate: ElementCollectionViewControllerDelegate?
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    deinit {
-        delegate?.getUsage(elements: selectedElements)
-    }
 
-    // MARK: - Navigation
-
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return dataManager.categories.count
     }
 
@@ -44,9 +36,12 @@ final class ElementCollectionViewController: UICollectionViewController {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "elementView", for: indexPath)
+            
             guard let typedHeaderView = headerView as? ElementCollectionReusableView else { return headerView }
             typedHeaderView.categoryLabel.text = dataManager.categories[indexPath.section]
+            
             return typedHeaderView
+            
         default:
             return UICollectionReusableView()
         }
@@ -54,22 +49,27 @@ final class ElementCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "elementCell", for: indexPath) as? ElementCollectionViewCell else { return UICollectionViewCell() }
+        
         let currentCollection = dataManager.getCollection(from: indexPath.section)
+        
         cell.elementImageView.image = UIImage(named: currentCollection[indexPath.item])
-        // Configure the cell
-    
+
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let element = dataManager.getCollection(from: indexPath.section)[indexPath.item]
         selectedElements.append(element)
     }
-
+    
+    deinit {
+        delegate?.getUsage(elements: selectedElements)
+    }
 }
 
+// MARK: - Extension for UICollectionViewDelegateFlowLayout
 extension ElementCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingWidth = sectionInsets.top * (itemsForRow + 1)
@@ -89,5 +89,4 @@ extension ElementCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         sectionInsets.top
     }
-    
 }
