@@ -127,10 +127,10 @@
 			isa = PBXGroup;
 			children = (
 				6E2525362A311A9C00E6C94D /* SchemaViewController.swift */,
-				6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */,
 				6E6A7D012A7459A800544EE4 /* PDFViewController.swift */,
 				6E39B8222A8169BB0069B2B5 /* StartViewController.swift */,
 				6E39B8242A82D26D0069B2B5 /* ElementCollectionViewController.swift */,
+				6E2525812A45D01E00E6C94D /* ElementCollectionViewCell.swift */,
 				6E39B8262A82D33D0069B2B5 /* ElementCollectionReusableView.swift */,
 				6E5303C02A8C05A200764B21 /* MySchemasCollectionViewController.swift */,
 				6E5303C22A8C063600764B21 /* MySchemaCollectionViewCell.swift */,

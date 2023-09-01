@@ -37,10 +37,10 @@ final class MySchemaCollectionViewCell: UICollectionViewCell {
         dateOfMySchema.text = formatter.string(from: schema.date)
         
         setShadowAndCornerRadius()
-        loadPDFView(from: schema.image ?? Data())
+        loadImageFromPDF(from: schema.image ?? Data())
     }
     
-    private func loadPDFView(from data: Data) {
+    private func loadImageFromPDF(from data: Data) {
         let pdfDocument = PDFDocument(data: data)?.page(at: 0)
         let pdfSize = pdfDocument?.bounds(for: .mediaBox).size
         let pdfImage = pdfDocument?.thumbnail(of: pdfSize ?? CGSize(), for: .mediaBox)

@@ -64,7 +64,7 @@ final class MySchemasCollectionViewController: UICollectionViewController {
         schemaVC.backgroundImageIndex = backgroundImageIndex
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         isFiltering ? filteringSchemas.count : savedSchemas.count

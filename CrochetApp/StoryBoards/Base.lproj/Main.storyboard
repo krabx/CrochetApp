@@ -175,48 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110.6870229007634" y="-35.211267605633807"/>
-        </scene>
-        <!--Мои схемы-->
-        <scene sceneID="hD4-kA-5re">
-            <objects>
-                <tableViewController id="ED2-Ox-ovX" customClass="MySchemasListViewController" customModule="CrochetApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qi9-GC-bRD">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="savedSchema" textLabel="6fr-VL-d33" style="IBUITableViewCellStyleDefault" id="dbp-MD-r6n" customClass="ElementCell" customModule="CrochetApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dbp-MD-r6n" id="0tu-5C-qb6">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6fr-VL-d33">
-                                            <rect key="frame" x="20" y="0.0" width="353" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="osm-OP-hvW"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ED2-Ox-ovX" id="N7s-UM-kQn"/>
-                            <outlet property="delegate" destination="ED2-Ox-ovX" id="yBh-Xo-M4L"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Мои схемы" id="ulf-KJ-kti"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8tV-Ox-n7c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="208" y="705"/>
+            <point key="canvasLocation" x="1086" y="323"/>
         </scene>
         <!--My Schemas Collection View Controller-->
         <scene sceneID="rh8-nx-qAH">
@@ -320,7 +279,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m9g-eo-WoD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110.6870229007634" y="704.92957746478874"/>
+            <point key="canvasLocation" x="208" y="705"/>
         </scene>
         <!--Element Collection View Controller-->
         <scene sceneID="Jcf-HW-QAf">
@@ -387,7 +346,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CQH-Ql-RTC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876" y="-35"/>
+            <point key="canvasLocation" x="1898" y="705"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iLQ-Gu-Yht">
@@ -405,7 +364,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vHG-b3-F8R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-718.32061068702285" y="-35.211267605633807"/>
+            <point key="canvasLocation" x="-671" y="323"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="fiC-Nu-wil">
@@ -439,11 +398,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fA1-7z-c1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1875.5725190839694" y="-739.43661971830988"/>
+            <point key="canvasLocation" x="1897" y="-35"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NlK-1m-YqL"/>
+        <segue reference="cNN-5D-6eo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="backgroundImage" width="768" height="768"/>
