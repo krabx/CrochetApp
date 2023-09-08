@@ -22,7 +22,6 @@
 		6E5303C12A8C05A200764B21 /* MySchemasCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5303C02A8C05A200764B21 /* MySchemasCollectionViewController.swift */; };
 		6E5303C32A8C063600764B21 /* MySchemaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5303C22A8C063600764B21 /* MySchemaCollectionViewCell.swift */; };
 		6E6A7D022A7459A800544EE4 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6A7D012A7459A800544EE4 /* PDFViewController.swift */; };
-		6E6A7D182A7AFC7F00544EE4 /* example.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6E6A7D172A7AFC7F00544EE4 /* example.pdf */; };
 		6EAD3B602A69E3D80017433F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B5F2A69E3D80017433F /* StorageManager.swift */; };
 		6EAD3B652A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B632A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld */; };
 		6EAD3B8E2A704B450017433F /* Element+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD3B8A2A704B450017433F /* Element+CoreDataClass.swift */; };
@@ -49,7 +48,6 @@
 		6E5303C02A8C05A200764B21 /* MySchemasCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchemasCollectionViewController.swift; sourceTree = "<group>"; };
 		6E5303C22A8C063600764B21 /* MySchemaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchemaCollectionViewCell.swift; sourceTree = "<group>"; };
 		6E6A7D012A7459A800544EE4 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
-		6E6A7D172A7AFC7F00544EE4 /* example.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = example.pdf; sourceTree = "<group>"; };
 		6EAD3B5F2A69E3D80017433F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		6EAD3B642A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchemaCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		6EAD3B8A2A704B450017433F /* Element+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Element+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				6E2525472A311B3300E6C94D /* StoryBoards */,
 				6E25253B2A311A9E00E6C94D /* Assets.xcassets */,
 				6EAD3B632A6FF3FD0017433F /* SchemaCoreDataModel.xcdatamodeld */,
-				6E6A7D172A7AFC7F00544EE4 /* example.pdf */,
 			);
 			path = CrochetApp;
 			sourceTree = "<group>";
@@ -224,7 +221,6 @@
 				6E25253F2A311A9E00E6C94D /* LaunchScreen.storyboard in Resources */,
 				6E25253C2A311A9E00E6C94D /* Assets.xcassets in Resources */,
 				6E25253A2A311A9C00E6C94D /* Main.storyboard in Resources */,
-				6E6A7D182A7AFC7F00544EE4 /* example.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +416,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -452,7 +448,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

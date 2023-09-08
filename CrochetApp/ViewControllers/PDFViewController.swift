@@ -32,11 +32,13 @@ final class PDFViewController: UIViewController {
         let pdfView = PDFView(frame: view.bounds)
         
         view.addSubview(pdfView)
-        pdfView.autoScales = true
-        
+
         pdfView.document = PDFDocument(data: convertImageViewToPDF(imageView: imageViewForPDF))
         pdf = pdfView.document ?? PDFDocument()
+        
         activityIndicator.stopAnimating()
+        
+        pdfView.autoScales = true
     }
     
     private func convertImageViewToPDF(imageView: UIImageView) -> Data {
