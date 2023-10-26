@@ -53,6 +53,8 @@ final class ElementCollectionViewController: UICollectionViewController {
         let currentCollection = dataManager.getCollection(from: indexPath.section)
         
         cell.elementImageView.image = UIImage(named: currentCollection[indexPath.item])
+        
+        cell.layer.cornerRadius = 15
 
         return cell
     }
