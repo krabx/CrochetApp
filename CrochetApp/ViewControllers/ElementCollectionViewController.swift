@@ -62,6 +62,15 @@ final class ElementCollectionViewController: UICollectionViewController {
     // MARK: - UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        collectionView.performBatchUpdates {
+            let cell = collectionView.cellForItem(at: indexPath)
+            UIView.animate(withDuration: 0.7) {
+                cell?.backgroundColor = #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9137254902, alpha: 1)
+                cell?.backgroundColor = .clear
+            }
+        }
+        
         let element = dataManager.getCollection(from: indexPath.section)[indexPath.item]
         selectedElements.append(element)
     }
