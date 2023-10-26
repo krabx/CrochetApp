@@ -149,8 +149,19 @@ extension MySchemasCollectionViewController: UISearchResultsUpdating {
 extension MySchemasCollectionViewController: MySchemaCollectionViewCellDelegate {
     func delete(item: MySchemaCollectionViewCell) {
         guard let indexPath = collectionView.indexPath(for: item) else { return }
-        storageManager.delete(schema: savedSchemas[indexPath.item])
-        savedSchemas.remove(at: indexPath.item)
+        
+        if !isFiltering {
+            storageManager.delete(schema: savedSchemas[indexPath.item])
+            savedSchemas.remove(at: indexPath.item)
+        } else {
+            storageManager.delete(schema: filteringSchemas[indexPath.item])
+            
+            guard let index = savedSchemas.firstIndex(where: {$0 == filteringSchemas[indexPath.item]} ) else { return }
+            
+            filteringSchemas.remove(at: indexPath.item)
+            savedSchemas.remove(at: index)
+        }
+        
         collectionView.deleteItems(at: [indexPath])
     }
 }

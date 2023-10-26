@@ -14,17 +14,21 @@ final class PDFViewController: UIViewController {
     
     var imageViewForPDF: UIImageView!
     
-    private var pdf: PDFDocument = PDFDocument()
+    private var pdfURL: URL?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         loadPDFView()
+        guard let filePath = Bundle.main.path(forResource: "example", ofType: "pdf") else { return }
+                
+        pdfURL = URL(fileURLWithPath: filePath)
+
     }
 
     @IBAction func shareButtonTapped(_ sender: Any) {
-        let activityVC = UIActivityViewController(activityItems: [pdf], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [pdfURL], applicationActivities: nil)
         present(activityVC, animated: true, completion: nil)
     }
     
@@ -34,11 +38,17 @@ final class PDFViewController: UIViewController {
         view.addSubview(pdfView)
 
         pdfView.document = PDFDocument(data: convertImageViewToPDF(imageView: imageViewForPDF))
-        pdf = pdfView.document ?? PDFDocument()
-        
-        activityIndicator.stopAnimating()
         
         pdfView.autoScales = true
+        
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        let pdfURL = documentsURL.appendingPathComponent("example.pdf")
+        
+        pdfView.document?.write(to: pdfURL)
+        print(pdfURL)
+
+        activityIndicator.stopAnimating()
     }
     
     private func convertImageViewToPDF(imageView: UIImageView) -> Data {
